@@ -382,7 +382,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── sections ─────────────────────────────────────────────── */
 
-.section { padding: clamp(64px, 9vw, 116px) 0; }
+.section { padding: clamp(64px, 9vw, 116px) 0; scroll-margin-top: 76px; }
 .section + .section { border-top: 1px solid rgba(255, 255, 255, 0.055); }
 
 .sec-head { max-width: 720px; margin-bottom: clamp(32px, 5vw, 52px); }
