@@ -814,6 +814,11 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid rgba(255, 255, 255, 0.09);
   background: rgba(255, 255, 255, 0.03);
 }
+.project-tags li.is-open {
+  color: var(--cyan);
+  border-color: rgba(127, 216, 255, 0.34);
+  background: rgba(127, 216, 255, 0.08);
+}
 
 .project-note {
   display: flex;

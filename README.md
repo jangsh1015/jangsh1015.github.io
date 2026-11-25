@@ -4,7 +4,7 @@
 
 - 아마추어무선 **DS2YTO** — QRP 5W 이하 · FT8 교신, Icom IC-705 · IC-2730A · ID-51E
 - **별빛교신** — 우주·물리·인생 사색 연재 (카카오스토리)
-- **Projects** — 파이브앤하프 4쿠션 시뮬레이터 · 2호차 셔틀 시간표 · 전기차 충전 기록부
+- **Projects** — 파이브앤하프 4쿠션 시뮬레이터 · 2호차 셔틀 시간표 · 전기차 충전 기록부 · DS2YTO 무전 도구함(`/ds2yto-tools/` — 그레이 라인·전파 거리·안테나 길이와 맥스웰 방정식, 공개)
 - **Gallery** — 카카오스토리에 남긴 소소한 일상 사진 6장 (썸네일 그리드 + 라이트박스, `assets/gallery/`)
 - **Music** — 오늘의 노래 두 곡. ① 이찬원 〈시절인연 (時節因緣)〉 — 공식 뮤직비디오(1theK, `fV8tu-tPcJE`) ② 써드베이스 〈진동 (Shaken)〉 — 공식 뮤직비디오(Third Base 써드베이스(KGospel), `rqDl9qvEhAI`). 둘 다 youtube-nocookie iframe으로 재생하고 [유튜브에서 듣기] 링크를 함께 둔다. 음원 파일은 올리지 않는다.
 - **Guestbook** — 로그인 없이 이름과 한 줄 인사를 남기는 방명록. 구글 폼(`1zWZqn0TNoftHei2ebAIAf4FCpseYKjh0wwnPtOVKJYc`) → 구글 시트(`1PtLuugdixAKFkT1HCwXosylA6wCm_LeGIvl2k9o0Ml0`, 링크 공개 읽기·gviz JSONP) → 페이지 최신 12건
