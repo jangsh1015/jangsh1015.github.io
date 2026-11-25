@@ -613,6 +613,9 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid rgba(127, 216, 255, 0.2);
 }
 .gear p { margin: 0; font-size: 14px; line-height: 1.75; color: var(--ink-dim); }
+.gear-wide { grid-column: 1 / -1; }
+.gear-wide p { max-width: 78ch; }
+.gear-wide p + p { margin-top: 12px; }
 
 /* ── qrp note ─────────────────────────────────────────────── */
 
