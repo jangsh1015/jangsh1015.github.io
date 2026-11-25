@@ -13,4 +13,10 @@
 
 정적 페이지입니다. `index.html`을 고치고 `main`에 푸시하면 GitHub Pages가 바로 반영합니다.
 
+## 첫 화면·공유 미리보기
+
+- **Hero** — 대표 사진(`assets/portrait.jpg`)을 궤도 링·전파 링으로 감싼 원형 프레임, 이름 `장석훈` + 콜사인 `DS2YTO`, 한 줄 소개, 바로가기 타일 5개(아마추어무선·별빛교신·직접 만든 웹앱·음악·방명록), `#radio` 등 앵커로 이동. 모바일 390px부터 5개 타일이 2열로 떨어집니다.
+- **OG / Twitter Card** — `og-image.png`(1200×630, 저장소 루트)를 카카오톡·메신저 미리보기 이미지로 사용. 이미지를 새로 만들면 `index.html`의 `og:image`·`twitter:image` 쿼리(`?v=1`)를 올려 캐시를 피합니다. 카카오톡은 페이지 단위로도 미리보기를 캐시하므로, 예전 카드가 보이면 [카카오 OG 캐시 초기화](https://developers.kakao.com/tool/clear/og)에서 URL을 넣어 지운 뒤 다시 공유합니다.
+- 카드 디자인 원본(HTML)은 워크스페이스 `scratch/og-card.html`에 있고, 1200×630으로 렌더해 `og-image.png`로 저장합니다.
+
 Program & Idea by Seokhoon Jang · Built with Pickle
