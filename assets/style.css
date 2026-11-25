@@ -1330,8 +1330,8 @@ html.lb-open { overflow: hidden; }
   .wrap { padding: 0 20px; }
   .nav-inner { padding: 12px 20px; }
   .brand-text em { display: none; }
-  .hero { padding-top: 34px; }
-  .hero-grid { gap: 34px; }
+  .hero { padding-top: 28px; }
+  .hero-grid { gap: 28px; }
   .hero-kicker { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 14px; }
   .hero-sign { gap: 10px 12px; margin-top: 14px; }
   .hero-call { font-size: 11px; padding: 6px 10px; letter-spacing: 0.18em; }
@@ -1339,19 +1339,19 @@ html.lb-open { overflow: hidden; }
   .portrait-frame img { border: 5px solid #070b16; }
   .portrait-badge { margin-top: -14px; font-size: 10.5px; padding: 6px 12px; }
   .lead { margin-top: 22px; font-size: 15px; }
-  .hero-jump { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 22px; }
+  .hero-jump { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 20px; }
   .jump {
     flex-direction: row;
     align-items: center;
     gap: 9px;
-    padding: 12px 14px;
+    padding: 11px 14px;
     font-size: 13px;
   }
   .jump-ico { font-size: 16px; }
   .jump:last-child { grid-column: 1 / -1; }
-  .hero-actions { margin-top: 26px; gap: 10px; }
+  .hero-actions { margin-top: 22px; gap: 10px; }
   .btn { padding: 12px 17px; font-size: 13.5px; }
-  .hero-foot { margin-top: 34px; }
+  .hero-foot { margin-top: 26px; }
   .hero-foot-text { display: none; }
   .story-card { grid-template-columns: 1fr; gap: 6px; }
   .story-quote { font-size: 52px; }
@@ -1381,7 +1381,7 @@ html.lb-open { overflow: hidden; }
 
 @media (max-width: 400px) {
   .nav-links a { padding: 6px 9px; font-size: 12.5px; }
-  .hero-visual { width: 196px; }
+  .hero-visual { width: 194px; }
   .hero-kicker { gap: 8px; letter-spacing: 0.12em; }
 }
 
