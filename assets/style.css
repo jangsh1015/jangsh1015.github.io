@@ -883,6 +883,13 @@ a { color: inherit; text-decoration: none; }
   background: rgba(127, 216, 255, 0.09);
   border: 1px solid rgba(127, 216, 255, 0.2);
 }
+/* '번외' — 연재 번호가 없는 특별 글: 금빛 배지로 구분 */
+.letter-feature .letter-no {
+  color: var(--gold);
+  background: rgba(255, 217, 160, 0.1);
+  border-color: rgba(255, 217, 160, 0.28);
+}
+.letter-feature[open] { border-color: rgba(255, 217, 160, 0.28); }
 .letter-head { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
 .letter-title {
   font-size: 15px;
