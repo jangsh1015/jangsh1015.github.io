@@ -49,7 +49,7 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="assets/style.css?v=14">
+<link rel="stylesheet" href="assets/style.css?v=15">
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -71,7 +71,6 @@
       <a href="#story">별빛교신</a>
       <a href="#projects">프로젝트</a>
       <a href="#gallery">갤러리</a>
-      <a href="#guestbook">방명록</a>
     </nav>
   </div>
 </header>
@@ -111,10 +110,6 @@
           <a class="jump" href="#song">
             <span class="jump-ico" aria-hidden="true">🎵</span>
             <span>음악</span>
-          </a>
-          <a class="jump" href="#guestbook">
-            <span class="jump-ico" aria-hidden="true">✍️</span>
-            <span>방명록</span>
           </a>
         </nav>
 
@@ -597,56 +592,6 @@
     </div>
   </section>
 
-  <section class="section" id="guestbook">
-    <div class="wrap">
-      <header class="sec-head">
-        <p class="eyebrow">06 — Guestbook</p>
-        <h2>방명록 · <span class="mono">GUESTBOOK</span></h2>
-        <p class="sec-desc">
-          다녀가신 흔적을 한 줄 남겨 주세요. 로그인도 회원가입도 없이
-          <strong>이름과 인사 한 줄</strong>이면 충분합니다. 남긴 글은 아래에 바로 올라옵니다.
-        </p>
-      </header>
-
-      <div class="gb-layout">
-        <form class="glass gb-form" id="gb-form" novalidate>
-          <div class="gb-field">
-            <label for="gb-name">이름</label>
-            <input id="gb-name" name="gb-name" type="text" maxlength="20" autocomplete="name" enterkeyhint="next" placeholder="홍길동">
-          </div>
-          <div class="gb-field">
-            <label for="gb-msg">한 줄 인사</label>
-            <textarea id="gb-msg" name="gb-msg" rows="3" maxlength="200" enterkeyhint="done" placeholder="우주처럼 넓은 하루 되세요 🌌"></textarea>
-            <span class="gb-count" id="gb-count">0 / 200</span>
-          </div>
-          <div class="gb-actions">
-            <button class="btn btn-primary" type="submit" id="gb-submit">
-              방명록 남기기
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <p class="gb-status" id="gb-status" role="status" aria-live="polite"></p>
-          </div>
-          <p class="gb-hint">
-            빈칸과 도배를 막기 위해 인사는 두 글자 이상, 연속 제출은 20초 뒤에 다시 받습니다.
-            남긴 글은 구글 시트에 저장되고, 운영자가 직접 관리합니다.
-          </p>
-        </form>
-
-        <div class="gb-list-wrap">
-          <div class="gb-list-head">
-            <span class="gb-list-title" id="gb-list-title">최근 인사</span>
-            <button class="gb-refresh" type="button" id="gb-refresh">
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              새로고침
-            </button>
-          </div>
-          <ul class="gb-list" id="gb-list" aria-live="polite" aria-busy="true">
-            <li class="glass gb-item gb-item-empty"><p class="gb-msg">방명록을 불러오는 중입니다…</p></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="사진 크게 보기" hidden>
@@ -668,6 +613,28 @@
   </figure>
 </div>
 
+<div class="vstats" id="vstats" role="dialog" aria-modal="true" aria-labelledby="vstats-title" hidden>
+  <div class="vstats-card" tabindex="-1">
+    <button class="vstats-close" type="button" aria-label="닫기">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+    </button>
+    <p class="vstats-kicker">VISITORS</p>
+    <h2 id="vstats-title">방문 기록</h2>
+    <div class="vstats-nums">
+      <div>
+        <span class="vstats-num" id="vstats-total">—</span>
+        <span class="vstats-label">누적 방문</span>
+      </div>
+      <div>
+        <span class="vstats-num" id="vstats-today">—</span>
+        <span class="vstats-label">오늘</span>
+      </div>
+    </div>
+    <ul class="vstats-bars" id="vstats-bars"></ul>
+    <p class="vstats-foot" id="vstats-foot">불러오는 중…</p>
+  </div>
+</div>
+
 <footer class="footer">
   <div class="wrap footer-inner">
     <div class="footer-brand">
@@ -675,7 +642,7 @@
       <span>장석훈 · <span class="mono">DS2YTO</span></span>
     </div>
     <p class="footer-credit">Program &amp; Idea by Seokhoon Jang</p>
-    <p class="footer-meta">Chuncheon, South Korea · PM37 · © 2026</p>
+    <p class="footer-meta">Chuncheon, South Korea · PM37 · <span id="site-copy">© 2026</span></p>
   </div>
 </footer>
 
@@ -774,249 +741,130 @@
 })();
 
 (function () {
-  // ── 방명록: 구글 폼·구글 시트 연동 ───────────────────────────
-  var SHEET_ID = '1PtLuugdixAKFkT1HCwXosylA6wCm_LeGIvl2k9o0Ml0';
-  var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdgbwcGVAYehs6Z-0DoY17Va2Btxg0NEn0EBgVDarQIqNFXEQ/formResponse';
-  var ENTRY_NAME = 'entry.284998392';
-  var ENTRY_MSG = 'entry.500926923';
-  var MAX_SHOW = 12;
-  var NAME_MAX = 20;
-  var MSG_MAX = 200;
-  var COOLDOWN_MS = 20000;
+  // ── 비공개 방문자 카운터 ────────────────────────────────────
+  // 일반 방문자에게는 화면에 아무것도 보이지 않고 조용히 1회만 기록된다.
+  // 확인하는 법: 주소 끝에 ?stats, 또는 푸터의 © 2026 을 5번 연속 탭.
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbzl7QBy-bSk7TSnjbjXXiYpmcbPGGxM-J-30Cs7ecWQ47AJXjNQYxrrTxoxB76VGIk/exec';
+  var box = document.getElementById('vstats');
+  var copy = document.getElementById('site-copy');
+  var totalEl = document.getElementById('vstats-total');
+  var todayEl = document.getElementById('vstats-today');
+  var barsEl = document.getElementById('vstats-bars');
+  var footEl = document.getElementById('vstats-foot');
 
-  var form = document.getElementById('gb-form');
-  var list = document.getElementById('gb-list');
-  if (!form || !list) return;
-
-  var nameEl = document.getElementById('gb-name');
-  var msgEl = document.getElementById('gb-msg');
-  var countEl = document.getElementById('gb-count');
-  var statusEl = document.getElementById('gb-status');
-  var submitEl = document.getElementById('gb-submit');
-  var refreshEl = document.getElementById('gb-refresh');
-  var listTitle = document.getElementById('gb-list-title');
-  var lastSent = 0;
-  var pendingTimer = null;
-
-  function setStatus(text, isError) {
-    statusEl.textContent = text || '';
-    statusEl.classList.toggle('is-error', !!isError);
+  function api(action) {
+    return fetch(ENDPOINT + '?a=' + action + '&t=' + Date.now(), { cache: 'no-store' })
+      .then(function (res) { return res.json(); });
   }
 
-  function pad(n) { return (n < 10 ? '0' : '') + n; }
-
-  function cellText(cell) {
-    if (!cell || cell.v === null || cell.v === undefined) return '';
-    return String(cell.v);
-  }
-
-  function formatTime(value) {
-    if (!value) return '';
-    var m = /^Date\((\d+),(\d+),(\d+),(\d+),(\d+),(\d+)\)$/.exec(value);
-    if (!m) return value;
-    return m[1] + '.' + pad(Number(m[2]) + 1) + '.' + pad(Number(m[3])) +
-      ' ' + pad(Number(m[4])) + ':' + pad(Number(m[5]));
-  }
-
-  function parseRows(resp) {
-    var out = [];
-    if (!resp || resp.status !== 'ok' || !resp.table || !resp.table.rows) return out;
-    var rows = resp.table.rows;
-    for (var i = 0; i < rows.length; i++) {
-      var c = rows[i].c || [];
-      var name = cellText(c[1]).trim();
-      var msg = cellText(c[2]).trim();
-      if (!name && !msg) continue;
-      if (name === '이름' && msg === '남길 말') continue; // 머리글 행
-      if (!msg) continue;
-      out.push({ name: name, msg: msg, time: cellText(c[0]) });
+  function hasFlag(name) {
+    if (location.hash.replace(/^#/, '') === name) return true;
+    var s = location.search.replace(/^\?/, '');
+    if (!s) return false;
+    var parts = s.split('&');
+    for (var i = 0; i < parts.length; i++) {
+      if (parts[i].split('=')[0] === name) return true;
     }
-    out.reverse(); // 시트는 오래된 순이라 최신이 위로 오게 뒤집는다
-    return out.slice(0, MAX_SHOW);
+    return false;
   }
 
-  function render(items, highlightFirst) {
-    list.innerHTML = '';
-    if (!items.length) {
-      var empty = document.createElement('li');
-      empty.className = 'glass gb-item gb-item-empty';
-      var emptyMsg = document.createElement('p');
-      emptyMsg.className = 'gb-msg';
-      emptyMsg.textContent = '아직 남겨진 인사가 없습니다. 첫 인사를 남겨 주세요.';
-      empty.appendChild(emptyMsg);
-      list.appendChild(empty);
+  function tidy(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+
+  function render(d) {
+    if (!d || !d.ok) {
+      footEl.textContent = '방문 기록을 불러오지 못했습니다.';
       return;
     }
-    items.forEach(function (item, index) {
+    totalEl.textContent = tidy(d.total || 0);
+    todayEl.textContent = tidy(d.today || 0);
+    barsEl.innerHTML = '';
+    var days = d.last7 || [];
+    var max = 1;
+    days.forEach(function (x) { if (x.n > max) { max = x.n; } });
+    days.forEach(function (x) {
       var li = document.createElement('li');
-      li.className = 'glass gb-item';
-      if (highlightFirst && index === 0) li.classList.add('is-new');
+      li.className = 'vstats-bar' + (x.n ? '' : ' is-zero');
+      li.title = x.d + ' · ' + x.n + '회';
+      var fill = document.createElement('span');
+      fill.className = 'vstats-bar-fill';
+      fill.style.height = Math.max(8, Math.round((x.n / max) * 42)) + 'px';
+      var label = document.createElement('span');
+      label.className = 'vstats-bar-label';
+      label.textContent = x.d.slice(5).replace('-', '.');
+      li.appendChild(fill);
+      li.appendChild(label);
+      barsEl.appendChild(li);
+    });
+    footEl.textContent = d.updated ? ('마지막 기록 ' + stamp(d.updated)) : '최근 7일';
+  }
 
-      var top = document.createElement('div');
-      top.className = 'gb-item-top';
-      var nameSpan = document.createElement('span');
-      nameSpan.className = 'gb-name';
-      nameSpan.textContent = item.name || '이름 없음';
-      var timeSpan = document.createElement('span');
-      timeSpan.className = 'gb-time';
-      timeSpan.textContent = formatTime(item.time);
-      top.appendChild(nameSpan);
-      top.appendChild(timeSpan);
+  function stamp(iso) {
+    var t = new Date(iso);
+    if (isNaN(t.getTime())) return '';
+    try {
+      return t.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
+    } catch (err) {
+      return t.toISOString().slice(0, 16).replace('T', ' ');
+    }
+  }
 
-      var msg = document.createElement('p');
-      msg.className = 'gb-msg';
-      msg.textContent = item.msg;
+  function openStats() {
+    if (!box) return;
+    box.hidden = false;
+    document.documentElement.classList.add('vs-open');
+    totalEl.textContent = '—';
+    todayEl.textContent = '—';
+    barsEl.innerHTML = '';
+    footEl.textContent = '불러오는 중…';
+    api('get').then(render).catch(function () {
+      footEl.textContent = '방문 기록을 불러오지 못했습니다.';
+    });
+    var card = box.querySelector('.vstats-card');
+    if (card) card.focus();
+  }
 
-      li.appendChild(top);
-      li.appendChild(msg);
-      list.appendChild(li);
+  function closeStats() {
+    if (!box) return;
+    box.hidden = true;
+    document.documentElement.classList.remove('vs-open');
+  }
+
+  if (hasFlag('stats')) {
+    openStats();
+  } else {
+    var counted = false;
+    try { counted = !!sessionStorage.getItem('vst'); } catch (err) { counted = false; }
+    if (!counted) {
+      try { sessionStorage.setItem('vst', '1'); } catch (err2) { /* 저장이 막혀도 기록은 한다 */ }
+      api('hit').catch(function () { /* 조용히 넘어간다 */ });
+    }
+  }
+
+  if (box) {
+    var closeBtn = box.querySelector('.vstats-close');
+    if (closeBtn) closeBtn.addEventListener('click', closeStats);
+    box.addEventListener('click', function (e) {
+      if (e.target === box) closeStats();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!box.hidden && e.key === 'Escape') closeStats();
     });
   }
 
-  function setCount(n) {
-    listTitle.textContent = n ? ('최근 인사 ' + n + '개') : '최근 인사';
-  }
-
-  var scriptSeq = 0;
-  function loadSheet(done) {
-    var cbName = 'gbSheet' + (++scriptSeq);
-    var script = document.createElement('script');
-    var finished = false;
-    var timer = setTimeout(function () { finish(null); }, 12000);
-
-    function finish(data) {
-      if (finished) return;
-      finished = true;
-      clearTimeout(timer);
-      script.onerror = null;
-      try { delete window[cbName]; } catch (err) { window[cbName] = undefined; }
-      if (script.parentNode) script.parentNode.removeChild(script);
-      list.setAttribute('aria-busy', 'false');
-      if (done) done(data);
-    }
-
-    window[cbName] = function (resp) { finish(resp); };
-    script.onerror = function () { finish(null); };
-    script.src = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
-      '/gviz/tq?tqx=out:json;responseHandler:' + cbName +
-      '&headers=1&t=' + Date.now();
-    list.setAttribute('aria-busy', 'true');
-    document.head.appendChild(script);
-  }
-
-  var current = [];
-  function refresh(highlightFirst) {
-    loadSheet(function (resp) {
-      if (!resp) {
-        if (!current.length) {
-          render([], false);
-          var failMsg = list.querySelector('.gb-msg');
-          if (failMsg) failMsg.textContent = '방명록을 불러오지 못했습니다. 잠시 뒤 새로고침을 눌러 주세요.';
-        }
-        return;
+  if (copy) {
+    var taps = 0;
+    var tapTimer = null;
+    copy.addEventListener('click', function () {
+      taps += 1;
+      clearTimeout(tapTimer);
+      tapTimer = setTimeout(function () { taps = 0; }, 1400);
+      if (taps >= 5) {
+        taps = 0;
+        clearTimeout(tapTimer);
+        openStats();
       }
-      var items = parseRows(resp);
-      current = items;
-      render(items, !!highlightFirst);
-      setCount(items.length);
     });
   }
-
-  function watchFor(name, msg, attempt) {
-    if (attempt > 8) {
-      setStatus('전송은 마쳤습니다. 잠시 뒤 새로고침을 눌러 확인해 주세요.', false);
-      submitEl.disabled = false;
-      return;
-    }
-    loadSheet(function (resp) {
-      var items = resp ? parseRows(resp) : [];
-      var found = false;
-      for (var i = 0; i < Math.min(items.length, 3); i++) {
-        if (items[i].name === name && items[i].msg === msg) { found = true; break; }
-      }
-      if (found) {
-        current = items;
-        render(items, true);
-        setCount(items.length);
-        setStatus('남겼습니다. 방명록에 올라왔습니다.', false);
-        submitEl.disabled = false;
-        return;
-      }
-      pendingTimer = setTimeout(function () { watchFor(name, msg, attempt + 1); }, 1500);
-    });
-  }
-
-  msgEl.addEventListener('input', function () {
-    countEl.textContent = msgEl.value.length + ' / ' + MSG_MAX;
-    if (msgEl.value.length > 130) { countEl.style.color = 'rgba(255,179,179,0.95)'; }
-    else { countEl.style.color = ''; }
-  });
-
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    if (pendingTimer) { clearTimeout(pendingTimer); pendingTimer = null; }
-
-    var name = nameEl.value.replace(/\s+/g, ' ').trim();
-    var msg = msgEl.value.replace(/\s+/g, ' ').trim();
-
-    if (name.length < 1) {
-      setStatus('이름을 적어 주세요.', true);
-      nameEl.focus();
-      return;
-    }
-    if (name.length > NAME_MAX) {
-      setStatus('이름은 ' + NAME_MAX + '자까지 적을 수 있습니다.', true);
-      nameEl.focus();
-      return;
-    }
-    if (msg.length < 2) {
-      setStatus('인사를 두 글자 이상 적어 주세요.', true);
-      msgEl.focus();
-      return;
-    }
-    if (msg.length > MSG_MAX) {
-      setStatus('인사는 ' + MSG_MAX + '자까지 적을 수 있습니다.', true);
-      msgEl.focus();
-      return;
-    }
-
-    var now = Date.now();
-    if (now - lastSent < COOLDOWN_MS) {
-      var wait = Math.ceil((COOLDOWN_MS - (now - lastSent)) / 1000);
-      setStatus('방금 남기셨습니다. ' + wait + '초 뒤에 다시 남길 수 있습니다.', true);
-      return;
-    }
-
-    lastSent = now;
-    submitEl.disabled = true;
-    setStatus('남기는 중…', false);
-
-    var body = new URLSearchParams();
-    body.append(ENTRY_NAME, name);
-    body.append(ENTRY_MSG, msg);
-
-    fetch(FORM_ACTION, { method: 'POST', mode: 'no-cors', body: body })
-      .then(function () {
-        msgEl.value = '';
-        countEl.textContent = '0 / ' + MSG_MAX;
-        countEl.style.color = '';
-        setStatus('남기는 중…', false);
-        pendingTimer = setTimeout(function () { watchFor(name, msg, 1); }, 1500);
-      })
-      .catch(function () {
-        submitEl.disabled = false;
-        lastSent = 0;
-        setStatus('전송이 되지 않았습니다. 인터넷 연결을 확인하고 다시 시도해 주세요.', true);
-      });
-  });
-
-  refreshEl.addEventListener('click', function () {
-    refreshEl.disabled = true;
-    refresh(false);
-    setTimeout(function () { refreshEl.disabled = false; }, 1200);
-  });
-
-  refresh(false);
 })();
 </script>
 </body>
