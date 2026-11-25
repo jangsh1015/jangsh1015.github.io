@@ -49,7 +49,7 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="assets/style.css?v=15">
+<link rel="stylesheet" href="assets/style.css?v=16">
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -380,13 +380,29 @@
         <p class="eyebrow">04 — Gallery</p>
         <h2>소소한 일상 · <span class="mono">갤러리</span></h2>
         <p class="sec-desc">
-          카카오스토리에 남긴 장면들 중 몇 장을 골라 두었습니다.
           무전기 앞의 밤, 은하수가 쏟아지던 호수, 당구대 위의 공 몇 개.
+          그리고 오늘 밤 찍은 내 샤크룸 한 장.
           사진을 누르면 크게 볼 수 있습니다.
         </p>
       </header>
 
       <ul class="gallery-grid">
+        <li class="gallery-featured">
+          <button class="glass gallery-card" type="button"
+                  data-full="assets/gallery/gallery-07-shackroom.jpg"
+                  data-title="나의 샤크룸 (My Shack Room)" data-date="2026.11.25"
+                  data-caption="삼각대 위의 Icom IC-705(7.074 MHz)와 아이폰 FT8 화면. 작은 책상 위, 나만의 무선실."
+                  aria-label="나의 샤크룸 사진 크게 보기">
+            <span class="gallery-photo">
+              <img src="assets/gallery/gallery-07-shackroom.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="삼각대에 올린 Icom IC-705 무전기와 아이폰 FT8 화면, 그 옆으로 노트북과 키보드가 놓인 작은 책상">
+            </span>
+            <span class="gallery-meta">
+              <span class="gallery-title">나의 샤크룸 (My Shack Room)</span>
+              <span class="gallery-date">2026.11.25</span>
+            </span>
+          </button>
+        </li>
+
         <li>
           <button class="glass gallery-card" type="button"
                   data-full="assets/gallery/gallery-01-ic705.jpg"
@@ -479,7 +495,7 @@
       </ul>
 
       <div class="gallery-foot">
-        <p class="gallery-note">사진은 카카오스토리 「별빛교신」에 남긴 것들 가운데 골랐습니다.</p>
+        <p class="gallery-note">사진은 카카오스토리 「별빛교신」에 남긴 것들과, 오늘 밤 샤크룸에서 직접 찍은 한 장입니다.</p>
         <a class="btn btn-ghost btn-sm" href="https://story.kakao.com/_a7fda9" target="_blank" rel="noopener">
           카카오스토리 둘러보기
           <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -609,6 +625,7 @@
     <figcaption class="lightbox-caption">
       <span class="lightbox-title" id="lightbox-title"></span>
       <span class="lightbox-date" id="lightbox-date"></span>
+      <span class="lightbox-desc" id="lightbox-desc" hidden></span>
     </figcaption>
   </figure>
 </div>
@@ -692,6 +709,7 @@
   var img = document.getElementById('lightbox-img');
   var titleEl = document.getElementById('lightbox-title');
   var dateEl = document.getElementById('lightbox-date');
+  var descEl = document.getElementById('lightbox-desc');
   var btnClose = box.querySelector('.lightbox-close');
   var btnPrev = box.querySelector('.lightbox-prev');
   var btnNext = box.querySelector('.lightbox-next');
@@ -707,6 +725,11 @@
     img.alt = thumb ? thumb.alt : '';
     titleEl.textContent = card.getAttribute('data-title') || '';
     dateEl.textContent = card.getAttribute('data-date') || '';
+    if (descEl) {
+      var cap = card.getAttribute('data-caption') || '';
+      descEl.textContent = cap;
+      descEl.hidden = !cap;
+    }
   }
 
   function open(index) {
