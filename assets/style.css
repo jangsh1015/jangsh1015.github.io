@@ -687,6 +687,113 @@ a { color: inherit; text-decoration: none; }
 }
 .radio-note { margin: 0; font-size: 14px; color: var(--ink-dim); }
 
+/* ── ft8 reach ───────────────────────────────────────────── */
+
+.reach-card {
+  margin-top: 16px;
+  padding: clamp(22px, 3vw, 32px);
+  overflow: hidden;
+}
+.reach-card::after {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  right: -150px;
+  bottom: -200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(127, 216, 255, 0.14), rgba(127, 216, 255, 0) 70%);
+  pointer-events: none;
+}
+.reach-head { position: relative; }
+.reach-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: rgba(127, 216, 255, 0.09);
+  border: 1px solid rgba(127, 216, 255, 0.2);
+}
+.reach-card h3 {
+  margin: 14px 0 0;
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+}
+.reach-desc {
+  margin: 10px 0 0;
+  max-width: 62ch;
+  font-size: 14px;
+  line-height: 1.78;
+  color: var(--ink-dim);
+}
+
+.reach-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.reach-grid li {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 16px 16px 15px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  background: rgba(255, 255, 255, 0.03);
+}
+.reach-place {
+  font-size: 12.5px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+}
+.reach-value {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--mono);
+  font-size: clamp(24px, 2.8vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.reach-unit {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--cyan);
+}
+.reach-value-word {
+  font-family: inherit;
+  font-size: clamp(19px, 2.2vw, 23px);
+  color: var(--cyan);
+}
+.reach-sub {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink-dim);
+}
+.reach-foot {
+  position: relative;
+  margin: 14px 0 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  color: var(--ink-dim);
+}
+
 /* ── story ────────────────────────────────────────────────── */
 
 .story-card {
@@ -737,6 +844,118 @@ a { color: inherit; text-decoration: none; }
   transition: gap 0.2s, border-color 0.2s;
 }
 .story-link:hover { gap: 14px; border-color: var(--cyan); }
+
+/* ── letters (별빛교신 연재) ──────────────────────────────── */
+
+.letters { display: grid; gap: 10px; margin-top: 16px; }
+.letters-lead {
+  margin: 0 0 4px;
+  padding: 0 4px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--ink-dim);
+}
+
+.letter { border-radius: 16px; overflow: hidden; }
+.letter[open] { border-color: rgba(127, 216, 255, 0.26); }
+.letter > summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+  list-style: none;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+.letter > summary::-webkit-details-marker { display: none; }
+.letter > summary::marker { content: ""; }
+.letter > summary:hover { background: rgba(255, 255, 255, 0.035); }
+.letter > summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: -3px; }
+
+.letter-no {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--cyan);
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: rgba(127, 216, 255, 0.09);
+  border: 1px solid rgba(127, 216, 255, 0.2);
+}
+.letter-head { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.letter-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.letter-date {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--ink-dim);
+  white-space: nowrap;
+}
+.letter-toggle {
+  flex: none;
+  position: relative;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+}
+.letter-toggle::before,
+.letter-toggle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--cyan);
+  border-radius: 2px;
+}
+.letter-toggle::before { width: 10px; height: 1.5px; }
+.letter-toggle::after { width: 1.5px; height: 10px; transition: opacity 0.2s; }
+.letter[open] .letter-toggle::after { opacity: 0; }
+
+.letter-body {
+  padding: 16px 18px 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.letter-body p {
+  margin: 0 0 12px;
+  font-size: 14.5px;
+  line-height: 1.92;
+  color: var(--ink-soft);
+}
+.letter-body p:last-of-type { margin-bottom: 0; }
+.letter-tags {
+  margin-top: 14px !important;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--ink-dim);
+}
+.letter-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding-bottom: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cyan);
+  border-bottom: 1px solid rgba(127, 216, 255, 0.32);
+  transition: gap 0.2s, border-color 0.2s;
+}
+.letter-link:hover { gap: 10px; border-color: var(--cyan); }
+
+@media (min-width: 721px) {
+  .letter-head { flex-direction: row; align-items: baseline; gap: 12px; }
+  .letter-head .letter-date { margin-left: auto; }
+}
 
 /* ── projects ─────────────────────────────────────────────── */
 
@@ -1373,6 +1592,14 @@ html.vs-open { overflow: hidden; }
   .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .gallery-featured .gallery-photo { aspect-ratio: 16 / 10; }
   .gallery-featured .gallery-meta { padding: 12px 14px 14px; }
+  .reach-grid { grid-template-columns: 1fr; }
+  .reach-grid li { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; padding: 13px 15px; }
+  .reach-place { flex: 1 1 auto; }
+  .reach-value { margin-left: auto; font-size: 22px; }
+  .reach-value-word { font-size: 19px; }
+  .reach-sub { flex-basis: 100%; }
+  .letter > summary { padding: 14px 15px; gap: 10px; }
+  .letter-body { padding: 15px 15px 17px; }
   .gallery-meta { padding: 11px 12px 13px; }
   .gallery-title { font-size: 13.5px; }
   .gallery-date { font-size: 10px; }
