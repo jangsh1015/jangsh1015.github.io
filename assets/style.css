@@ -17,7 +17,8 @@
   --wrap: 1120px;
   --sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
           "Apple SD Gothic Neo", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-  --mono: "SFMono-Regular", ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+  --mono: "SFMono-Regular", ui-monospace, "JetBrains Mono", Menlo, Consolas,
+          "Liberation Mono", "Noto Sans Mono CJK KR", monospace;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
