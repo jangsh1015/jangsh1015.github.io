@@ -272,6 +272,31 @@ footer span{color:rgba(127,216,255,.75)}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
 }
+
+/* ── 언어 전환 (5개국어) ───────────────────────────── */
+.lang{position:relative;flex:none}
+.lang-btn{display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 7px;border-radius:999px;
+  border:1px solid var(--line2);background:rgba(255,255,255,.03);color:var(--soft);
+  font-size:11px;font-weight:600;line-height:1;letter-spacing:.04em;font-family:inherit;cursor:pointer}
+.lang-btn[aria-expanded="true"]{color:#dff6ff;border-color:rgba(127,216,255,.5);background:rgba(127,216,255,.1)}
+.lang-globe{font-size:12px;line-height:1}
+.lang-code{font-family:var(--mono);font-size:10px;letter-spacing:.08em}
+.lang-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:80;min-width:148px;margin:0;padding:5px;
+  list-style:none;display:grid;gap:2px;border-radius:13px;border:1px solid rgba(255,255,255,.13);
+  background:rgba(9,13,24,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:0 18px 44px rgba(0,0,0,.55)}
+.lang-menu[hidden]{display:none}
+.lang-menu button{display:flex;align-items:center;width:100%;padding:9px 11px;border:0;border-radius:9px;
+  background:transparent;color:var(--soft);font-size:13px;font-weight:500;text-align:left;white-space:nowrap;
+  font-family:inherit;cursor:pointer}
+.lang-menu button[aria-selected="true"]{color:var(--cyan);background:rgba(127,216,255,.1)}
+@media (max-width:420px){
+  /* 번역이 길어도 제목 줄이 넘치지 않게 */
+  html:not([lang="ko"]) .brand span:last-child{display:none}
+}
+/* 일본어·중국어는 keep-all 로 두면 문장이 끊기지 않아 화면을 넘친다 */
+html[lang="ja"] body,
+html[lang="zh-Hans"] body{word-break:normal}
 </style>
 </head>
 <body>
@@ -280,23 +305,36 @@ footer span{color:rgba(127,216,255,.75)}
 <div class="top">
   <div class="top-in">
     <div class="hdr">
-      <a class="homebtn" href="https://jangsh1015.github.io/" aria-label="장석훈 홈페이지로 돌아가기"><span aria-hidden="true">←</span> 홈</a>
+      <a class="homebtn" href="https://jangsh1015.github.io/" aria-label="장석훈 홈페이지로 돌아가기" data-i18n-aria="hdr.homeAria"><span aria-hidden="true">←</span> <span data-i18n="hdr.home">홈</span></a>
       <div class="brand">
         <span class="mark" aria-hidden="true"></span>
         <b>DS2YTO</b>
         <span>· PM37 Chuncheon</span>
       </div>
+      <div class="lang" id="lang">
+        <button type="button" class="lang-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="언어 선택" data-i18n-aria="lang.aria">
+          <span class="lang-globe" aria-hidden="true">🌐</span>
+          <span class="lang-code" id="lang-code">KO</span>
+        </button>
+        <ul class="lang-menu" id="lang-menu" role="listbox" aria-label="언어 선택" data-i18n-aria="lang.aria" hidden>
+          <li><button type="button" role="option" data-lang="ko" lang="ko" aria-selected="true">한국어</button></li>
+          <li><button type="button" role="option" data-lang="en" lang="en" aria-selected="false">English</button></li>
+          <li><button type="button" role="option" data-lang="ja" lang="ja" aria-selected="false">日本語</button></li>
+          <li><button type="button" role="option" data-lang="zh" lang="zh-Hans" aria-selected="false">中文</button></li>
+          <li><button type="button" role="option" data-lang="ru" lang="ru" aria-selected="false">Русский</button></li>
+        </ul>
+      </div>
       <div class="clock-top"><span id="hdrClock">--:--:--</span><em>KST</em></div>
     </div>
-    <div class="tabs" role="tablist" aria-label="도구 선택">
+    <div class="tabs" role="tablist" aria-label="도구 선택" data-i18n-aria="tabs.aria">
       <button class="tab" role="tab" id="tab-gray" aria-controls="p-gray" aria-selected="true" data-tab="gray">
-        <span class="ico" aria-hidden="true">🌅</span><span>그레이 라인</span>
+        <span class="ico" aria-hidden="true">🌅</span><span data-i18n="tab.gray">그레이 라인</span>
       </button>
       <button class="tab" role="tab" id="tab-dist" aria-controls="p-dist" aria-selected="false" tabindex="-1" data-tab="dist">
-        <span class="ico" aria-hidden="true">📡</span><span>전파 거리</span>
+        <span class="ico" aria-hidden="true">📡</span><span data-i18n="tab.dist">전파 거리</span>
       </button>
       <button class="tab" role="tab" id="tab-ant" aria-controls="p-ant" aria-selected="false" tabindex="-1" data-tab="ant">
-        <span class="ico" aria-hidden="true">📐</span><span>안테나·방정식</span>
+        <span class="ico" aria-hidden="true">📐</span><span data-i18n="tab.ant">안테나·방정식</span>
       </button>
     </div>
   </div>
@@ -310,7 +348,7 @@ footer span{color:rgba(127,216,255,.75)}
     <div class="card clock-card">
       <div class="clock-main">
         <div>
-          <div class="lbl">지금 · 한국 표준시</div>
+          <div class="lbl" data-i18n="dc.kstLabel">지금 · 한국 표준시</div>
           <div class="clock-kst"><span id="clkKst">--:--:--</span><small>KST</small></div>
         </div>
         <div class="clock-utc">
@@ -318,45 +356,45 @@ footer span{color:rgba(127,216,255,.75)}
           <div id="clkUtc">--:--:--</div>
         </div>
       </div>
-      <div class="clock-date"><span id="clkDate">—</span><span id="clkSun">춘천 37.86°N 127.74°E</span></div>
+      <div class="clock-date"><span id="clkDate">—</span><span id="clkSun" data-i18n="dc.place">춘천 37.86°N 127.74°E</span></div>
     </div>
 
     <div class="card">
-      <div class="cardHead"><h2>오늘의 태양</h2><span class="tag">PM37 · GRAY LINE</span></div>
+      <div class="cardHead"><h2 data-i18n="dc.sunTitle">오늘의 태양</h2><span class="tag">PM37 · GRAY LINE</span></div>
       <div class="sun-grid">
-        <div class="sun-cell rise"><div class="lbl">일출</div><div class="v" id="sunRise">--:--</div></div>
-        <div class="sun-cell set"><div class="lbl">일몰</div><div class="v" id="sunSet">--:--</div></div>
+        <div class="sun-cell rise"><div class="lbl" data-i18n="dc.sunrise">일출</div><div class="v" id="sunRise">--:--</div></div>
+        <div class="sun-cell set"><div class="lbl" data-i18n="dc.sunset">일몰</div><div class="v" id="sunSet">--:--</div></div>
       </div>
       <div class="hint" id="sunMeta">—</div>
-      <div class="altline"><span>춘천 태양 고도</span><b id="sunAlt">—</b></div>
+      <div class="altline"><span data-i18n="dc.sunAltLab">춘천 태양 고도</span><b id="sunAlt">—</b></div>
       <div class="next">
-        <div class="k">다음 그레이 라인<b id="nextName">—</b></div>
+        <div class="k"><span data-i18n="dc.nextLine">다음 그레이 라인</span><b id="nextName">—</b></div>
         <div class="v" id="nextLeft">--:--:--</div>
       </div>
       <div class="hint" id="sunBoth">—</div>
     </div>
 
     <div class="card map-card">
-      <div class="cardHead"><h2>지구의 낮과 밤</h2><span class="tag mono" id="mapStamp">—</span></div>
-      <canvas id="map" role="img" aria-label="세계 지도 위의 실시간 낮·밤 경계(터미네이터)와 그레이 라인 띠"></canvas>
+      <div class="cardHead"><h2 data-i18n="dc.mapTitle">지구의 낮과 밤</h2><span class="tag mono" id="mapStamp">—</span></div>
+      <canvas id="map" role="img" aria-label="세계 지도 위의 실시간 낮·밤 경계(터미네이터)와 그레이 라인 띠" data-i18n-aria="dc.mapAria"></canvas>
       <div class="legend">
-        <span><i class="sw day"></i>낮</span>
-        <span><i class="sw gray"></i>그레이 라인</span>
-        <span><i class="sw night"></i>밤</span>
+        <span><i class="sw day"></i><span data-i18n="dc.day">낮</span></span>
+        <span><i class="sw gray"></i><span data-i18n="dc.grey">그레이 라인</span></span>
+        <span><i class="sw night"></i><span data-i18n="dc.night">밤</span></span>
       </div>
     </div>
 
     <div class="card">
-      <div class="cardHead"><h2>시간 미리보기</h2><span class="tag" id="offTag">지금</span></div>
+      <div class="cardHead"><h2 data-i18n="dc.preview">시간 미리보기</h2><span class="tag" id="offTag">지금</span></div>
       <div class="slider-wrap">
-        <input type="range" id="off" min="-720" max="720" step="5" value="0" aria-label="그레이 라인 미리보기 시각 오프셋">
+        <input type="range" id="off" min="-720" max="720" step="5" value="0" aria-label="그레이 라인 미리보기 시각 오프셋" data-i18n-aria="dc.offAria">
         <div class="range-labels">
           <span class="dim mono">−12h</span>
           <span class="now" id="offNow">—</span>
           <span class="dim mono">+12h</span>
         </div>
       </div>
-      <button class="btn ghost" id="nowBtn">지금으로</button>
+      <button class="btn ghost" id="nowBtn" data-i18n="dc.nowBtn">지금으로</button>
     </div>
 
   </section>
@@ -365,31 +403,31 @@ footer span{color:rgba(127,216,255,.75)}
   <section class="panel" id="p-dist" role="tabpanel" aria-labelledby="tab-dist" hidden>
 
     <div class="card">
-      <div class="cardHead"><h2>출발지</h2><span class="tag">기본 PM37 · 춘천</span></div>
-      <input class="in" id="fromIn" value="PM37" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="출발지 그리드 로케이터" maxlength="12">
+      <div class="cardHead"><h2 data-i18n="dist.from">출발지</h2><span class="tag" data-i18n="dist.fromTag">기본 PM37 · 춘천</span></div>
+      <input class="in" id="fromIn" value="PM37" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="출발지 그리드 로케이터" data-i18n-aria="dist.fromAria" maxlength="12">
       <div class="hint mono" id="fromMeta">—</div>
     </div>
 
     <div class="card">
-      <div class="cardHead"><h2>도착지</h2><span class="tag">그리드 4~6자리</span></div>
-      <input class="in" id="toIn" value="GG87" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="도착지 그리드 로케이터" maxlength="12">
-      <div class="err" id="toErr">그리드 형식이 아닙니다 — 예: PM37, GG87, PM37ab</div>
+      <div class="cardHead"><h2 data-i18n="dist.to">도착지</h2><span class="tag" data-i18n="dist.toTag">그리드 4~6자리</span></div>
+      <input class="in" id="toIn" value="GG87" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="도착지 그리드 로케이터" data-i18n-aria="dist.toAria" maxlength="12">
+      <div class="err" id="toErr" data-i18n="dist.errTo">그리드 형식이 아닙니다 — 예: PM37, GG87, PM37ab</div>
       <div class="chips" id="toPresets">
-        <button class="chip" type="button" data-grid="GG87">리우데자네이루<b>GG87</b></button>
-        <button class="chip" type="button" data-grid="GF05">부에노스아이레스<b>GF05</b></button>
-        <button class="chip" type="button" data-grid="FN30">뉴욕<b>FN30</b></button>
-        <button class="chip" type="button" data-grid="DM04">로스앤젤레스<b>DM04</b></button>
-        <button class="chip" type="button" data-grid="IO91">런던<b>IO91</b></button>
-        <button class="chip" type="button" data-grid="PM95">도쿄<b>PM95</b></button>
-        <button class="chip" type="button" data-grid="QF56">시드니<b>QF56</b></button>
+        <button class="chip" type="button" data-grid="GG87"><span data-i18n="dist.cRio">리우데자네이루</span><b>GG87</b></button>
+        <button class="chip" type="button" data-grid="GF05"><span data-i18n="dist.cBuenos">부에노스아이레스</span><b>GF05</b></button>
+        <button class="chip" type="button" data-grid="FN30"><span data-i18n="dist.cNewYork">뉴욕</span><b>FN30</b></button>
+        <button class="chip" type="button" data-grid="DM04"><span data-i18n="dist.cLA">로스앤젤레스</span><b>DM04</b></button>
+        <button class="chip" type="button" data-grid="IO91"><span data-i18n="dist.cLondon">런던</span><b>IO91</b></button>
+        <button class="chip" type="button" data-grid="PM95"><span data-i18n="dist.cTokyo">도쿄</span><b>PM95</b></button>
+        <button class="chip" type="button" data-grid="QF56"><span data-i18n="dist.cSydney">시드니</span><b>QF56</b></button>
       </div>
       <div class="hint mono" id="toMeta">—</div>
     </div>
 
     <div class="card">
-      <div class="cardHead"><h2>출력</h2><span class="tag">WATT</span></div>
+      <div class="cardHead"><h2 data-i18n="dist.power">출력</h2><span class="tag">WATT</span></div>
       <div class="row">
-        <input class="in narrow" id="pwIn" value="2" inputmode="decimal" aria-label="출력(W)" maxlength="6">
+        <input class="in narrow" id="pwIn" value="2" inputmode="decimal" aria-label="출력(W)" data-i18n-aria="dist.powerAria" maxlength="6">
         <div class="chips" id="pwPresets" style="margin-top:0">
           <button class="chip" type="button" data-w="0.5">0.5W</button>
           <button class="chip" type="button" data-w="2">2W</button>
@@ -400,16 +438,16 @@ footer span{color:rgba(127,216,255,.75)}
     </div>
 
     <div class="card">
-      <div class="cardHead"><h2>계산 결과</h2><span class="tag" id="distTag">—</span></div>
+      <div class="cardHead"><h2 data-i18n="dist.result">계산 결과</h2><span class="tag" id="distTag">—</span></div>
       <div class="res-big">
         <span class="n" id="distKm">—</span><span class="u">km</span>
         <span class="alt" id="distMi">—</span>
       </div>
       <div class="grid2">
-        <div class="stat"><div class="lbl">방위각 · Short Path</div><div class="v" id="brgS">—</div></div>
-        <div class="stat"><div class="lbl">방위각 · Long Path</div><div class="v" id="brgL">—</div></div>
-        <div class="stat"><div class="lbl">1W당 도달 거리</div><div class="v" id="kmw">—<i>km/W</i></div></div>
-        <div class="stat"><div class="lbl">편도 도달 시간</div><div class="v" id="ms">—<i>ms</i></div></div>
+        <div class="stat"><div class="lbl" data-i18n="dist.brgS">방위각 · Short Path</div><div class="v" id="brgS">—</div></div>
+        <div class="stat"><div class="lbl" data-i18n="dist.brgL">방위각 · Long Path</div><div class="v" id="brgL">—</div></div>
+        <div class="stat"><div class="lbl" data-i18n="dist.kmw">1W당 도달 거리</div><div class="v" id="kmw">—<i>km/W</i></div></div>
+        <div class="stat"><div class="lbl" data-i18n="dist.ms">편도 도달 시간</div><div class="v" id="ms">—<i>ms</i></div></div>
       </div>
       <div class="hint" id="distHint">—</div>
     </div>
@@ -420,8 +458,8 @@ footer span{color:rgba(127,216,255,.75)}
   <section class="panel" id="p-ant" role="tabpanel" aria-labelledby="tab-ant" hidden>
 
     <div class="card">
-      <div class="cardHead"><h2>주파수</h2><span class="tag">MHz</span></div>
-      <input class="in" id="freqIn" value="7.074" inputmode="decimal" aria-label="주파수(MHz)" maxlength="9">
+      <div class="cardHead"><h2 data-i18n="ant.freq">주파수</h2><span class="tag">MHz</span></div>
+      <input class="in" id="freqIn" value="7.074" inputmode="decimal" aria-label="주파수(MHz)" data-i18n-aria="ant.freqAria" maxlength="9">
       <div class="chips" id="bandPresets">
         <button class="chip" type="button" data-f="7.074">40m<b>7.074</b></button>
         <button class="chip" type="button" data-f="14.074">20m<b>14.074</b></button>
@@ -431,97 +469,97 @@ footer span{color:rgba(127,216,255,.75)}
         <button class="chip" type="button" data-f="145.000">2m<b>145.000</b></button>
         <button class="chip" type="button" data-f="433.000">70cm<b>433.000</b></button>
       </div>
-      <div class="err" id="freqErr">주파수를 MHz 단위로 입력하세요 — 예: 7.074</div>
+      <div class="err" id="freqErr" data-i18n="ant.errFreq">주파수를 MHz 단위로 입력하세요 — 예: 7.074</div>
     </div>
 
     <div class="card">
-      <div class="cardHead"><h2>단축률 (VF)</h2><span class="tag mono" id="vfTag">k = 0.95</span></div>
+      <div class="cardHead"><h2 data-i18n="ant.vf">단축률 (VF)</h2><span class="tag mono" id="vfTag">k = 0.95</span></div>
       <div class="chips" id="vfPresets">
-        <button class="chip" type="button" data-vf="0.95" aria-pressed="true">공중 와이어<b>0.95</b></button>
-        <button class="chip" type="button" data-vf="0.93" aria-pressed="false">피복선<b>0.93</b></button>
-        <button class="chip" type="button" data-vf="1.00" aria-pressed="false">자유공간<b>1.00</b></button>
-        <button class="chip" type="button" data-vf="0.66" aria-pressed="false">동축<b>0.66</b></button>
+        <button class="chip" type="button" data-vf="0.95" aria-pressed="true"><span data-i18n="ant.vfBare">공중 와이어</span><b>0.95</b></button>
+        <button class="chip" type="button" data-vf="0.93" aria-pressed="false"><span data-i18n="ant.vfInsulated">피복선</span><b>0.93</b></button>
+        <button class="chip" type="button" data-vf="1.00" aria-pressed="false"><span data-i18n="ant.vfFree">자유공간</span><b>1.00</b></button>
+        <button class="chip" type="button" data-vf="0.66" aria-pressed="false"><span data-i18n="ant.vfCoax">동축</span><b>0.66</b></button>
       </div>
-      <div class="hint">실제 전선은 진공보다 조금 짧게 잘라야 공진합니다. k = 단축률.</div>
+      <div class="hint" data-i18n="ant.vfHint">실제 전선은 진공보다 조금 짧게 잘라야 공진합니다. k = 단축률.</div>
     </div>
 
     <div class="card">
-      <div class="cardHead"><h2>안테나 길이</h2><span class="tag" id="antTag">—</span></div>
-      <div class="ant-row"><div class="k">파장 λ<small>한 파장의 길이</small></div><div class="v" id="rLam">—</div></div>
-      <div class="ant-row"><div class="k">1/4 파장 수직 · 와이어<small>가장 흔한 쿼터 웨이브</small></div><div class="v primary" id="rQ">—</div></div>
-      <div class="ant-row"><div class="k">카운터포이즈<small>수직 안테나의 접지 대용 1~2가닥</small></div><div class="v" id="rCp">—</div></div>
-      <div class="ant-row"><div class="k">1/2 파장 다이폴<small>양쪽으로 늘어뜨리는 형태</small></div><div class="v" id="rDip">—</div></div>
-      <div class="ant-row"><div class="k">5/8 파장<small>조금 더 뻗은 수직</small></div><div class="v" id="r58">—</div></div>
-      <div class="hint">m와 cm를 함께 표시합니다. 실제 설치 때는 주변 환경(금속·땅·건물)에 따라 조금씩 달라지니 SWR을 보며 미세 조정하세요.</div>
+      <div class="cardHead"><h2 data-i18n="ant.len">안테나 길이</h2><span class="tag" id="antTag">—</span></div>
+      <div class="ant-row"><div class="k" data-i18n="ant.rLam">파장 λ<small>한 파장의 길이</small></div><div class="v" id="rLam">—</div></div>
+      <div class="ant-row"><div class="k" data-i18n="ant.rQ">1/4 파장 수직 · 와이어<small>가장 흔한 쿼터 웨이브</small></div><div class="v primary" id="rQ">—</div></div>
+      <div class="ant-row"><div class="k" data-i18n="ant.rCp">카운터포이즈<small>수직 안테나의 접지 대용 1~2가닥</small></div><div class="v" id="rCp">—</div></div>
+      <div class="ant-row"><div class="k" data-i18n="ant.rDip">1/2 파장 다이폴<small>양쪽으로 늘어뜨리는 형태</small></div><div class="v" id="rDip">—</div></div>
+      <div class="ant-row"><div class="k" data-i18n="ant.r58">5/8 파장<small>조금 더 뻗은 수직</small></div><div class="v" id="r58">—</div></div>
+      <div class="hint" data-i18n="ant.lenHint">m와 cm를 함께 표시합니다. 실제 설치 때는 주변 환경(금속·땅·건물)에 따라 조금씩 달라지니 SWR을 보며 미세 조정하세요.</div>
     </div>
 
     <div class="card">
-      <div class="cardHead"><h2>핵심 방정식</h2><span class="tag">위 값으로 계산</span></div>
+      <div class="cardHead"><h2 data-i18n="ant.eq">핵심 방정식</h2><span class="tag" data-i18n="ant.eqTag">위 값으로 계산</span></div>
       <div class="eq">
         <div class="eq-item">
           <div class="eq-f">λ = c / f ≈ 300 / f</div>
           <div class="eq-v" id="eqLam">—</div>
-          <div class="eq-n">파장은 빛의 속도 c를 주파수로 나눈 것. 300은 계산을 쉽게 하려고 Mm/s로 반올림한 값입니다.</div>
+          <div class="eq-n" data-i18n="ant.eqLamNote">파장은 빛의 속도 c를 주파수로 나눈 것. 300은 계산을 쉽게 하려고 Mm/s로 반올림한 값입니다.</div>
         </div>
         <div class="eq-item">
           <div class="eq-f">¼λ = 75 · k / f</div>
           <div class="eq-v" id="eqQ">—</div>
-          <div class="eq-n">75는 300의 1/4. k는 단축률(공중 와이어 0.95).</div>
+          <div class="eq-n" data-i18n="ant.eqQNote">75는 300의 1/4. k는 단축률(공중 와이어 0.95).</div>
         </div>
         <div class="eq-item">
           <div class="eq-f">½λ = 150 · k / f</div>
           <div class="eq-v" id="eqH">—</div>
-          <div class="eq-n">다이폴 전체 길이. 양쪽 각 1선은 그 절반입니다.</div>
+          <div class="eq-n" data-i18n="ant.eqHNote">다이폴 전체 길이. 양쪽 각 1선은 그 절반입니다.</div>
         </div>
         <div class="eq-item">
           <div class="eq-f">⅝λ = 187.5 · k / f</div>
           <div class="eq-v" id="eq58">—</div>
-          <div class="eq-n">5/8 파장 수직의 뻗은 길이.</div>
+          <div class="eq-n" data-i18n="ant.eq58Note">5/8 파장 수직의 뻗은 길이.</div>
         </div>
         <div class="eq-item">
           <div class="eq-f">Γ = (SWR − 1) / (SWR + 1)</div>
           <div class="eq-v">SWR 2.0 → Γ = 1/3 ≈ 0.333</div>
-          <div class="eq-n">반사계수 Γ는 돌아오는 전기의 비율. 0에 가까울수록 잘 넘어갔다는 뜻입니다.</div>
+          <div class="eq-n" data-i18n="ant.eqSWRNote">반사계수 Γ는 돌아오는 전기의 비율. 0에 가까울수록 잘 넘어갔다는 뜻입니다.</div>
         </div>
         <div class="eq-item">
           <div class="eq-f">RL = −20 · log₁₀ |Γ|</div>
-          <div class="eq-v">SWR 2.0 → RL ≈ 9.5 dB · 손실 ≈ 0.5 dB</div>
-          <div class="eq-n">반사 손실(Return Loss). 값이 클수록 반사가 적습니다. 손실 = −10·log₁₀(1 − Γ²).</div>
+          <div class="eq-v" data-i18n="ant.eqRLVal">SWR 2.0 → RL ≈ 9.5 dB · 손실 ≈ 0.5 dB</div>
+          <div class="eq-n" data-i18n="ant.eqRLNote">반사 손실(Return Loss). 값이 클수록 반사가 적습니다. 손실 = −10·log₁₀(1 − Γ²).</div>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="cardHead"><h2>맥스웰 방정식 4개</h2><span class="tag">전파의 출발점</span></div>
-      <p class="mx-lead">안테나에 전기를 넣어 흔들면, 이 네 줄이 순서대로 이어져 전파가 허공을 달려 나갑니다. 수식은 어려워 보여도 뜻은 네 문장이면 충분합니다.</p>
+      <div class="cardHead"><h2 data-i18n="ant.mx">맥스웰 방정식 4개</h2><span class="tag" data-i18n="ant.mxTag">전파의 출발점</span></div>
+      <p class="mx-lead" data-i18n="ant.mxLead">안테나에 전기를 넣어 흔들면, 이 네 줄이 순서대로 이어져 전파가 허공을 달려 나갑니다. 수식은 어려워 보여도 뜻은 네 문장이면 충분합니다.</p>
 
       <div class="mx-item">
-        <div class="mx-head"><span class="mx-num">1</span><span class="mx-name">가우스 전기 법칙</span></div>
+        <div class="mx-head"><span class="mx-num">1</span><span class="mx-name" data-i18n="ant.mx1">가우스 전기 법칙</span></div>
         <div class="mx-f">∇ · E = ρ / ε₀</div>
-        <p class="mx-t">전기는 혼자서도 출발해요. 수도꼭지(+)에서 물이 뿜어져 나와 배수구(−)로 들어가듯, <b>전하(ρ)가 있는 곳에서 전기장(E)이 뻗어 나갑니다</b>. ∇ · E는 “이 자리에서 전기가 새어 나오는 양”이라는 뜻이에요.</p>
+        <p class="mx-t" data-i18n="ant.mx1t">전기는 혼자서도 출발해요. 수도꼭지(+)에서 물이 뿜어져 나와 배수구(−)로 들어가듯, <b>전하(ρ)가 있는 곳에서 전기장(E)이 뻗어 나갑니다</b>. ∇ · E는 “이 자리에서 전기가 새어 나오는 양”이라는 뜻이에요.</p>
       </div>
 
       <div class="mx-item">
-        <div class="mx-head"><span class="mx-num">2</span><span class="mx-name">가우스 자기 법칙</span></div>
+        <div class="mx-head"><span class="mx-num">2</span><span class="mx-name" data-i18n="ant.mx2">가우스 자기 법칙</span></div>
         <div class="mx-f">∇ · B = 0</div>
-        <p class="mx-t">자석은 늘 짝꿍이에요. 막대자석을 반으로 쪼개도 N극과 S극이 항상 함께 생기므로, <b>자기장(B)은 혼자서 출발하는 곳이 없이 빙글빙글 돌고 돕니다</b>. 나오는 양과 들어가는 양이 늘 같아서 전체는 0이에요.</p>
+        <p class="mx-t" data-i18n="ant.mx2t">자석은 늘 짝꿍이에요. 막대자석을 반으로 쪼개도 N극과 S극이 항상 함께 생기므로, <b>자기장(B)은 혼자서 출발하는 곳이 없이 빙글빙글 돌고 돕니다</b>. 나오는 양과 들어가는 양이 늘 같아서 전체는 0이에요.</p>
       </div>
 
       <div class="mx-item">
-        <div class="mx-head"><span class="mx-num">3</span><span class="mx-name">패러데이 전자기 유도 법칙</span></div>
+        <div class="mx-head"><span class="mx-num">3</span><span class="mx-name" data-i18n="ant.mx3">패러데이 전자기 유도 법칙</span></div>
         <div class="mx-f">∇ × E = − ∂B / ∂t</div>
-        <p class="mx-t"><b>자석이 시간에 따라 흔들리면(∂B/∂t), 그 주변을 감싸 도는 전기(∇ × E)가 태어납니다</b>. 자석을 코일 가까이에서 왔다 갔다 하면 전구가 켜지는 그 원리예요. 마이너스 부호는 “흔드는 것을 방해하는 쪽으로 생긴다”는 뜻입니다.</p>
+        <p class="mx-t" data-i18n="ant.mx3t"><b>자석이 시간에 따라 흔들리면(∂B/∂t), 그 주변을 감싸 도는 전기(∇ × E)가 태어납니다</b>. 자석을 코일 가까이에서 왔다 갔다 하면 전구가 켜지는 그 원리예요. 마이너스 부호는 “흔드는 것을 방해하는 쪽으로 생긴다”는 뜻입니다.</p>
       </div>
 
       <div class="mx-item">
-        <div class="mx-head"><span class="mx-num">4</span><span class="mx-name">앙페르-맥스웰 법칙</span></div>
+        <div class="mx-head"><span class="mx-num">4</span><span class="mx-name" data-i18n="ant.mx4">앙페르-맥스웰 법칙</span></div>
         <div class="mx-f">∇ × B = μ₀J + μ₀ε₀ (∂E / ∂t)</div>
-        <p class="mx-t"><b>전류가 흐르거나(J), 전기가 시간에 따라 흔들리면(∂E/∂t), 그 주변을 감싸 도는 자석(∇ × B)이 태어납니다</b>. 앞의 μ₀J는 전선에 흐르는 전류가 만드는 자기장, 뒤의 μ₀ε₀(∂E/∂t)는 맥스웰이 더한 “변하는 전기”가 만드는 자기장이에요.</p>
+        <p class="mx-t" data-i18n="ant.mx4t"><b>전류가 흐르거나(J), 전기가 시간에 따라 흔들리면(∂E/∂t), 그 주변을 감싸 도는 자석(∇ × B)이 태어납니다</b>. 앞의 μ₀J는 전선에 흐르는 전류가 만드는 자기장, 뒤의 μ₀ε₀(∂E/∂t)는 맥스웰이 더한 “변하는 전기”가 만드는 자기장이에요.</p>
       </div>
 
       <div class="concl">
         <div class="k">ONE LINE</div>
-        <p>안테나에서 전기를 흔들면 <b>전기 → 자석 → 전기 → 자석</b>이 서로 등을 떠밀며 허공을 달려 나갑니다. 그게 바로 지구 반대편까지 날아가는 <b>전파(빛)</b>입니다!</p>
+        <p data-i18n="ant.concl">안테나에서 전기를 흔들면 <b>전기 → 자석 → 전기 → 자석</b>이 서로 등을 떠밀며 허공을 달려 나갑니다. 그게 바로 지구 반대편까지 날아가는 <b>전파(빛)</b>입니다!</p>
       </div>
     </div>
 
@@ -530,6 +568,8 @@ footer span{color:rgba(127,216,255,.75)}
   <footer>Program by <span>Seokhoon Jang</span></footer>
 </main>
 
+<script src="i18n-data.js"></script>
+<script src="i18n.js"></script>
 <script>
 /* ══════════════════════════════════════════════════════════
    DS2YTO 무전 도구함 — 단독 실행(외부 요청 없음)
@@ -544,6 +584,7 @@ var KST = 9;                 // hours
 var C_KM_S = 299792.458;     // km/s
 var EARTH_R = 6371.0088;     // km
 var $ = function(id){ return document.getElementById(id); };
+var T = function(k, v){ return window.Lang5 ? window.Lang5.t(k, v) : k; };
 
 /* ── 시간 유틸 ───────────────────────────────────────── */
 function kstParts(ms){
@@ -560,10 +601,17 @@ function hhmmUTC(ms){
   var d = new Date(ms);
   return pad2(d.getUTCHours())+':'+pad2(d.getUTCMinutes())+':'+pad2(d.getUTCSeconds());
 }
-var DOW = ['일','월','화','수','목','금','토'];
+var DOW = {
+  ko: ['일','월','화','수','목','금','토'],
+  en: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+  ja: ['日','月','火','水','木','金','土'],
+  zh: ['日','一','二','三','四','五','六'],
+  ru: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб']
+};
+function dow(){ return DOW[window.Lang5 ? Lang5.get() : 'ko'] || DOW.ko; }
 function dateLabel(ms){
   var p = kstParts(ms);
-  return p.y+'-'+pad2(p.m)+'-'+pad2(p.d)+' ('+DOW[p.dow]+')';
+  return p.y+'-'+pad2(p.m)+'-'+pad2(p.d)+' ('+dow()[p.dow]+')';
 }
 function decHours(ms){ var d=new Date(ms); return d.getUTCHours()+d.getUTCMinutes()/60+d.getUTCSeconds()/3600+d.getUTCMilliseconds()/36e5; }
 function hm(hours){ // decimal hours -> "HH:MM"
@@ -579,7 +627,7 @@ function dur(ms){
 }
 function durLong(ms){
   var s = Math.floor(Math.abs(ms)/1000), h = Math.floor(s/3600), m = Math.floor(s%3600/60);
-  return (h>0? h+'시간 ':'')+m+'분';
+  return h>0 ? T('dc.durHM', {h:h, m:m}) : T('dc.durM', {m:m});
 }
 
 /* ── 태양 위치 (NOAA 간이 계산) ──────────────────────── */
@@ -685,17 +733,18 @@ function updateClock(){
   var dm = new Date(mid + 864e5 + KST*3600e3); // 다음 날 KST 날짜
   var tom = sunTimesFor(dm.getUTCFullYear(), dm.getUTCMonth()+1, dm.getUTCDate(), CHUN.lat, CHUN.lon);
   var alt = sunAltAt(CHUN.lat, CHUN.lon, now);
-  var altState = alt > 0 ? '낮' : alt > -6 ? '그레이 라인 · 시민박명' : alt > -12 ? '그레이 라인 · 항해박명' : alt > -18 ? '천문박명' : '밤';
+  var altState = alt > 0 ? T('dc.altDay') : alt > -6 ? T('dc.altGreyCivil') : alt > -12 ? T('dc.altGreyNaut') : alt > -18 ? T('dc.altAstro') : T('dc.altNight');
   var altEl = $('sunAlt');
   altEl.textContent = (alt>=0?'+':'−') + Math.abs(alt).toFixed(1) + '°  ·  ' + altState;
   altEl.classList.toggle('on', alt <= 0 && alt > -12);
 
   $('sunRise').textContent = hm(today.rise);
   $('sunSet').textContent  = hm(today.set);
-  $('sunMeta').textContent =
-    '낮 길이 ' + (today.dayLen!=null ? durLong(today.dayLen*3600e3) : '—') +
-    ' · 태양 적위 ' + (today.decl>=0?'+':'−') + Math.abs(today.decl).toFixed(1) + '°' +
-    ' · 균시차 ' + (today.eot>=0?'+':'−') + Math.abs(today.eot).toFixed(1) + '분';
+  $('sunMeta').textContent = T('dc.sunMeta', {
+    len: (today.dayLen!=null ? durLong(today.dayLen*3600e3) : '—'),
+    dec: (today.decl>=0?'+':'−') + Math.abs(today.decl).toFixed(1),
+    eot: (today.eot>=0?'+':'−') + Math.abs(today.eot).toFixed(1)
+  });
 
   // 다음 일출/일몰
   var riseMs = today.rise!=null ? mid + today.rise*3600e3 : null;
@@ -705,20 +754,20 @@ function updateClock(){
   var nextRise = (riseMs && riseMs > now) ? {ms:riseMs, at:today.rise} : (tRise ? {ms:tRise, at:tom.rise} : null);
   var nextSet  = (setMs  && setMs  > now) ? {ms:setMs,  at:today.set } : (tSet  ? {ms:tSet,  at:tom.set } : null);
   var cands = [];
-  if (nextSet)  cands.push({ms:nextSet.ms,  name:'일몰', at:nextSet.at});
-  if (nextRise) cands.push({ms:nextRise.ms, name:'일출', at:nextRise.at});
+  if (nextSet)  cands.push({ms:nextSet.ms,  name:'dc.sunset', at:nextSet.at});
+  if (nextRise) cands.push({ms:nextRise.ms, name:'dc.sunrise', at:nextRise.at});
   cands.sort(function(a,b){ return a.ms-b.ms; });
   if (cands.length){
     var c = cands[0];
-    $('nextName').textContent = c.name + ' ' + hm(c.at) + ' KST';
+    $('nextName').textContent = T('dc.nextAt', { name: T(c.name), time: hm(c.at) });
     $('nextLeft').textContent = dur(c.ms - now);
   } else {
     $('nextName').textContent = '—';
     $('nextLeft').textContent = '--:--:--';
   }
   var parts = [];
-  if (nextRise) parts.push('일출까지 ' + dur(nextRise.ms-now));
-  if (nextSet)  parts.push('일몰까지 ' + dur(nextSet.ms-now));
+  if (nextRise) parts.push(T('dc.untilSunrise', { dur: dur(nextRise.ms-now) }));
+  if (nextSet)  parts.push(T('dc.untilSunset', { dur: dur(nextSet.ms-now) }));
   $('sunBoth').textContent = parts.join(' · ');
 
   // 지도 문구
@@ -726,11 +775,13 @@ function updateClock(){
   $('mapStamp').textContent = hhmmss(sel).slice(0,5) + ' KST / ' + hhmmUTC(sel).slice(0,5) + ' UTC';
   $('offNow').textContent = hhmmss(sel).slice(0,5) + ' KST';
   if (offMin === 0){
-    $('offTag').textContent = '지금';
+    $('offTag').textContent = T('dc.now');
   } else {
     var h = offMin/60, sign = h>0?'+':'−';
     var abs = Math.abs(offMin);
-    $('offTag').textContent = sign + (abs>=60 ? Math.floor(abs/60)+'시간 '+(abs%60?abs%60+'분':'') : abs+'분');
+    $('offTag').textContent = (abs>=60)
+      ? T('dc.offHM', { sign:sign, h:Math.floor(abs/60), m:abs%60 })
+      : T('dc.offM', { sign:sign, min:abs });
   }
 
   // 1분마다 지도 갱신
@@ -970,7 +1021,8 @@ function greatCircle(a, b){
   return {dist:dist, brg:brg};
 }
 var DIR16 = ['북','북북동','북동','동북동','동','동남동','남동','남남동','남','남남서','남서','서남서','서','서북서','북서','북북서'];
-function dirName(deg){ return DIR16[Math.round(((deg%360)+360)%360/22.5)%16]; }
+function dirs(){ var a = T('dc.dirs').split('|'); return a.length === 16 ? a : DIR16; }
+function dirName(deg){ return dirs()[Math.round(((deg%360)+360)%360/22.5)%16]; }
 function nf(n, d){
   var s = Math.abs(n).toFixed(d===undefined?0:d);
   var parts = s.split('.');
@@ -988,7 +1040,7 @@ function clearDist(){
   $('kmw').innerHTML = '—<i>km/W</i>';
   $('ms').innerHTML = '—<i>ms</i>';
   $('distTag').textContent = '—';
-  $('distHint').textContent = '그리드나 좌표를 입력하면 거리를 계산합니다.';
+  $('distHint').textContent = T('dist.hintEmpty');
 }
 
 function calcDist(){
@@ -996,10 +1048,12 @@ function calcDist(){
   var to = parsePlace(toIn.value);
   $('toErr').classList.toggle('on', !to);
   $('fromMeta').textContent = from
-    ? fmtCoord(from.lat,from.lon) + (from.grid ? ' · ' + from.grid + ' 칸 중심' : ' · 직접 입력 좌표')
-    : '그리드를 확인하세요 — 예: PM37';
+    ? (from.grid ? T('dist.fromMeta', { coord: fmtCoord(from.lat,from.lon), grid: from.grid })
+                 : T('dist.fromMetaCoord', { coord: fmtCoord(from.lat,from.lon) }))
+    : T('dist.fromBad');
   $('toMeta').textContent = to
-    ? fmtCoord(to.lat,to.lon) + (to.grid ? ' · ' + (to.sub?'6자리':'4자리') + ' 칸 중심' : ' · 직접 입력 좌표')
+    ? (to.grid ? T('dist.toMeta', { coord: fmtCoord(to.lat,to.lon), size: T(to.sub?'dist.size6':'dist.size4') })
+               : T('dist.toMetaCoord', { coord: fmtCoord(to.lat,to.lon) }))
     : '—';
   if (!from || !to){ clearDist(); return; }
 
@@ -1013,10 +1067,11 @@ function calcDist(){
   $('brgL').textContent = ((gc.brg+180)%360).toFixed(1) + '°';
   $('kmw').innerHTML = nf(gc.dist/pw, 0) + '<i>km/W</i>';
   $('ms').innerHTML = (gc.dist/C_KM_S*1000).toFixed(1) + '<i>ms</i>';
-  $('distTag').textContent = (from.grid||'출발') + ' → ' + (to.grid||'도착');
-  $('distHint').textContent =
-    dirName(gc.brg) + ' ' + gc.brg.toFixed(1) + '° 방향으로 ' + nf(gc.dist,0) + ' km · ' +
-    nf(pw, pw%1?1:0) + 'W 출력이면 1W당 ' + nf(gc.dist/pw,0) + ' km · 편도 ' + (gc.dist/C_KM_S*1000).toFixed(1) + ' ms (빛의 속도 기준, 실제 전리층 상태에 따라 달라집니다)';
+  $('distTag').textContent = (from.grid||T('dist.tagFrom')) + ' → ' + (to.grid||T('dist.tagTo'));
+  $('distHint').textContent = T('dist.hint', {
+    dir: dirName(gc.brg), deg: gc.brg.toFixed(1), km: nf(gc.dist,0),
+    w: nf(pw, pw%1?1:0), kmw: nf(gc.dist/pw,0), ms: (gc.dist/C_KM_S*1000).toFixed(1)
+  });
 }
 [fromIn, toIn, pwIn].forEach(function(el){
   el.addEventListener('input', calcDist);
@@ -1067,13 +1122,13 @@ function calcAntenna(){
   $('antTag').textContent = f.toFixed(3) + ' MHz · k ' + vf.toFixed(2);
   $('rLam').innerHTML = len(lam) + '<small>' + lenCm(lam) + '</small>';
   $('rQ').innerHTML   = len(q)   + '<small>' + lenCm(q) + '</small>';
-  $('rCp').innerHTML  = len(q)   + '<small>' + lenCm(q) + ' · 1~2가닥</small>';
-  $('rDip').innerHTML = len(half)+ '<small>각 1선 ' + len(half/2) + '</small>';
+  $('rCp').innerHTML  = len(q)   + '<small>' + lenCm(q) + ' · ' + T('ant.cpStrands') + '</small>';
+  $('rDip').innerHTML = len(half)+ '<small>' + T('ant.eachLeg', { len: len(half/2) }) + '</small>';
   $('r58').innerHTML  = len(f58) + '<small>' + lenCm(f58) + '</small>';
 
   $('eqLam').textContent = '300 / ' + f.toFixed(3) + ' = ' + lam.toFixed(2) + ' m  (' + lenCm(lam) + ')';
   $('eqQ').textContent   = '75 × ' + vf.toFixed(2) + ' / ' + f.toFixed(3) + ' = ' + q.toFixed(2) + ' m  (' + lenCm(q) + ')';
-  $('eqH').textContent   = '150 × ' + vf.toFixed(2) + ' / ' + f.toFixed(3) + ' = ' + half.toFixed(2) + ' m  (각 1선 ' + (half/2).toFixed(2) + ' m)';
+  $('eqH').textContent   = '150 × ' + vf.toFixed(2) + ' / ' + f.toFixed(3) + ' = ' + half.toFixed(2) + ' m  (' + T('ant.eachLeg', { len: (half/2).toFixed(2) + ' m' }) + ')';
   $('eq58').textContent  = '187.5 × ' + vf.toFixed(2) + ' / ' + f.toFixed(3) + ' = ' + f58.toFixed(2) + ' m  (' + lenCm(f58) + ')';
 }
 freqIn.addEventListener('input', calcAntenna);
@@ -1095,6 +1150,11 @@ Array.prototype.forEach.call(document.querySelectorAll('#vfPresets .chip'), func
     });
     calcAntenna();
   });
+});
+
+/* ── 언어가 바뀌면 화면을 새 언어로 다시 그린다 ─────────── */
+document.addEventListener('langchange', function(){
+  updateClock(); calcDist(); calcAntenna(); drawMap();
 });
 
 /* ── 시작 ────────────────────────────────────────────── */

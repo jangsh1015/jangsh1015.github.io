@@ -1,10 +1,12 @@
 /* DS2YTO 모르스 부호(CW) 연습기 — 오프라인 캐시 */
-const CACHE = 'cw-trainer-v1';
+const CACHE = 'cw-trainer-v2';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
   './app.js',
+  './i18n.js',
+  './i18n-data.js',
   './manifest.webmanifest',
   './icon.svg',
   './icon-192.png',

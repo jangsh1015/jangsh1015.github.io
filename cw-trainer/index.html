@@ -21,68 +21,81 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=cw1">
+<link rel="stylesheet" href="style.css?v=cw2">
 </head>
 <body>
 <div class="sky" aria-hidden="true"><div class="stars" id="stars"></div><div class="glow glow-a"></div><div class="glow glow-b"></div></div>
 
 <header class="hdr">
-  <a class="back" href="../" aria-label="홈페이지로 돌아가기">
+  <a class="back" href="../" aria-label="홈페이지로 돌아가기" data-i18n-aria="hdr.backAria">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <span>홈</span>
+    <span data-i18n="hdr.home">홈</span>
   </a>
   <div class="brand">
     <span class="brand-k">DS2YTO</span>
-    <span class="brand-n">모르스 부호(CW) 연습기</span>
+    <span class="brand-n" data-i18n="hdr.title">모르스 부호(CW) 연습기</span>
   </div>
-  <button type="button" class="live off" id="audioBadge" aria-label="소리 엔진 상태 — 누르면 켜집니다"><i></i><em id="audioText">AUDIO OFF</em></button>
+  <div class="lang" id="lang">
+    <button type="button" class="lang-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="언어 선택" data-i18n-aria="lang.aria">
+      <span class="lang-globe" aria-hidden="true">🌐</span>
+      <span class="lang-code" id="lang-code">KO</span>
+    </button>
+    <ul class="lang-menu" id="lang-menu" role="listbox" aria-label="언어 선택" data-i18n-aria="lang.aria" hidden>
+      <li><button type="button" role="option" data-lang="ko" lang="ko" aria-selected="true">한국어</button></li>
+      <li><button type="button" role="option" data-lang="en" lang="en" aria-selected="false">English</button></li>
+      <li><button type="button" role="option" data-lang="ja" lang="ja" aria-selected="false">日本語</button></li>
+      <li><button type="button" role="option" data-lang="zh" lang="zh-Hans" aria-selected="false">中文</button></li>
+      <li><button type="button" role="option" data-lang="ru" lang="ru" aria-selected="false">Русский</button></li>
+    </ul>
+  </div>
+  <button type="button" class="live off" id="audioBadge" aria-label="소리 엔진 상태 — 누르면 켜집니다" data-i18n-aria="hdr.audioAria"><i></i><em id="audioText">AUDIO OFF</em></button>
 </header>
 
 <!-- ── 공용 컨트롤 ─────────────────────────────── -->
 <div class="ctrl" id="ctrl">
   <div class="ctl">
     <div class="ctl-top">
-      <label class="ctl-lab" for="wpm">속도 <span>글자</span></label>
+      <label class="ctl-lab" for="wpm" data-i18n="ctl.speedLab">속도 <span>글자</span></label>
       <div class="ctl-val"><b id="wpmVal">18</b><em>WPM</em></div>
     </div>
-    <input class="rng" id="wpm" type="range" min="10" max="30" step="1" value="18" aria-label="글자 속도 WPM">
+    <input class="rng" id="wpm" type="range" min="10" max="30" step="1" value="18" aria-label="글자 속도 WPM" data-i18n-aria="ctl.speedAria">
   </div>
 
   <div class="ctl">
     <div class="ctl-top">
-      <label class="ctl-lab" for="tone">음높이</label>
+      <label class="ctl-lab" for="tone" data-i18n="ctl.toneLab">음높이</label>
       <div class="ctl-val"><b id="toneVal">700</b><em>Hz</em></div>
     </div>
-    <input class="rng" id="tone" type="range" min="500" max="900" step="10" value="700" aria-label="사이드톤 음높이 Hz">
+    <input class="rng" id="tone" type="range" min="500" max="900" step="10" value="700" aria-label="사이드톤 음높이 Hz" data-i18n-aria="ctl.toneAria">
   </div>
 
   <div class="chips">
     <button type="button" class="chip" id="fwChip" aria-pressed="false">
-      <span class="chip-t">Farnsworth 간격</span>
+      <span class="chip-t" data-i18n="ctl.fw">Farnsworth 간격</span>
       <em id="fwVal">OFF</em>
     </button>
     <button type="button" class="chip" id="qrnChip" aria-pressed="false">
-      <span class="chip-t">📻 QRN 밴드 잡음</span>
+      <span class="chip-t" data-i18n="ctl.qrn">📻 QRN 밴드 잡음</span>
       <em id="qrnVal">OFF</em>
     </button>
   </div>
 
   <div class="fw-sub" id="fwSub" hidden>
     <div class="ctl-top">
-      <label class="ctl-lab" for="eff">실효 속도 <span>간격</span></label>
+      <label class="ctl-lab" for="eff" data-i18n="ctl.effLab">실효 속도 <span>간격</span></label>
       <div class="ctl-val"><b id="effVal">12</b><em>WPM</em></div>
     </div>
-    <input class="rng" id="eff" type="range" min="5" max="18" step="1" value="12" aria-label="Farnsworth 실효 속도 WPM">
+    <input class="rng" id="eff" type="range" min="5" max="18" step="1" value="12" aria-label="Farnsworth 실효 속도 WPM" data-i18n-aria="ctl.effAria">
     <p class="hint" id="fwHint">글자는 <b>18</b> WPM으로 또렷하게, 사이 간격만 늘려 <b>12</b> WPM 체감으로 들려줍니다.</p>
   </div>
 </div>
 
 <main>
   <!-- ── ① 송신 · 재생 ──────────────────────────── -->
-  <section class="pane on" id="pane-send" role="tabpanel" aria-label="송신·재생">
+  <section class="pane on" id="pane-send" role="tabpanel" aria-label="송신·재생" data-i18n-aria="pane.sendAria">
     <div class="card">
       <div class="card-h">
-        <h2>송신 · 재생</h2>
+        <h2 data-i18n="send.title">송신 · 재생</h2>
         <span class="tag" id="txTag"><i></i>STANDBY</span>
       </div>
 
@@ -95,7 +108,7 @@
         <div class="scope-lab" id="scopeLab">SIDETONE</div>
       </div>
 
-      <label class="sr-only" for="txText">보낼 문장</label>
+      <label class="sr-only" for="txText" data-i18n="send.textAria">보낼 문장</label>
       <textarea id="txText" rows="2" maxlength="160" spellcheck="false" autocapitalize="characters" autocomplete="off">CQ CQ DE DS2YTO K</textarea>
 
       <div class="presets" id="presets">
@@ -107,19 +120,19 @@
 
       <div class="play-row">
         <button type="button" class="btn primary" id="playBtn"><span id="playIco">▶</span><b id="playLab">재생</b></button>
-        <button type="button" class="btn ghost" id="loopBtn" aria-pressed="false">🔁 반복</button>
-        <button type="button" class="btn ghost icon" id="copyBtn" aria-label="문장 복사">⧉</button>
+        <button type="button" class="btn ghost" id="loopBtn" aria-pressed="false" data-i18n="send.loop">🔁 반복</button>
+        <button type="button" class="btn ghost icon" id="copyBtn" aria-label="문장 복사" data-i18n-aria="send.copyAria">⧉</button>
       </div>
       <div class="play-bar"><i id="playBarFill"></i></div>
 
       <div class="now">
         <div class="now-l">
-          <div class="now-lab">지금 소리 나는 글자</div>
+          <div class="now-lab" data-i18n="send.now">지금 소리 나는 글자</div>
           <div class="now-char" id="nowChar">C</div>
           <div class="now-code" id="nowCode"><span class="sym">·</span><span class="sym">—</span><span class="sym">·</span><span class="sym">·</span></div>
         </div>
         <div class="now-r">
-          <div class="now-lab">전체 문장</div>
+          <div class="now-lab" data-i18n="send.all">전체 문장</div>
           <div class="ribbon" id="ribbon" aria-live="off"></div>
         </div>
       </div>
@@ -127,139 +140,141 @@
   </section>
 
   <!-- ── ② 전건 타건 ────────────────────────────── -->
-  <section class="pane" id="pane-key" role="tabpanel" aria-label="전건 타건 연습">
+  <section class="pane" id="pane-key" role="tabpanel" aria-label="전건 타건 연습" data-i18n-aria="pane.keyAria">
     <div class="card">
       <div class="card-h">
-        <h2>전건 타건 연습</h2>
-        <div class="seg" id="keyMode" role="group" aria-label="키 모드">
-          <button type="button" class="on" data-km="straight">스트레이트</button>
-          <button type="button" data-km="iambic">아이앰빅</button>
+        <h2 data-i18n="key.title">전건 타건 연습</h2>
+        <div class="seg" id="keyMode" role="group" aria-label="키 모드" data-i18n-aria="key.modeAria">
+          <button type="button" class="on" data-km="straight" data-i18n="key.straight">스트레이트</button>
+          <button type="button" data-km="iambic" data-i18n="key.iambic">아이앰빅</button>
         </div>
       </div>
 
       <div id="keyStraight">
-        <button type="button" class="keypad" id="straightKey" aria-label="스트레이트 키 — 누르는 동안 소리">
+        <button type="button" class="keypad" id="straightKey" aria-label="스트레이트 키 — 누르는 동안 소리" data-i18n-aria="key.straightAria">
           <span class="kp-ring" aria-hidden="true"></span>
           <span class="kp-ico" aria-hidden="true">✋</span>
           <b>STRAIGHT KEY</b>
-          <em>누르는 동안 소리 · 짧게 점, 길게 선</em>
+          <em data-i18n="key.straightHint">누르는 동안 소리 · 짧게 점, 길게 선</em>
         </button>
-        <p class="hint center">키보드 <b>스페이스바</b>로도 칠 수 있습니다. 점 길이는 치는 속도에 맞춰 자동으로 맞춰집니다.</p>
+        <p class="hint center" data-i18n="key.spaceHint">키보드 <b>스페이스바</b>로도 칠 수 있습니다. 점 길이는 치는 속도에 맞춰 자동으로 맞춰집니다.</p>
       </div>
 
       <div id="keyIambic" hidden>
         <div class="paddles">
-          <button type="button" class="paddle dot" id="padDot" aria-label="점 키 — 누르고 있으면 점이 계속">
-            <b>·</b><em>점</em>
+          <button type="button" class="paddle dot" id="padDot" aria-label="점 키 — 누르고 있으면 점이 계속" data-i18n-aria="key.dotAria">
+            <b>·</b><em data-i18n="key.dot">점</em>
           </button>
-          <button type="button" class="paddle dash" id="padDash" aria-label="선 키 — 누르고 있으면 선이 계속">
-            <b>—</b><em>선</em>
+          <button type="button" class="paddle dash" id="padDash" aria-label="선 키 — 누르고 있으면 선이 계속" data-i18n-aria="key.dashAria">
+            <b>—</b><em data-i18n="key.dash">선</em>
           </button>
         </div>
-        <p class="hint center">양쪽을 함께 누르면 점·선이 <b>교대로</b> 나갑니다. <b id="iambicWpm">18</b> WPM 전자키.</p>
+        <p class="hint center"><b id="iambicWpm">18</b> <span data-i18n="key.iambicHint">WPM 전자키 · 양쪽을 함께 누르면 점·선이 교대로 나갑니다.</span></p>
       </div>
 
       <div class="decode">
-        <div class="dc-h"><span>자동 해독</span><span class="mono" id="dcUnit">점 67ms</span></div>
+        <div class="dc-h"><span data-i18n="key.decode">자동 해독</span><span class="mono" id="dcUnit">점 67ms</span></div>
         <div class="dc-out" id="dcOut"><span class="dc-empty">타건하면 점·선을 읽어 글자로 쌓아 줍니다</span></div>
         <div class="dc-cur">
-          <span class="dc-cur-lab">치는 중</span>
+          <span class="dc-cur-lab" data-i18n="key.typing">치는 중</span>
           <b id="dcCur">—</b>
           <span class="mono" id="dcCurCode">· —</span>
         </div>
         <div class="dc-btns">
-          <button type="button" class="btn ghost sm" id="spaceBtn">␣ 단어 띄우기</button>
-          <button type="button" class="btn ghost sm" id="backBtn">⌫ 한 글자</button>
-          <button type="button" class="btn ghost sm" id="clearBtn">전체 지우기</button>
+          <button type="button" class="btn ghost sm" id="spaceBtn" data-i18n="key.space">␣ 단어 띄우기</button>
+          <button type="button" class="btn ghost sm" id="backBtn" data-i18n="key.back">⌫ 한 글자</button>
+          <button type="button" class="btn ghost sm" id="clearBtn" data-i18n="key.clear">전체 지우기</button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ── ③ 청취 퀴즈 ────────────────────────────── -->
-  <section class="pane" id="pane-quiz" role="tabpanel" aria-label="청취 퀴즈">
+  <section class="pane" id="pane-quiz" role="tabpanel" aria-label="청취 퀴즈" data-i18n-aria="pane.quizAria">
     <div class="card">
       <div class="card-h">
-        <h2>청취 퀴즈</h2>
+        <h2 data-i18n="quiz.title">청취 퀴즈</h2>
         <span class="tag" id="quizTag">Q1</span>
       </div>
 
-      <div class="q-modes" id="qModes" role="group" aria-label="퀴즈 종류">
-        <button type="button" class="on" data-qm="alnum">알파벳·숫자</button>
-        <button type="button" data-qm="abbr">햄 약어</button>
-        <button type="button" data-qm="qso">실전 QSO</button>
+      <div class="q-modes" id="qModes" role="group" aria-label="퀴즈 종류" data-i18n-aria="quiz.modesAria">
+        <button type="button" class="on" data-qm="alnum" data-i18n="quiz.alnum">알파벳·숫자</button>
+        <button type="button" data-qm="abbr" data-i18n="quiz.abbr">햄 약어</button>
+        <button type="button" data-qm="qso" data-i18n="quiz.qso">실전 QSO</button>
       </div>
 
       <div class="q-opts">
-        <label class="switch"><input type="checkbox" id="qChoice" checked><span></span>4지선다</label>
+        <label class="switch"><input type="checkbox" id="qChoice" checked><span></span><em class="sw-lab" data-i18n="quiz.choice">4지선다</em></label>
         <span class="q-opts-note" id="qOptsNote">끄면 직접 입력</span>
-        <button type="button" class="mini" id="qPlay">🔊 소리 듣기</button>
+        <button type="button" class="mini" id="qPlay" data-i18n="quiz.listen">🔊 소리 듣기</button>
       </div>
 
-      <div class="q-ask" id="qAsk">부호를 듣고 답을 고르세요</div>
+      <div class="q-ask" id="qAsk" data-i18n="quiz.askDefault">부호를 듣고 답을 고르세요</div>
       <div class="q-body" id="qBody"></div>
       <div class="q-fb" id="qFb" hidden></div>
 
       <div class="q-next">
-        <button type="button" class="btn primary" id="qNext" hidden>다음 문제 →</button>
+        <button type="button" class="btn primary" id="qNext" hidden data-i18n="quiz.next">다음 문제 →</button>
       </div>
 
       <div class="q-score">
-        <div class="qs"><b id="scRate">—</b><em>정답률</em></div>
-        <div class="qs"><b id="scTotal">0</b><em>시도</em></div>
-        <div class="qs"><b id="scStreak">0</b><em>연속</em></div>
-        <button type="button" class="mini" id="scReset">기록 지우기</button>
+        <div class="qs"><b id="scRate">—</b><em data-i18n="quiz.rate">정답률</em></div>
+        <div class="qs"><b id="scTotal">0</b><em data-i18n="quiz.tries">시도</em></div>
+        <div class="qs"><b id="scStreak">0</b><em data-i18n="quiz.streak">연속</em></div>
+        <button type="button" class="mini" id="scReset" data-i18n="quiz.reset">기록 지우기</button>
       </div>
     </div>
   </section>
 
   <!-- ── ④ 부호표 ───────────────────────────────── -->
-  <section class="pane" id="pane-chart" role="tabpanel" aria-label="모르스 부호표">
+  <section class="pane" id="pane-chart" role="tabpanel" aria-label="모르스 부호표" data-i18n-aria="pane.chartAria">
     <div class="card">
       <div class="card-h">
-        <h2>모르스 부호표</h2>
+        <h2 data-i18n="chart.title">모르스 부호표</h2>
         <span class="tag soft">TAP ▶</span>
       </div>
-      <p class="hint">칸을 누르면 그 부호가 바로 울립니다. 점(<b>·</b>)은 짧게, 선(<b>—</b>)은 점 세 개 길이.</p>
+      <p class="hint" data-i18n="chart.hint">칸을 누르면 그 부호가 바로 울립니다. 점(<b>·</b>)은 짧게, 선(<b>—</b>)은 점 세 개 길이.</p>
 
-      <h3 class="chart-h">알파벳 <span>A–Z</span></h3>
+      <h3 class="chart-h"><span class="ch-t" data-i18n="chart.alpha">알파벳</span> <span>A–Z</span></h3>
       <div class="morse-grid" id="gridAlpha"></div>
 
-      <h3 class="chart-h">숫자 <span>0–9</span></h3>
+      <h3 class="chart-h"><span class="ch-t" data-i18n="chart.num">숫자</span> <span>0–9</span></h3>
       <div class="morse-grid num" id="gridNum"></div>
 
-      <h3 class="chart-h">기호 <span>부호 · 물음표 · 슬래시</span></h3>
+      <h3 class="chart-h"><span class="ch-t" data-i18n="chart.sym">기호</span> <span data-i18n="chart.symSub">부호 · 물음표 · 슬래시</span></h3>
       <div class="morse-grid" id="gridSym"></div>
 
-      <h3 class="chart-h">프로사인 <span>AR · SK · BT</span></h3>
+      <h3 class="chart-h"><span class="ch-t" data-i18n="chart.pro">프로사인</span> <span data-i18n="chart.proSub">AR · SK · BT</span></h3>
       <div class="morse-grid" id="gridPro"></div>
 
       <div class="legend-mini">
-        <p><b>AR</b> .-.-. 교신 끝, 응답 대기 · <b>SK</b> ...-.- 교신 종료 · <b>BT</b> -...- 문단 구분</p>
+        <p data-i18n="chart.legend"><b>AR</b> .-.-. 교신 끝, 응답 대기 · <b>SK</b> ...-.- 교신 종료 · <b>BT</b> -...- 문단 구분</p>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="foot-brand">DS2YTO <span>·</span> 춘천 PM37</div>
+  <div class="foot-brand">DS2YTO <span>·</span> <span data-i18n="foot.place">춘천 PM37</span></div>
   <div class="foot-links">
-    <a href="https://jangsh1015.github.io/">홈페이지</a><span>·</span>
+    <a href="https://jangsh1015.github.io/" data-i18n="foot.home">홈페이지</a><span>·</span>
     <a href="https://www.qrz.com/db/DS2YTO">QRZ</a>
   </div>
   <div class="foot-note">Program by Seokhoon Jang (DS2YTO)</div>
-  <div class="foot-note dim" id="swNote">오프라인 저장 준비 중…</div>
-  <div class="foot-note dim">아이폰은 측면 무음 스위치를 끄면 사이드톤이 들립니다</div>
+  <div class="foot-note dim" id="swNote" data-i18n="sw.pending">오프라인 저장 준비 중…</div>
+  <div class="foot-note dim" data-i18n="foot.iphone">아이폰은 측면 무음 스위치를 끄면 사이드톤이 들립니다</div>
 </footer>
 
-<nav class="tabs" role="tablist" aria-label="연습 모드">
-  <button type="button" class="tab on" data-tab="send" role="tab" aria-selected="true"><span class="ico" aria-hidden="true">▶</span><span>송신·재생</span></button>
-  <button type="button" class="tab" data-tab="key" role="tab" aria-selected="false"><span class="ico" aria-hidden="true">✋</span><span>전건 타건</span></button>
-  <button type="button" class="tab" data-tab="quiz" role="tab" aria-selected="false"><span class="ico" aria-hidden="true">🎧</span><span>청취 퀴즈</span></button>
-  <button type="button" class="tab" data-tab="chart" role="tab" aria-selected="false"><span class="ico" aria-hidden="true">📋</span><span>부호표</span></button>
+<nav class="tabs" role="tablist" aria-label="연습 모드" data-i18n-aria="tabs.aria">
+  <button type="button" class="tab on" data-tab="send" role="tab" aria-selected="true"><span class="ico" aria-hidden="true">▶</span><span data-i18n="tab.send">송신·재생</span></button>
+  <button type="button" class="tab" data-tab="key" role="tab" aria-selected="false"><span class="ico" aria-hidden="true">✋</span><span data-i18n="tab.key">전건 타건</span></button>
+  <button type="button" class="tab" data-tab="quiz" role="tab" aria-selected="false"><span class="ico" aria-hidden="true">🎧</span><span data-i18n="tab.quiz">청취 퀴즈</span></button>
+  <button type="button" class="tab" data-tab="chart" role="tab" aria-selected="false"><span class="ico" aria-hidden="true">📋</span><span data-i18n="tab.chart">부호표</span></button>
 </nav>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="app.js?v=cw1"></script>
+<script src="i18n-data.js"></script>
+<script src="i18n.js"></script>
+<script src="app.js?v=cw2"></script>
 </body>
 </html>

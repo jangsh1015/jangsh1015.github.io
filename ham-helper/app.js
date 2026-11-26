@@ -6,6 +6,12 @@
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const pad2 = n => String(n).padStart(2, '0');
+
+/* ── 언어 ─────────────────────────────────────────────────── */
+const T = (k, v) => (window.Lang5 ? window.Lang5.t(k, v) : k);
+const LANG = () => (window.Lang5 ? window.Lang5.get() : 'ko');
+const LOCALE = () => (window.Lang5 ? window.Lang5.locale() : 'ko-KR');
+const DIRS = () => (window.Lang5 ? window.Lang5.dirs() : DIR16_KO);
 const HS_KEY = 'ham-helper.v1';
 const CALL_KEY = HS_KEY + '.call';
 const GRID_KEY = HS_KEY + '.grid';
@@ -69,24 +75,24 @@ const BANDS = {
 
 const PHASES = {
   day: {
-    icon: '☀️', name: '낮',
+    icon: '☀️', name: 'band.day',
     bands: ['15m', '12m', '10m', '20m'],
-    title: '낮 · 15m · 10m 장거리',
-    tip: 'F2층이 높이 올라가 21~28 MHz DX가 열립니다. 15m 21.074 MHz부터 들어 보세요.',
+    title: 'band.dayTitle',
+    tip: 'band.dayTip',
     line: '15m 21.074'
   },
   dusk: {
-    icon: '🌇', name: '황혼',
+    icon: '🌇', name: 'band.dusk',
     bands: ['20m', '17m', '40m', '30m'],
-    title: '황혼 · 그레이 라인',
-    tip: '낮과 밤의 경계를 따라 20m·40m가 크게 열립니다. 지금이 DX 잡기 좋은 때.',
+    title: 'band.duskTitle',
+    tip: 'band.duskTip',
     line: '20m 14.074'
   },
   night: {
-    icon: '🌙', name: '밤',
+    icon: '🌙', name: 'band.night',
     bands: ['40m', '80m', '160m', '30m'],
-    title: '밤 · 40m가 주력',
-    tip: 'D층이 사라져 7 MHz가 멀리 갑니다. 7.074 MHz 하나로 국내외가 두루 열립니다.',
+    title: 'band.nightTitle',
+    tip: 'band.nightTip',
     line: '40m 7.074'
   }
 };
@@ -108,7 +114,14 @@ const el = {
   phDay: $('#phDay'), phDusk: $('#phDusk'), phNight: $('#phNight'),
   recTitle: $('#recTitle'), recTip: $('#recTip'), recFreqs: $('#recFreqs'), recTag: $('#recTag')
 };
-const WD = ['일', '월', '화', '수', '목', '금', '토'];
+const WD = {
+  ko: ['일', '월', '화', '수', '목', '금', '토'],
+  en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  ja: ['日', '月', '火', '水', '木', '金', '土'],
+  zh: ['日', '一', '二', '三', '四', '五', '六'],
+  ru: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+};
+const wd = () => WD[LANG()] || WD.ko;
 let lastSec = -1, lastPhase = '', lastMinute = -1;
 
 function two(n) { return n < 10 ? '0' + n : '' + n; }
@@ -127,9 +140,9 @@ function paintClock() {
     el.utc.textContent = two(now.getUTCHours()) + ':' + two(now.getUTCMinutes()) + ':' + two(sec);
     el.kst.textContent = two(k.getUTCHours()) + ':' + two(k.getUTCMinutes()) + ':' + two(k.getUTCSeconds());
     el.utcD.textContent = now.getUTCFullYear() + '.' + two(now.getUTCMonth() + 1) + '.' + two(now.getUTCDate()) +
-      ' (' + WD[now.getUTCDay()] + ')';
+      ' (' + wd()[now.getUTCDay()] + ')';
     el.kstD.textContent = k.getUTCFullYear() + '.' + two(k.getUTCMonth() + 1) + '.' + two(k.getUTCDate()) +
-      ' (' + WD[k.getUTCDay()] + ')';
+      ' (' + wd()[k.getUTCDay()] + ')';
 
     // FT8 15초 슬롯
     const slot = Math.floor(utcSec / 15);
@@ -138,8 +151,8 @@ function paintClock() {
     el.parity.textContent = even ? 'EVEN' : 'ODD';
     el.parity.classList.toggle('odd', !even);
     el.fill.classList.toggle('odd', !even);
-    el.range.textContent = '초 ' + two((slot * 15) % 60) + '–' + two((slot * 15 + 15) % 60);
-    el.next.textContent = '다음 ' + (even ? 'ODD' : 'EVEN') + ' ' + two(Math.floor((slot + 1) * 15) % 60) + '초';
+    el.range.textContent = T('clock.slotRange', { a: two((slot * 15) % 60), b: two((slot * 15 + 15) % 60) });
+    el.next.textContent = T('clock.slotNext', { p: even ? 'ODD' : 'EVEN', s: two(Math.floor((slot + 1) * 15) % 60) });
     el.left.textContent = (15 - within).toFixed(1);
     el.bar.setAttribute('aria-valuenow', within.toFixed(1));
   }
@@ -162,17 +175,18 @@ function updatePhase(now) {
   const key = phaseOf(alt);
   const p = PHASES[key];
   el.phIcon.textContent = p.icon;
-  el.phName.textContent = p.name;
+  el.phName.textContent = T(p.name);
   el.sunAlt.textContent = (alt >= 0 ? '+' : '') + alt.toFixed(0) + '°';
-  el.phNow.textContent = '추천 ' + p.line;
+  el.phNow.textContent = T('band.phaseNow', { line: p.line });
   el.phDay.classList.toggle('on', key === 'day');
   el.phDusk.classList.toggle('on', key === 'dusk');
   el.phNight.classList.toggle('on', key === 'night');
-  if (el.recTitle.dataset.key !== key) {
+  if (el.recTitle.dataset.key !== key || el.recTitle.dataset.lang !== LANG()) {
     el.recTitle.dataset.key = key;
-    el.recTitle.textContent = p.title;
-    el.recTip.textContent = p.tip;
-    el.recTag.textContent = '지금';
+    el.recTitle.dataset.lang = LANG();
+    el.recTitle.textContent = T(p.title);
+    el.recTip.textContent = T(p.tip);
+    el.recTag.textContent = T('band.now');
     el.recFreqs.innerHTML = p.bands.map(b => {
       const f = BANDS[b];
       return `<span>${b} ${f.mhz.toFixed(3)}</span>`;
@@ -195,15 +209,17 @@ function buildFreqTable() {
     return `<button type="button" class="freq-row" data-band="${b}" data-mhz="${f.mhz.toFixed(3)}">
       <span class="freq-band">${b}</span>
       <span class="freq-mhz">${f.mhz.toFixed(3)}<small>MHz</small></span>
-      <span class="freq-side"><span class="freq-mode">${f.mode}</span><span class="freq-now" hidden>지금</span></span>
+      <span class="freq-side"><span class="freq-mode">${f.mode}</span><span class="freq-now" hidden>${T('freq.now')}</span></span>
     </button>`;
   }).join('');
 
+  if (list.dataset.bound) return;
+  list.dataset.bound = '1';
   list.addEventListener('click', e => {
     const row = e.target.closest('.freq-row');
     if (!row) return;
     const txt = row.dataset.mhz + ' MHz';
-    copy(txt, txt + ' 복사됨');
+    copy(txt, T('toast.copyDone', { v: txt }));
   });
 }
 
@@ -240,13 +256,13 @@ async function copy(text, msg) {
     toast(msg);
     return true;
   } catch (e) {
-    toast(text + ' — 길게 눌러 복사하세요');
+    toast(T('toast.copyFail', { v: text }));
     return false;
   }
 }
 
 /* ── 그리드 로케이터 ────────────────────────────────────── */
-const DIR16 = ['북', '북북동', '북동', '동북동', '동', '동남동', '남동', '남남동',
+const DIR16_KO = ['북', '북북동', '북동', '동북동', '동', '동남동', '남동', '남남동',
                '남', '남남서', '남서', '서남서', '서', '서북서', '북서', '북북서'];
 
 function gridToLatLon(raw) {
@@ -311,15 +327,20 @@ function computeGrid() {
   if (!mine) {
     grid.mine.classList.add('bad');
     grid.err.hidden = false;
-    grid.err.textContent = '내 그리드가 형식에 맞지 않습니다. 예: PM37';
+    grid.err.textContent = T('grid.errMine');
     grid.res.hidden = true;
     return;
   }
-  if (!tgtRaw.trim()) { grid.res.hidden = true; return; }
+  if (!tgtRaw.trim()) {
+    grid.spDir.textContent = DIRS()[0];
+    grid.lpDir.textContent = DIRS()[8];
+    grid.res.hidden = true;
+    return;
+  }
   if (!tgt) {
     grid.target.classList.add('bad');
     grid.err.hidden = false;
-    grid.err.textContent = '상대 그리드를 확인하세요. 4자리(PM95) 또는 6자리(PM95aa)입니다.';
+    grid.err.textContent = T('grid.errTarget');
     grid.res.hidden = true;
     return;
   }
@@ -327,16 +348,16 @@ function computeGrid() {
   const km = haversine(mine, tgt);
   const sp = bearing(mine, tgt);
   const lp = (sp + 180) % 360;
-  const dir = b => DIR16[Math.round(b / 22.5) % 16];
+  const dir = b => (DIRS()[Math.round(b / 22.5) % 16] || DIR16_KO[Math.round(b / 22.5) % 16]);
 
-  grid.dist.textContent = Math.round(km).toLocaleString('ko-KR');
+  grid.dist.textContent = Math.round(km).toLocaleString(LOCALE());
   grid.sp.textContent = sp.toFixed(1) + '°';
   grid.spDir.textContent = dir(sp);
   grid.lp.textContent = lp.toFixed(1) + '°';
   grid.lpDir.textContent = dir(lp);
-  grid.note.textContent =
-    '내 그리드 ' + fmtLatLon(mine) + ' → 상대 ' + fmtLatLon(tgt) +
-    ' · 장거리 경로 ' + Math.round(km).toLocaleString('ko-KR') + ' km';
+  grid.note.textContent = T('grid.note', {
+    a: fmtLatLon(mine), b: fmtLatLon(tgt), km: Math.round(km).toLocaleString(LOCALE())
+  });
 
   grid.spArrow.setAttribute('transform', `rotate(${sp.toFixed(1)} 100 100)`);
   grid.lpArrow.setAttribute('transform', `rotate(${lp.toFixed(1)} 100 100)`);
@@ -390,15 +411,16 @@ function applyMe(persist) {
   if (loc) { HOME_LAT = loc.lat; HOME_LON = loc.lon; }
 
   $('#brandCall').textContent = me.call;
-  document.title = me.call + ' 햄 전파 도우미';
+  if (window.Lang5) window.Lang5.setTitleVars({ call: me.call });
+  else document.title = me.call + ' 햄 전파 도우미';
   $('#meCallTop').textContent = me.call;
   $('#meGridTop').textContent = me.grid;
 
   const sub = $('#bandSub');
   if (sub) {
     sub.textContent = (me.call === DEF_ME.call && me.grid === DEF_ME.grid)
-      ? '춘천(' + me.grid + ') 하늘의 태양 고도로 낮·황혼·밤을 계산합니다.'
-      : '내 그리드 ' + me.grid + ' 상공의 태양 고도로 낮·황혼·밤을 계산합니다.';
+      ? T('band.subChuncheon', { grid: me.grid })
+      : T('band.subMine', { grid: me.grid });
   }
 
   if (grid.mine.value !== me.grid) grid.mine.value = me.grid;
@@ -422,7 +444,6 @@ function bindMe() {
   const btn = $('#meBtn'), panel = $('#mePanel');
   const cIn = $('#meCall'), gIn = $('#meGrid'), hint = $('#meHint');
   if (!btn || !panel) return;
-  const HINT = hint.textContent;
 
   function setOpen(open) {
     panel.hidden = !open;
@@ -432,7 +453,7 @@ function bindMe() {
   function ok() {
     cIn.classList.remove('bad'); gIn.classList.remove('bad');
     hint.classList.remove('bad');
-    hint.textContent = HINT;
+    hint.textContent = T('me.hint');
   }
   function bad(msg, node) {
     node.classList.add('bad');
@@ -443,7 +464,7 @@ function bindMe() {
   function readCall() {
     const v = normCall(cIn.value);
     if (cIn.value !== v) cIn.value = v;
-    if (!CALL_RE.test(v)) return bad('콜사인을 확인하세요. 예: HL2IDT', cIn);
+    if (!CALL_RE.test(v)) return bad(T('me.errCall'), cIn);
     me.call = v;
     return true;
   }
@@ -451,7 +472,7 @@ function bindMe() {
     const v = normGrid(gIn.value);
     if (gIn.value !== v) gIn.value = v;
     if (!gridToLatLon(v) || (v.length !== 4 && v.length !== 6)) {
-      return bad('그리드는 4자리(PM37) 또는 6자리(PM37aa)입니다.', gIn);
+      return bad(T('me.errGrid'), gIn);
     }
     me.grid = v;
     return true;
@@ -470,13 +491,13 @@ function bindMe() {
   [cIn, gIn].forEach(inp => inp.addEventListener('keydown', e => {
     if (e.key !== 'Enter') return;
     e.preventDefault();
-    if (apply()) { setOpen(false); toast(me.call + ' · ' + me.grid + ' 로 설정했습니다'); }
+    if (apply()) { setOpen(false); toast(T('me.setToast', { call: me.call, grid: me.grid })); }
   }));
 
   $('#meSave').addEventListener('click', () => {
     if (!apply()) return;
     setOpen(false);
-    toast(me.call + ' · ' + me.grid + ' 로 설정했습니다');
+    toast(T('me.setToast', { call: me.call, grid: me.grid }));
   });
 
   $('#meReset').addEventListener('click', () => {
@@ -486,7 +507,7 @@ function bindMe() {
     gIn.value = DEF_ME.grid;
     ok();
     applyMe(true);
-    toast('DS2YTO 기본값으로 되돌렸습니다');
+    toast(T('me.resetToast'));
   });
 }
 
@@ -494,21 +515,22 @@ function bindMe() {
 function bindShare() {
   const btn = $('#shareBtn');
   if (!btn) return;
-  const LABEL = btn.innerHTML;
+  const paint = () => { if (!btn.classList.contains('done')) btn.innerHTML = T('foot.share'); };
   let timer = 0;
 
   btn.addEventListener('click', async () => {
     const url = location.origin + location.pathname;
-    const done = await copy(url, '앱 주소를 복사했습니다 — 다른 국장님께 붙여넣어 보내세요');
+    const done = await copy(url, T('share.toast'));
     if (!done) return;
     btn.classList.add('done');
-    btn.innerHTML = '<span aria-hidden="true">✅</span> 복사됨!';
+    btn.innerHTML = T('foot.shareDone');
     clearTimeout(timer);
     timer = setTimeout(() => {
       btn.classList.remove('done');
-      btn.innerHTML = LABEL;
+      paint();
     }, 1800);
   });
+  document.addEventListener('langchange', paint);
 }
 
 /* ── DXCC 접두사 데이터 ─────────────────────────────────── */
@@ -836,10 +858,11 @@ function renderCall() {
 
   const e = hit.entry;
   const c = CONT[e.cont] || { name: e.cont, icon: '🌐' };
+  const lang = LANG();
   $('#ccFlag').textContent = c.icon;
-  $('#ccName').textContent = e.ko;
-  $('#ccEn').textContent = e.en;
-  $('#ccCont').textContent = c.name;
+  $('#ccName').textContent = (lang === 'ko') ? e.ko : e.en;
+  $('#ccEn').textContent = (lang === 'ko') ? e.en : e.ko;
+  $('#ccCont').textContent = T('cont.' + e.cont) || c.name;
   $('#ccCq').textContent = e.cq;
   $('#ccItu').textContent = e.itu;
   $('#ccPrefix').textContent = hit.p;
@@ -861,51 +884,55 @@ function bindCall() {
 
 /* ── QRP 체크리스트 ────────────────────────────────────── */
 const PACK = [
-  ['SYNC TIME', '기기 시계를 자동 동기화. 1초만 어긋나도 FT8은 디코드되지 않습니다.'],
-  ['SWR 확인', '안테나 튜너로 1.5 이하. 나가기 전 한 번, 주파수 바꿀 때마다.'],
-  ['카운터포이즈', '랜덤와이어라도 5 m 이상 깔고, 차량이면 차체 접지.'],
-  ['출력 5W 이하', 'QRP 확인. 배터리와 무전기 둘 다 지킵니다.'],
-  ['배터리 · 예비 안테나', '보조배터리와 예비 와이어 한 벌.'],
-  ['안전한 자리', '전선·차량 통행·사유지 피하고, 한쪽에 물러나 세우기.']
+  ['pack.i0t', 'pack.i0d'],
+  ['pack.i1t', 'pack.i1d'],
+  ['pack.i2t', 'pack.i2d'],
+  ['pack.i3t', 'pack.i3d'],
+  ['pack.i4t', 'pack.i4d'],
+  ['pack.i5t', 'pack.i5d']
 ];
+
+function packUpdate() {
+  const ul = $('#packList');
+  const boxes = $$('input[type=checkbox]', ul);
+  const on = boxes.filter(b => b.checked).length;
+  $('#packCount').textContent = T('pack.count', { n: on, m: boxes.length });
+  const obj = {};
+  boxes.forEach(b => { if (b.checked) obj[b.dataset.i] = 1; });
+  try { localStorage.setItem(HS_KEY + '.pack', JSON.stringify(obj)); } catch (e) {}
+}
 
 function buildPack() {
   const ul = $('#packList');
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(HS_KEY + '.pack') || '{}'); } catch (e) {}
 
-  ul.innerHTML = PACK.map(([t, d], i) => `
+  ul.innerHTML = PACK.map(([tk, dk], i) => `
     <li>
       <label>
         <input type="checkbox" data-i="${i}" ${saved[i] ? 'checked' : ''}>
         <span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#04121c" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="tx"><b>${t}</b><span>${d}</span></span>
+        <span class="tx"><b>${T(tk)}</b><span>${T(dk)}</span></span>
       </label>
     </li>`).join('');
 
-  const update = () => {
-    const boxes = $$('input[type=checkbox]', ul);
-    const on = boxes.filter(b => b.checked).length;
-    $('#packCount').textContent = on + ' / ' + boxes.length + ' 완료';
-    const obj = {};
-    boxes.forEach(b => { if (b.checked) obj[b.dataset.i] = 1; });
-    try { localStorage.setItem(HS_KEY + '.pack', JSON.stringify(obj)); } catch (e) {}
-  };
-
-  ul.addEventListener('change', update);
-  $('#packReset').addEventListener('click', () => {
-    $$('input[type=checkbox]', ul).forEach(b => { b.checked = false; });
-    update();
-    toast('체크리스트를 비웠습니다');
-  });
-  update();
+  if (!ul.dataset.bound) {
+    ul.dataset.bound = '1';
+    ul.addEventListener('change', packUpdate);
+    $('#packReset').addEventListener('click', () => {
+      $$('input[type=checkbox]', ul).forEach(b => { b.checked = false; });
+      packUpdate();
+      toast(T('pack.resetToast'));
+    });
+  }
+  packUpdate();
 }
 
 /* ── 그레이 라인 도파관 시뮬레이터 ──────────────────────── */
 const Sim = (() => {
   const stage = $('#simStage');
   const canvas = $('#simCanvas');
-  if (!canvas) return { setMode() {}, toggle() {}, setStation() {} };
+  if (!canvas) return { setMode() {}, toggle() {}, setStation() {}, relang() {} };
   const ctx = canvas.getContext('2d');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -933,8 +960,7 @@ const Sim = (() => {
     day: {
       dur: 5200,
       hops: [{ x0: .10, x1: .32, h: 30, absorbed: true }],
-      caption: 'D층 흡수 · 단거리',
-      note: '낮의 40m는 D층에서 흡수됩니다'
+      caption: 'sim.capDay'
     },
     night: {
       dur: 7600,
@@ -942,8 +968,7 @@ const Sim = (() => {
         { x0: .08, x1: .28, h: 96 }, { x0: .28, x1: .49, h: 92 },
         { x0: .49, x1: .70, h: 97 }, { x0: .70, x1: .93, h: 93 }
       ],
-      caption: 'F층 다중 반사 · 야간 원거리',
-      note: 'D층이 사라져 40m가 멀리 갑니다'
+      caption: 'sim.capNight'
     },
     grey: {
       dur: 8200,
@@ -952,8 +977,7 @@ const Sim = (() => {
         { x0: .46, x1: .63, h: 94 }, { x0: .63, x1: .80, h: 99 },
         { x0: .80, x1: .97, h: 94 }
       ],
-      caption: '그레이 라인 도파관 · 지구 반대편',
-      note: 'D층 흡수 없이 파이프처럼'
+      caption: 'sim.capGrey'
     }
   };
 
@@ -1087,7 +1111,7 @@ const Sim = (() => {
       ctx.fillStyle = 'rgba(255,214,170,.85)';
       ctx.font = '9px ui-monospace, monospace';
       ctx.textAlign = 'left';
-      ctx.fillText('그레이 라인', cxT + 5, 46);
+      ctx.fillText(T('sim.greyLine'), cxT + 5, 46);
     }
   }
 
@@ -1290,7 +1314,7 @@ const Sim = (() => {
       ctx.fillStyle = 'rgba(255,190,150,.9)';
       ctx.font = '9px ui-monospace, monospace';
       ctx.textAlign = 'center';
-      ctx.fillText('흡수', end[0], end[1] + 28);
+      ctx.fillText(T('sim.absorb'), end[0], end[1] + 28);
     }
 
     // 그레이 라인: 반대편 도달 지점
@@ -1306,7 +1330,7 @@ const Sim = (() => {
   function drawCaption(m) {
     ctx.textAlign = 'left';
     ctx.font = '600 9.5px ui-monospace, monospace';
-    const txt = m.caption;
+    const txt = T(m.caption);
     const w = ctx.measureText(txt).width + 16;
     ctx.fillStyle = 'rgba(6,11,24,.72)';
     roundRect(8, 8, w, 21, 7);
@@ -1365,11 +1389,11 @@ const Sim = (() => {
       playing = false;
       cancelAnimationFrame(raf);
       $('#playBtn').innerHTML = playIcon(true);
-      $('#playBtn').setAttribute('aria-label', '재생');
+      $('#playBtn').setAttribute('aria-label', T('sim.play'));
     } else {
       playing = true;
       $('#playBtn').innerHTML = playIcon(false);
-      $('#playBtn').setAttribute('aria-label', '일시정지');
+      $('#playBtn').setAttribute('aria-label', T('sim.pause'));
       tStart = performance.now() - p * MODES[mode].dur;
       start();
     }
@@ -1386,7 +1410,7 @@ const Sim = (() => {
     setMode('grey');
     ready = true;
     $('#playBtn').innerHTML = playIcon(!playing);
-    $('#playBtn').setAttribute('aria-label', playing ? '일시정지' : '재생');
+    $('#playBtn').setAttribute('aria-label', playing ? T('sim.pause') : T('sim.play'));
     $('#simModes').addEventListener('click', e => {
       const b = e.target.closest('button[data-mode]');
       if (b) setMode(b.dataset.mode);
@@ -1423,19 +1447,30 @@ const Sim = (() => {
     if (ready && !playing) frame(performance.now());
   }
 
-  return { init, setMode, toggle, setStation, get playing() { return playing; } };
+  /* 언어가 바뀌면 캔버스 글씨도 새 언어로 */
+  function relang() {
+    if (!ready) return;
+    if (!playing) frame(performance.now());
+  }
+
+  return { init, setMode, toggle, setStation, relang, get playing() { return playing; } };
 })();
 
 /* ── 서비스워커 ────────────────────────────────────────── */
-function initSW() {
+const SW = { state: 'pending' };
+function swNote() {
   const note = $('#swNote');
+  if (note) note.textContent = T('sw.' + SW.state);
+}
+function initSW() {
   const badge = $('#liveBadge'), liveText = $('#liveText');
   const isLocal = location.protocol === 'file:';
 
   if (!('serviceWorker' in navigator) || isLocal) {
     badge.classList.add('off');
     liveText.textContent = 'LOCAL';
-    note.textContent = '파일에서 열림 — 오프라인 그대로 동작';
+    SW.state = 'local';
+    swNote();
     return;
   }
 
@@ -1445,13 +1480,30 @@ function initSW() {
     badge.style.borderColor = 'rgba(143,240,192,.3)';
     badge.classList.remove('off');
     liveText.textContent = 'READY';
-    note.textContent = '오프라인 저장 완료 — 인터넷 없이 열립니다';
+    SW.state = 'ready';
+    swNote();
   }).catch(() => {
     badge.classList.add('off');
     liveText.textContent = 'ONLINE';
-    note.textContent = '오프라인 저장은 https 접속에서 가능합니다';
+    SW.state = 'fail';
+    swNote();
   });
+  swNote();
 }
+
+/* ── 언어가 바뀌면 이 화면을 새 언어로 다시 그린다 ───────── */
+function relang() {
+  const hint = $('#meHint');
+  if (hint && !hint.classList.contains('bad')) hint.textContent = T('me.hint');
+  applyMe(false);
+  buildFreqTable();
+  buildPack();
+  renderCall();
+  updatePhase(new Date());
+  if (Sim.relang) Sim.relang();
+  swNote();
+}
+document.addEventListener('langchange', relang);
 
 /* ── 시작 ──────────────────────────────────────────────── */
 buildFreqTable();

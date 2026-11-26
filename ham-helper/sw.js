@@ -1,10 +1,12 @@
 /* DS2YTO 햄 전파 도우미 — 오프라인 캐시 */
-const CACHE = 'ham-helper-v9';
+const CACHE = 'ham-helper-v10';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
   './app.js',
+  './i18n.js',
+  './i18n-data.js',
   './manifest.json',
   './icon.svg',
   './icon-192.png',

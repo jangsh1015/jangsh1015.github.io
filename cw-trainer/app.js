@@ -9,6 +9,9 @@
   const shuffle = a => a.map(v => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(v => v[1]);
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+  /* ── 언어 ─────────────────────────────────────────── */
+  const T = (k, v) => (window.Lang5 ? window.Lang5.t(k, v) : k);
+
   /* ── 모르스 사전 ─────────────────────────────────── */
   const MORSE = {
     A: '.-', B: '-...', C: '-.-.', D: '-..', E: '.', F: '..-.', G: '--.', H: '....',
@@ -307,11 +310,11 @@
   }
 
   function playText(text, loop) {
-    if (!ensureAudio()) { toast('이 브라우저에서는 소리를 낼 수 없습니다'); return; }
+    if (!ensureAudio()) { toast(T('toast.noAudio')); return; }
     stopPlayback();
     const b = buildPlayback(text);
-    if (!b.items.length) { toast('재생할 글자가 없습니다 — A~Z, 0~9와 기호만 부호가 있습니다'); return; }
-    if (b.skipped) toast('한글 등 모르스 부호가 없는 ' + b.skipped + '자는 건너뜁니다');
+    if (!b.items.length) { toast(T('toast.noChars')); return; }
+    if (b.skipped) toast(T('toast.skipped', { n: b.skipped }));
     P.items = b.items;
     P.chars = b.chars;
     P.startAbs = b.start;
@@ -385,7 +388,7 @@
 
   function setPlayUI(on) {
     $('#playIco').textContent = on ? '■' : '▶';
-    $('#playLab').textContent = on ? '정지' : '재생';
+    $('#playLab').textContent = on ? T('send.stop') : T('send.play');
     $('#playBtn').classList.toggle('tx', on);
     $('#playBtn').setAttribute('aria-pressed', on ? 'true' : 'false');
     if (on) $('#scopeLab').textContent = 'TX · SIDETONE';
@@ -445,12 +448,12 @@
     let html = '';
     if (txt) html += esc(txt);
     if (K.buf) html += `<span class="cur">${esc(K.buf)}</span>`;
-    if (!html) html = '<span class="dc-empty">타건하면 점·선을 읽어 글자로 쌓아 줍니다</span>';
+    if (!html) html = '<span class="dc-empty">' + esc(T('key.empty')) + '</span>';
     out.innerHTML = html;
     const cur = K.buf ? (REV[K.buf] || '…') : '—';
     $('#dcCur').textContent = cur;
     $('#dcCurCode').textContent = K.buf ? Array.from(K.buf).map(s => s === '.' ? '·' : '—').join(' ') : '';
-    $('#dcUnit').textContent = '점 ' + Math.round(K.unit) + 'ms · ≈' + Math.round(1200 / K.unit) + ' WPM';
+    $('#dcUnit').textContent = T('key.unit', { ms: Math.round(K.unit), wpm: Math.round(1200 / K.unit) });
   }
 
   function pushSym(sym) {
@@ -616,31 +619,29 @@
 
   $('#spaceBtn').addEventListener('click', () => { ensureAudio(); wordSpace(); });
   $('#backBtn').addEventListener('click', backChar);
-  $('#clearBtn').addEventListener('click', () => { keyReset(); toast('해독창을 비웠습니다'); });
+  $('#clearBtn').addEventListener('click', () => { keyReset(); toast(T('toast.keyCleared')); });
 
   /* ── ③ 청취 퀴즈 ────────────────────────────────── */
   const ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const NUM = '0123456789';
   const ABBR = ['CQ', 'DE', 'QTH', 'RST', '73', 'K', 'BK', 'TU'];
   const ABBR_KO = {
-    CQ: '일반 호출 — "누구든 응답해 주세요"', DE: '"…로부터" (여기는)',
-    QTH: '위치(지명)', RST: '신호 보고 (가독성·강도·음질)',
-    '73': '안녕히 계십시오 (최고의 인사)', K: '응답 바랍니다 (일반 호출)',
-    BK: '끼어들어 말씀하세요 (중간 개입)', TU: '고맙습니다'
+    CQ: 'quiz.abbrCQ', DE: 'quiz.abbrDE', QTH: 'quiz.abbrQTH', RST: 'quiz.abbrRST',
+    '73': 'quiz.abbr73', K: 'quiz.abbrK', BK: 'quiz.abbrBK', TU: 'quiz.abbrTU'
   };
   const PREFIX = ['HL2', 'HL3', 'HL5', 'DS1', 'DS2', 'DS4', '6K2', 'JA1', 'JA3', 'W6', 'K1', 'VK2', 'VK4', 'DL1', 'DL5', 'F5', 'I2', 'OH2', 'UA9', 'BY1', 'VE3', 'PY2', 'ZL1', 'EA3'];
   const SUF = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const QSO_TPL = [
-    { text: 'CQ CQ DE {call} K', ko: 'CQ, 여기는 {call}. 응답 바랍니다 (K)' },
-    { text: '{call} DE DS2YTO K', ko: '{call}, DS2YTO입니다. 불러 주세요 (K)' },
-    { text: 'DE {call} UR RST 5NN K', ko: '여기는 {call}, 당신 신호 599. 어떻게 들립니까 (K)' },
-    { text: 'DS2YTO DE {call} R RST 5NN {call} K', ko: 'DS2YTO, {call}입니다. 599 잘 받았습니다 (K)' },
-    { text: '{call} DE DS2YTO TU 73 ES GL SK', ko: '{call}, 고맙습니다. 73, 행운을 빕니다 (SK)' },
-    { text: '{call} DE DS2YTO QTH PM37 QRU? K', ko: '여기는 DS2YTO, 위치 PM37. 용건 있으십니까? (K)' },
-    { text: 'QRZ? DE {call} K', ko: '누구 부르십니까? 여기는 {call} (K)' }
+    { text: 'CQ CQ DE {call} K', ko: 'quiz.qso1' },
+    { text: '{call} DE DS2YTO K', ko: 'quiz.qso2' },
+    { text: 'DE {call} UR RST 5NN K', ko: 'quiz.qso3' },
+    { text: 'DS2YTO DE {call} R RST 5NN {call} K', ko: 'quiz.qso4' },
+    { text: '{call} DE DS2YTO TU 73 ES GL SK', ko: 'quiz.qso5' },
+    { text: '{call} DE DS2YTO QTH PM37 QRU? K', ko: 'quiz.qso6' },
+    { text: 'QRZ? DE {call} K', ko: 'quiz.qso7' }
   ];
 
-  const Q = { mode: 'alnum', choice: true, cur: null, n: 1, answered: false, stats: { ...QDEFAULT } };
+  const Q = { mode: 'alnum', choice: true, cur: null, n: 1, answered: false, last: null, stats: { ...QDEFAULT } };
 
   function randCall() {
     let s = pick(SUF) + pick(SUF);
@@ -662,15 +663,15 @@
     if (Q.mode === 'alnum') {
       if (Q.choice) {
         const c = pick(ABC + NUM);
-        return { kind: 'char', audio: c, answer: c, ask: '부호를 듣고 무슨 글자인지 고르세요', options: distract(c, () => pick(ABC + NUM)) };
+        return { kind: 'char', audio: c, answer: c, ask: 'quiz.askChar', options: distract(c, () => pick(ABC + NUM)) };
       }
       let s = '';
       for (let i = 0; i < 3; i++) s += pick(ABC + NUM);
-      return { kind: 'group', audio: Array.from(s).join(' '), answer: s, ask: '세 글자를 듣고 그대로 적어 보세요', options: null };
+      return { kind: 'group', audio: Array.from(s).join(' '), answer: s, ask: 'quiz.askGroup', options: null };
     }
     if (Q.mode === 'abbr') {
       const a = pick(ABBR);
-      return { kind: 'abbr', audio: a, answer: a, ask: '햄 약어를 듣고 적어 보세요', options: distract(a, () => pick(ABBR)), ko: ABBR_KO[a] };
+      return { kind: 'abbr', audio: a, answer: a, ask: 'quiz.askAbbr', options: distract(a, () => pick(ABBR)), ko: ABBR_KO[a] };
     }
     const call = randCall();
     const tp = pick(QSO_TPL);
@@ -678,7 +679,7 @@
       kind: 'qso',
       audio: tp.text.replace(/\{call\}/g, call),
       answer: call,
-      ask: '실전 교신이 흘러갑니다. 상대 콜사인을 받아 적으세요',
+      ask: 'quiz.askQso',
       copy: tp.text.replace(/\{call\}/g, call),
       ko: tp.ko.replace(/\{call\}/g, call),
       options: distract(call, randCall)
@@ -709,7 +710,7 @@
     if (!it) return;
     Q.answered = false;
     $('#quizTag').textContent = 'Q' + Q.n;
-    $('#qAsk').textContent = it.ask;
+    $('#qAsk').textContent = T(it.ask);
     const body = $('#qBody');
     body.innerHTML = '';
     const fb = $('#qFb'); fb.hidden = true; fb.className = 'q-fb';
@@ -722,7 +723,7 @@
         b.type = 'button';
         b.className = 'q-choice';
         b.dataset.v = o;
-        const sub = it.kind === 'abbr' ? (ABBR_KO[o] ? ABBR_KO[o].split('—')[0].trim() : '') : '';
+        const sub = it.kind === 'abbr' ? (ABBR_KO[o] ? T(ABBR_KO[o]).split('—')[0].trim() : '') : '';
         b.innerHTML = `<span>${esc(o)}</span>${sub ? `<span class="qc-sub">${esc(sub)}</span>` : ''}`;
         b.addEventListener('click', () => submitAnswer(o, b));
         body.appendChild(b);
@@ -731,7 +732,7 @@
       body.classList.add('single');
       const wrap = document.createElement('div');
       wrap.className = 'q-input';
-      wrap.innerHTML = `<input id="qInp" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="${it.kind === 'qso' ? '콜사인 입력 (예: HL2ABC)' : (it.kind === 'group' ? '3글자 입력' : '부호 입력')}" aria-label="정답 입력"><button type="button" id="qSub">확인</button>`;
+      wrap.innerHTML = `<input id="qInp" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="${esc(T(it.kind === 'qso' ? 'quiz.phCall' : (it.kind === 'group' ? 'quiz.phGroup' : 'quiz.phCode')))}" aria-label="정답 입력"><button type="button" id="qSub">확인</button>`;
       body.appendChild(wrap);
       const inp = $('#qInp', wrap), btn = $('#qSub', wrap);
       const go = () => submitAnswer(inp.value, null);
@@ -747,7 +748,7 @@
   function submitAnswer(val, btn) {
     if (Q.answered) return;
     const it = Q.cur;
-    if (!normalize(val)) { toast('답을 입력해 주세요'); return; }
+    if (!normalize(val)) { toast(T('toast.needAnswer')); return; }
     Q.answered = true;
     const ok = normalize(val) === normalize(it.answer);
     Q.stats.total++;
@@ -766,20 +767,30 @@
     const subBtn = $('#qSub');
     if (subBtn) subBtn.disabled = true;
 
+    Q.last = { it, ok };
+    renderFb();
+    if (!ok) setTimeout(() => playOnce(it.audio), 260);
+  }
+
+  /* 정답 여부 풀피드백 (언어가 바뀌면 다시 그린다) */
+  function renderFb() {
+    const st = Q.last;
+    if (!st) return;
+    const it = st.it, ok = st.ok;
     const fb = $('#qFb');
     fb.hidden = false;
     fb.className = 'q-fb ' + (ok ? 'ok' : 'no');
     fb.innerHTML =
-      `<div class="q-fb-h">${ok ? '✓ 정답입니다' : '✗ 아쉽습니다'}${ok ? ' <span style="margin-left:auto;font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.1em">CONTACT!</span>' : ''}</div>` +
+      `<div class="q-fb-h">${ok ? T('quiz.ok') : T('quiz.no')}${ok ? ' <span style="margin-left:auto;font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.1em">CONTACT!</span>' : ''}</div>` +
       `<div class="q-fb-ans">${esc(it.answer)} <em>${esc(codeOf(it.answer))}</em></div>` +
       (it.copy ? `<div class="q-fb-copy">${esc(it.copy)}</div>` : '') +
-      (it.ko ? `<div class="q-fb-ko">${esc(it.ko)}</div>` : '');
+      (it.ko ? `<div class="q-fb-ko">${esc(T(it.ko, { call: it.answer }))}</div>` : '');
     $('#qNext').hidden = false;
-    if (!ok) setTimeout(() => playOnce(it.audio), 260);
   }
 
   function nextQuestion(autoplay) {
     Q.n += 1;
+    Q.last = null;
     Q.cur = makeItem();
     renderQuiz();
     if (autoplay !== false) { playOnce(Q.cur.audio); }
@@ -800,7 +811,7 @@
   $('#qChoice').addEventListener('change', e => {
     Q.choice = e.target.checked;
     state.choice = Q.choice; savePrefs();
-    $('#qOptsNote').textContent = Q.choice ? '끄면 직접 입력' : '직접 입력 중';
+    $('#qOptsNote').textContent = Q.choice ? T('quiz.offNote') : T('quiz.onNote');
     Q.cur = makeItem();
     renderQuiz();
     playOnce(Q.cur.audio);
@@ -814,7 +825,7 @@
   $('#scReset').addEventListener('click', () => {
     Q.stats = { ...QDEFAULT };
     saveStats(); renderStats();
-    toast('퀴즈 기록을 지웠습니다');
+    toast(T('toast.quizReset'));
   });
 
   /* ── ④ 부호표 ───────────────────────────────────── */
@@ -835,7 +846,7 @@
         el.type = 'button';
         el.className = 'mcell';
         el.dataset.k = k;
-        el.setAttribute('aria-label', k === ' ' ? 'space' : k + ' 부호 듣기');
+        el.setAttribute('aria-label', T('chart.cellAria', { k: k === ' ' ? 'space' : k }));
         el.innerHTML = `<b>${esc(k)}</b><em>${Array.from(code).map(s => `<i class="${s === '.' ? 'd' : 's'}"></i>`).join('')}</em>`;
         el.addEventListener('click', () => {
           ensureAudio();
@@ -885,7 +896,7 @@
     $('#fwVal').textContent = state.fw ? state.eff + ' WPM' : 'OFF';
     $('#qrnVal').textContent = state.qrn ? 'ON' : 'OFF';
     $('#fwSub').hidden = !state.fw;
-    $('#fwHint').innerHTML = `글자는 <b>${state.wpm}</b> WPM으로 또렷하게, 사이 간격만 늘려 <b>${state.eff}</b> WPM 체감으로 들려줍니다.`;
+    $('#fwHint').innerHTML = T('ctl.fwHint', { wpm: state.wpm, eff: state.eff });
     wpmEl.value = state.wpm; toneEl.value = state.tone; effEl.value = state.eff;
     effEl.max = String(state.wpm);
     paintRange(wpmEl); paintRange(toneEl); paintRange(effEl);
@@ -911,7 +922,7 @@
     state.fw = !state.fw;
     if (state.fw && state.eff >= state.wpm) state.eff = Math.max(5, state.wpm - 2);
     syncControlUI(); savePrefs();
-    if (state.fw) toast(`Farnsworth 간격 켜짐 — 글자 ${state.wpm} WPM · 간격 ${state.eff} WPM`);
+    if (state.fw) toast(T('toast.fwOn', { wpm: state.wpm, eff: state.eff }));
   });
 
   $('#qrnChip').addEventListener('click', () => {
@@ -919,7 +930,7 @@
     ensureAudio();
     setQrn(state.qrn);
     syncControlUI(); savePrefs();
-    if (state.qrn) toast('📻 QRN 밴드 잡음을 섞었습니다');
+    if (state.qrn) toast(T('toast.qrnOn'));
   });
 
   $('#audioBadge').addEventListener('click', () => {
@@ -927,9 +938,9 @@
     if (A.ctx && A.ctx.state === 'running') {
       badge(true);
       setTimeout(() => playSyms('.-.-.'), 60);
-      toast('소리 켜짐 · ' + state.tone + ' Hz');
+      toast(T('toast.audioOn', { tone: state.tone }));
     } else {
-      toast('소리를 켤 수 없습니다');
+      toast(T('toast.audioFail'));
     }
   });
 
@@ -954,7 +965,7 @@
   $('#playBtn').addEventListener('click', () => {
     if (P.playing) { stopPlayback(true); return; }
     const t = textEl.value.trim();
-    if (!t) { toast('보낼 문장을 적어 주세요'); textEl.focus(); return; }
+    if (!t) { toast(T('toast.needText')); textEl.focus(); return; }
     playText(t, $('#loopBtn').getAttribute('aria-pressed') === 'true');
   });
 
@@ -966,13 +977,13 @@
       const t = textEl.value.trim();
       if (t) playText(t, true);
     }
-    toast(on ? '🔁 반복 재생 켜짐' : '반복 재생 꺼짐');
+    toast(on ? T('toast.loopOn') : T('toast.loopOff'));
   });
 
   $('#copyBtn').addEventListener('click', () => {
     const t = textEl.value.trim();
     if (!t) return;
-    const done = () => toast('문장을 복사했습니다');
+    const done = () => toast(T('toast.copied'));
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(t).then(done).catch(() => fallbackCopy(t, done));
     } else fallbackCopy(t, done);
@@ -981,7 +992,7 @@
     const ta = document.createElement('textarea');
     ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
     document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); done(); } catch (e) { toast('복사가 막혀 있습니다'); }
+    try { document.execCommand('copy'); done(); } catch (e) { toast(T('toast.copyBlocked')); }
     ta.remove();
   }
 
@@ -1009,17 +1020,48 @@
   }
 
   /* ── 오프라인 ───────────────────────────────────── */
+  let SW_STATE = 'pending';
+  function swPaint() {
+    const el = $('#swNote');
+    if (el) el.textContent = T('sw.' + SW_STATE);
+  }
   function swSetup() {
     if (!('serviceWorker' in navigator)) {
-      $('#swNote').textContent = '이 브라우저는 오프라인 저장을 지원하지 않습니다';
+      SW_STATE = 'nosupport'; swPaint();
       return;
     }
     navigator.serviceWorker.register('sw.js').then(() => {
-      $('#swNote').textContent = '오프라인 저장됨 · 공유 → 홈 화면에 추가';
+      SW_STATE = 'ok'; swPaint();
     }).catch(() => {
-      $('#swNote').textContent = '오프라인 저장 준비 실패 (온라인 상태로는 동작)';
+      SW_STATE = 'fail'; swPaint();
     });
   }
+
+  /* ── 언어가 바뀌면 이 화면을 새 언어로 다시 그린다 ───── */
+  function relang() {
+    syncControlUI();
+    buildChart();
+    renderKey();
+    renderStats();
+    swPaint();
+    if (!P.playing) renderRibbon(Array.from(state.text.toUpperCase()));
+    $('#playLab').textContent = P.playing ? T('send.stop') : T('send.play');
+    if (Q.cur) {
+      $('#qAsk').textContent = T(Q.cur.ask);
+      $$('.q-choice').forEach(b => {
+        const sub = b.querySelector('.qc-sub');
+        if (!sub) return;
+        const src = ABBR_KO[b.dataset.v];
+        sub.textContent = src ? T(src).split('—')[0].trim() : '';
+      });
+      const inp = $('#qInp');
+      if (inp) {
+        inp.setAttribute('placeholder', T(Q.cur.kind === 'qso' ? 'quiz.phCall' : (Q.cur.kind === 'group' ? 'quiz.phGroup' : 'quiz.phCode')));
+      }
+      if (Q.answered) renderFb();
+    }
+  }
+  document.addEventListener('langchange', relang);
 
   /* ── 시작 ───────────────────────────────────────── */
   function init() {
@@ -1031,7 +1073,7 @@
     Q.choice = state.choice !== false;
     $$('#qModes button').forEach(b => b.classList.toggle('on', b.dataset.qm === Q.mode));
     $('#qChoice').checked = Q.choice;
-    $('#qOptsNote').textContent = Q.choice ? '끄면 직접 입력' : '직접 입력 중';
+    $('#qOptsNote').textContent = Q.choice ? T('quiz.offNote') : T('quiz.onNote');
 
     if (state.keyMode !== 'straight' && state.keyMode !== 'iambic') state.keyMode = 'straight';
     $$('#keyMode button').forEach(b => b.classList.toggle('on', b.dataset.km === state.keyMode));
@@ -1039,6 +1081,7 @@
     $('#keyIambic').hidden = state.keyMode !== 'iambic';
 
     syncControlUI();
+    $('#playLab').textContent = T('send.play');
     buildChart();
     renderKey();
     renderRibbon(Array.from(state.text.toUpperCase()));
@@ -1047,6 +1090,7 @@
     setQrn(state.qrn);
 
     requestAnimationFrame(drawScope);
+    swPaint();
     swSetup();
 
     // 첫 터치에 오디오 엔진 준비 (iOS Safari 정책)
