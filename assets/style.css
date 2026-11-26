@@ -1222,6 +1222,8 @@ a { color: inherit; text-decoration: none; }
 /* 스마트폰 화면 캡처는 잘리지 않게 — 흰 바탕에 그대로 담는다 */
 .gallery-photo.is-shot { background: #ffffff; }
 .gallery-photo.is-shot img { object-fit: contain; }
+/* 터미널 화면처럼 검은 배경 캡처는 흰 여백 대신 검은 바탕에 담아 이음새 없이 */
+.gallery-photo.is-shot.is-terminal { background: #000000; }
 
 .gallery-meta {
   display: flex;
