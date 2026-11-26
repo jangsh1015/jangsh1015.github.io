@@ -49,10 +49,10 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="assets/style.css?v=28">
+<link rel="stylesheet" href="assets/style.css?v=29">
 </head>
 <body>
-<a class="skip" href="#main">본문으로 건너뛰기</a>
+<a class="skip" href="#main" data-i18n="a11y.skip">본문으로 건너뛰기</a>
 
 <div class="sky" aria-hidden="true">
   <div class="aurora aurora-a"></div>
@@ -62,16 +62,32 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top">
+    <a class="brand" href="#top" aria-label="장석훈 · DS2YTO">
       <span class="brand-mark" aria-hidden="true">✳</span>
-      <span class="brand-text">장석훈<em>DS2YTO</em></span>
+      <span class="brand-text" data-i18n="brand">장석훈<em>DS2YTO</em></span>
     </a>
-    <nav class="nav-links" aria-label="주요 섹션">
-      <a href="#radio">무선</a>
-      <a href="#story">별빛교신</a>
-      <a href="#projects">프로젝트</a>
-      <a href="#gallery">갤러리</a>
-    </nav>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="주요 섹션" data-i18n-aria="nav.aria">
+        <a href="#radio" data-i18n="nav.radio">무선</a>
+        <a href="#story" data-i18n="nav.story">별빛교신</a>
+        <a href="#projects" data-i18n="nav.projects">프로젝트</a>
+        <a href="#gallery" data-i18n="nav.gallery">갤러리</a>
+      </nav>
+      <div class="lang" id="lang">
+        <button class="lang-btn" id="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="언어 선택" data-i18n-aria="lang.aria">
+          <span class="lang-globe" aria-hidden="true">🌐</span>
+          <span class="lang-code" id="lang-code">KO</span>
+          <span class="lang-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="lang-menu" id="lang-menu" role="listbox" aria-label="언어 선택" data-i18n-aria="lang.aria" hidden>
+          <li><button type="button" role="option" data-lang="ko" lang="ko" aria-selected="true"><span class="lang-flag" aria-hidden="true">🇰🇷</span>한국어</button></li>
+          <li><button type="button" role="option" data-lang="en" lang="en" aria-selected="false"><span class="lang-flag" aria-hidden="true">🇺🇸</span>English</button></li>
+          <li><button type="button" role="option" data-lang="ja" lang="ja" aria-selected="false"><span class="lang-flag" aria-hidden="true">🇯🇵</span>日本語</button></li>
+          <li><button type="button" role="option" data-lang="zh" lang="zh-Hans" aria-selected="false"><span class="lang-flag" aria-hidden="true">🇨🇳</span>中文</button></li>
+          <li><button type="button" role="option" data-lang="ru" lang="ru" aria-selected="false"><span class="lang-flag" aria-hidden="true">🇷🇺</span>Русский</button></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -92,30 +108,30 @@
           </span>
         </h1>
 
-        <p class="lead"><span class="lead-a">춘천에서 전파를 쏘고, 우주와 일상을 기록하며,</span> <span class="lead-b">필요한 도구를 직접 만들어 씁니다.</span></p>
+        <p class="lead"><span class="lead-a" data-i18n="hero.leadA">춘천에서 전파를 쏘고, 우주와 일상을 기록하며,</span> <span class="lead-b" data-i18n="hero.leadB">필요한 도구를 직접 만들어 씁니다.</span></p>
 
-        <nav class="hero-jump" aria-label="섹션 바로가기">
+        <nav class="hero-jump" aria-label="섹션 바로가기" data-i18n-aria="hero.jumpAria">
           <a class="jump" href="#radio">
             <span class="jump-ico" aria-hidden="true">📡</span>
-            <span>아마추어무선</span>
+            <span data-i18n="hero.jump1">아마추어무선</span>
           </a>
           <a class="jump" href="#story">
             <span class="jump-ico" aria-hidden="true">🌌</span>
-            <span>별빛교신</span>
+            <span data-i18n="hero.jump2">별빛교신</span>
           </a>
           <a class="jump" href="#projects">
             <span class="jump-ico" aria-hidden="true">📱</span>
-            <span>직접 만든 웹앱</span>
+            <span data-i18n="hero.jump3">직접 만든 웹앱</span>
           </a>
           <a class="jump" href="#song">
             <span class="jump-ico" aria-hidden="true">🎵</span>
-            <span>음악</span>
+            <span data-i18n="hero.jump4">음악</span>
           </a>
         </nav>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#projects">
-            직접 만든 웹앱 보기
+            <span data-i18n="hero.btnProjects">직접 만든 웹앱 보기</span>
             <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <a class="btn btn-ghost" href="https://www.qrz.com/db/DS2YTO">
@@ -140,13 +156,13 @@
           <span class="dot" aria-hidden="true"></span>
           QRZ · DS2YTO
         </div>
-        <span class="hero-tag tag-qrp">QRP · 5W 이하</span>
+        <span class="hero-tag tag-qrp" data-i18n="hero.tagQrp">QRP · 5W 이하</span>
         <span class="hero-tag tag-mode">FT8</span>
       </div>
     </div>
 
     <div class="wrap hero-foot">
-      <p class="hero-foot-text">별빛과 전파, 소소한 일상</p>
+      <p class="hero-foot-text" data-i18n="hero.foot">별빛과 전파, 소소한 일상</p>
       <span class="hero-foot-rule" aria-hidden="true"></span>
       <div class="scroll-hint" aria-hidden="true">
         <span>scroll</span>
@@ -159,8 +175,8 @@
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">01 — Amateur Radio</p>
-        <h2>아마추어무선 · <span class="mono">DS2YTO</span></h2>
-        <p class="sec-desc">
+        <h2 data-i18n="radio.h2">아마추어무선 · <span class="mono">DS2YTO</span></h2>
+        <p class="sec-desc" data-i18n="radio.desc">
           콜사인 <strong>DS2YTO</strong>로 전파 위의 세계와 교신합니다.
           가방에 들어가는 트랜시버 한 대와 안테나 하나, 5W 이하의 작은 출력(QRP)으로
           FT8 교신을 즐깁니다. 우주가 보내는 신호를 직접 듣는 일을 좋아합니다.
@@ -173,7 +189,7 @@
             <h3>Icom IC-705</h3>
             <span class="tag">HF / VHF / UHF</span>
           </div>
-          <p>가방에 들어가는 포터블 올모드. FT8로 조용한 밤의 밴드를 훑습니다.</p>
+          <p data-i18n="radio.g1">가방에 들어가는 포터블 올모드. FT8로 조용한 밤의 밴드를 훑습니다.</p>
         </article>
 
         <article class="glass card gear">
@@ -181,7 +197,7 @@
             <h3>Icom IC-2730A</h3>
             <span class="tag">50 W · Mobile</span>
           </div>
-          <p>차 안에서 쓰는 듀얼밴드 모빌. 이동 중에도 주파수를 놓치지 않습니다.</p>
+          <p data-i18n="radio.g2">차 안에서 쓰는 듀얼밴드 모빌. 이동 중에도 주파수를 놓치지 않습니다.</p>
         </article>
 
         <article class="glass card gear">
@@ -189,7 +205,7 @@
             <h3>Icom ID-51E</h3>
             <span class="tag">D-STAR</span>
           </div>
-          <p>손안에 쥐는 핸디. 디지털 음성과 데이터로 짧은 교신을 나눕니다.</p>
+          <p data-i18n="radio.g3">손안에 쥐는 핸디. 디지털 음성과 데이터로 짧은 교신을 나눕니다.</p>
         </article>
 
         <article class="glass card gear gear-wide">
@@ -198,12 +214,12 @@
             <span class="tag">Auto Antenna Tuner · HF~50 MHz</span>
           </div>
           <div class="gear-body">
-            <p>
+            <p data-i18n="radio.g4a">
               IC-705와 짝을 이루는 오토 안테나 튜너입니다. 무전기가 전파를 쏠 때
               안테나와 무전기 사이의 전기적 박자(임피던스)를 자동으로 맞춰 주는 조율 장치로,
               아파트 베란다의 짧은 안테나나 야외의 와이어 한 줄처럼 환경이 까다로울 때도 제 몫을 합니다.
             </p>
-            <p>
+            <p data-i18n="radio.g4b">
               버튼 한 번이면 내부의 수많은 코일과 콘덴서 조합 중에서 최적의 균형점을 순식간에 찾아냅니다.
               박자가 맞은 전파는 되돌아오지 않고 안테나 끝에서 멀리 뻗어 나갑니다.
             </p>
@@ -214,15 +230,15 @@
       <article class="glass qrp-note">
         <div class="qrp-head">
           <span class="qrp-label">📡 QRP NOTE</span>
-          <h3>왜 5W 이하 QRP와 FT8을 즐기는가</h3>
+          <h3 data-i18n="radio.qrpTitle">왜 5W 이하 QRP와 FT8을 즐기는가</h3>
         </div>
         <div class="qrp-body">
-          <p>
+          <p data-i18n="radio.qrp1">
             전파를 띄우는 데 큰 출력은 필요하지 않다. 5W 이하의 작은 출력(QRP)으로도
             신호는 하늘 끝까지 닿고, 그 신호가 어딘가의 수신기 안테나에 겨우 닿았을 때의
             기쁨은 출력의 크기와 상관이 없다.
           </p>
-          <p>
+          <p data-i18n="radio.qrp2">
             FT8은 그렇게 작은 신호를 주고받기에 알맞은 모드다. 밤이 깊어 조용해진 밴드를
             훑다 보면 몇천 킬로미터 밖의 콜사인이 화면에 한 줄로 올라온다.
             IC-705 하나, 안테나 하나로 그 한 줄을 기다리는 시간이 좋다.
@@ -234,8 +250,8 @@
       <article class="glass reach-card">
         <div class="reach-head">
           <span class="reach-label">🌍 FT8 REACH</span>
-          <h3>5W 이하로, 대륙을 건넌 기록</h3>
-          <p class="reach-desc">
+          <h3 data-i18n="radio.reachTitle">5W 이하로, 대륙을 건넌 기록</h3>
+          <p class="reach-desc" data-i18n="radio.reachDesc">
             1층 베란다의 휩 안테나 하나로 40m 밴드(7.074 MHz) FT8을 쏘았을 때,
             PSK Reporter에 남은 수신 보고입니다. 숫자는 그쪽 수신기의 신호 대 잡음비(SNR)입니다.
           </p>
@@ -243,31 +259,31 @@
 
         <ul class="reach-grid">
           <li>
-            <span class="reach-place">브라질 · 리우데자네이루</span>
+            <span class="reach-place" data-i18n="radio.p1place">브라질 · 리우데자네이루</span>
             <span class="reach-value">−13<span class="reach-unit">dB</span></span>
-            <span class="reach-sub">약 19,000 km</span>
+            <span class="reach-sub" data-i18n="radio.p1sub">약 19,000 km</span>
           </li>
           <li>
-            <span class="reach-place">미국</span>
+            <span class="reach-place" data-i18n="radio.p2place">미국</span>
             <span class="reach-value">−12<span class="reach-unit">dB</span></span>
-            <span class="reach-sub">태평양 건너</span>
+            <span class="reach-sub" data-i18n="radio.p2sub">태평양 건너</span>
           </li>
           <li>
-            <span class="reach-place">아르헨티나 · 부에노스아이레스</span>
-            <span class="reach-value reach-value-word">도달</span>
-            <span class="reach-sub">건물에 둘러싸인 1층 베란다에서도</span>
+            <span class="reach-place" data-i18n="radio.p3place">아르헨티나 · 부에노스아이레스</span>
+            <span class="reach-value reach-value-word" data-i18n="radio.p3val">도달</span>
+            <span class="reach-sub" data-i18n="radio.p3sub">건물에 둘러싸인 1층 베란다에서도</span>
           </li>
         </ul>
 
-        <p class="reach-foot">
+        <p class="reach-foot" data-i18n="radio.reachFoot">
           Icom IC-705 · 5W 이하 QRP · 아파트 1층 베란다 휩 안테나 · PSK Reporter 수신 보고
         </p>
       </article>
 
       <div class="radio-foot">
-        <p class="radio-note">로그북과 프로필은 QRZ.com에서 관리합니다.</p>
+        <p class="radio-note" data-i18n="radio.note">로그북과 프로필은 QRZ.com에서 관리합니다.</p>
         <a class="btn btn-ghost btn-sm" href="https://www.qrz.com/db/DS2YTO">
-          QRZ.com에서 DS2YTO 보기
+          <span data-i18n="radio.btn">QRZ.com에서 DS2YTO 보기</span>
           <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -278,28 +294,28 @@
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">02 — Writing</p>
-        <h2>별빛교신 · 우주와 인생 이야기</h2>
+        <h2 data-i18n="story.h2">별빛교신 · 우주와 인생 이야기</h2>
       </header>
 
       <div class="glass story-card">
         <div class="story-quote" aria-hidden="true">“</div>
         <div class="story-body">
-          <p class="story-lead">
+          <p class="story-lead" data-i18n="story.lead">
             매일 새벽, 별이 지는 시간에 짧은 글을 남깁니다.
           </p>
-          <p>
+          <p data-i18n="story.p">
             엔트로피가 늘어나는 방향으로 흘러가는 우주, 그 안에서 잠깐 빛나는 사람의 하루.
             물리와 천문학, 그리고 인생의 사색을 카카오스토리에 <strong>「별빛교신」</strong>으로 연재하고 있습니다.
           </p>
           <a class="story-link" href="https://story.kakao.com/_a7fda9">
-            카카오스토리에서 읽기
+            <span data-i18n="story.link">카카오스토리에서 읽기</span>
             <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
       </div>
 
       <div class="letters" id="letters-list">
-        <p class="letters-lead">
+        <p class="letters-lead" data-i18n="letters.lead">
           매일 새벽 올린 연재 글을 최근 것부터 옮겨 두었습니다. 가끔은 별빛 대신 배달 음식을 달랑 들고 다녀온 번외 글도 함께 올립니다.
           제목을 누르면 전문이 펼쳐집니다.
         </p>
@@ -308,145 +324,145 @@
           <summary>
             <span class="letter-no">번외</span>
             <span class="letter-head">
-              <span class="letter-title">배달 알바 하다 생긴 일 1탄 — 엘리베이터 공포 영화와 파격 패션쇼</span>
+              <span class="letter-title" data-i18n="letter.x.title">배달 알바 하다 생긴 일 1탄 — 엘리베이터 공포 영화와 파격 패션쇼</span>
               <span class="letter-date">2026.09.07</span>
             </span>
             <span class="letter-toggle" aria-hidden="true"></span>
           </summary>
           <div class="letter-body">
-            <p>배달 음식을 손에 달랑 들고 다니다 보면, 남의 집 문 앞에서 웬 영화 한 편을 찍고 나오는 기분이 들 때가 있다. 그중에서도 아직도 잊히지 않는 두 장면을 꺼내 본다.</p>
-            <p><strong>1막 · 엘리베이터에서 만난 공포 영화</strong></p>
-            <p>엘리베이터가 1층에 도착하고, '딩동' 소리와 함께 문이 스르륵 열렸다. 그 순간 내 시야를 가득 채운 건 공포 영화의 한 장면이었다. 온 얼굴에 화장을 붓으로 퍼부은 듯 떡칠을 한 젊은 여자가, 눈을 부릅뜨고 서 있는 게 아닌가.</p>
-            <p>하필 그 자리에 머리에 헬멧까지 폭 눌러쓴 사내가 들어섰으니, 생각해 보면 괴기스러운 쪽은 나였을지도 모른다. 그래도 그 순간만큼은 심장이 입 밖으로 튀어나올 뻔했다.</p>
-            <p>살아남으려는 몸부림은 본능이라서일까. 헬멧 밑에서 내 입이 나도 모르게 먼저 튀어나왔다. 최후의 방어 기제랄까.</p>
-            <p>"아이씨, 놀라라! 총 꺼낼 뻔했네!"</p>
-            <p>목숨을 건 하드보일드 액션 드립이었다. 보통 사람 같으면 당연히 주저앉거나 비명을 질렀을 텐데, 이 여자, 도망치기는커녕 눈이 휘어지도록 웃으면서 지나가는 게 아닌가.</p>
-            <p>"키키키키—!"</p>
-            <p>아니, 대한민국 한복판에서 총을 꺼낸다는데 안 무섭냐고. 내 개그가 그렇게까지 진지함 1도 없는 삼류 액션 영화처럼 들렸던 모양이다. 「범죄도시」도 저리 가라 할 엘리베이터 총기 소동은 그렇게 막을 내렸다.</p>
-            <p>그런데 진짜 레전드는 그다음에 기다리고 있었다.</p>
-            <p><strong>2막 · 직접 수령의 함정</strong></p>
-            <p>다음 배달 건의 요청사항에는 분명 '직접 수령'이라고 적혀 있었다. 귀찮지만 고객이 원한다면 어쩔 수 있나. 문 앞에 툭 내려놓고 인증샷 한 장 찍고 유유히 사라지면 그만일 일을, 세상 일은 참 뜻대로 안 된다. 게다가 초인종도 없지 않은가. 결국 맨손가락 관절을 닳아 가며 "똑똑", 문을 두드렸다.</p>
-            <p>한참을 기다려도 조용하더니, 드디어 '달칵' 소리와 함께 문이 아주 쪼끔 빼꼼 열렸다.</p>
-            <p>그리고 그 틈으로 내 시야를 강타한 비주얼. 하의는 아슬아슬… 이 아니라, 집 안이라 완전히 무장 해제된 파격적인 홈웨어 패션(?). 상의도 그 기세를 이어받아 아주 자유로웠다. 요컨대 너무나 자연스러운 차림으로 문을 삐끔 열고 음식을 받아 가시는 고객님이었다.</p>
-            <p>순간 내 눈이 잠깐 우주 정거장을 다녀온 줄 알았다. 0.5초쯤 허공을 응시했고, 그다음에는 뇌가 일시정지되면서 진짜 기절하는 줄 알았다고. 나는 음식을 전하러 온 사람이지, 뜻밖의 현대미술 전시장에 초대받은 사람이 아니지 않은가.</p>
-            <p>배달 받을 땐 제발 최소한 겉옷 하나는 걸쳐 줍시다! 진심으로 부탁드린다. 문 열기 전 3초만 생각해 주시면, 배달부의 심장도 조각조각 나지 않고 멀쩡할 수 있다.</p>
-            <p>오늘도 치열한 배달의 세계에서 무사히 살아남았다.</p>
-            <p class="letter-tags">#배달알바 #일상유머 #소소한하루 #번외편</p>
+            <p data-i18n="letter.x.p1">배달 음식을 손에 달랑 들고 다니다 보면, 남의 집 문 앞에서 웬 영화 한 편을 찍고 나오는 기분이 들 때가 있다. 그중에서도 아직도 잊히지 않는 두 장면을 꺼내 본다.</p>
+            <p data-i18n="letter.x.p2"><strong>1막 · 엘리베이터에서 만난 공포 영화</strong></p>
+            <p data-i18n="letter.x.p3">엘리베이터가 1층에 도착하고, '딩동' 소리와 함께 문이 스르륵 열렸다. 그 순간 내 시야를 가득 채운 건 공포 영화의 한 장면이었다. 온 얼굴에 화장을 붓으로 퍼부은 듯 떡칠을 한 젊은 여자가, 눈을 부릅뜨고 서 있는 게 아닌가.</p>
+            <p data-i18n="letter.x.p4">하필 그 자리에 머리에 헬멧까지 폭 눌러쓴 사내가 들어섰으니, 생각해 보면 괴기스러운 쪽은 나였을지도 모른다. 그래도 그 순간만큼은 심장이 입 밖으로 튀어나올 뻔했다.</p>
+            <p data-i18n="letter.x.p5">살아남으려는 몸부림은 본능이라서일까. 헬멧 밑에서 내 입이 나도 모르게 먼저 튀어나왔다. 최후의 방어 기제랄까.</p>
+            <p data-i18n="letter.x.p6">"아이씨, 놀라라! 총 꺼낼 뻔했네!"</p>
+            <p data-i18n="letter.x.p7">목숨을 건 하드보일드 액션 드립이었다. 보통 사람 같으면 당연히 주저앉거나 비명을 질렀을 텐데, 이 여자, 도망치기는커녕 눈이 휘어지도록 웃으면서 지나가는 게 아닌가.</p>
+            <p data-i18n="letter.x.p8">"키키키키—!"</p>
+            <p data-i18n="letter.x.p9">아니, 대한민국 한복판에서 총을 꺼낸다는데 안 무섭냐고. 내 개그가 그렇게까지 진지함 1도 없는 삼류 액션 영화처럼 들렸던 모양이다. 「범죄도시」도 저리 가라 할 엘리베이터 총기 소동은 그렇게 막을 내렸다.</p>
+            <p data-i18n="letter.x.p10">그런데 진짜 레전드는 그다음에 기다리고 있었다.</p>
+            <p data-i18n="letter.x.p11"><strong>2막 · 직접 수령의 함정</strong></p>
+            <p data-i18n="letter.x.p12">다음 배달 건의 요청사항에는 분명 '직접 수령'이라고 적혀 있었다. 귀찮지만 고객이 원한다면 어쩔 수 있나. 문 앞에 툭 내려놓고 인증샷 한 장 찍고 유유히 사라지면 그만일 일을, 세상 일은 참 뜻대로 안 된다. 게다가 초인종도 없지 않은가. 결국 맨손가락 관절을 닳아 가며 "똑똑", 문을 두드렸다.</p>
+            <p data-i18n="letter.x.p13">한참을 기다려도 조용하더니, 드디어 '달칵' 소리와 함께 문이 아주 쪼끔 빼꼼 열렸다.</p>
+            <p data-i18n="letter.x.p14">그리고 그 틈으로 내 시야를 강타한 비주얼. 하의는 아슬아슬… 이 아니라, 집 안이라 완전히 무장 해제된 파격적인 홈웨어 패션(?). 상의도 그 기세를 이어받아 아주 자유로웠다. 요컨대 너무나 자연스러운 차림으로 문을 삐끔 열고 음식을 받아 가시는 고객님이었다.</p>
+            <p data-i18n="letter.x.p15">순간 내 눈이 잠깐 우주 정거장을 다녀온 줄 알았다. 0.5초쯤 허공을 응시했고, 그다음에는 뇌가 일시정지되면서 진짜 기절하는 줄 알았다고. 나는 음식을 전하러 온 사람이지, 뜻밖의 현대미술 전시장에 초대받은 사람이 아니지 않은가.</p>
+            <p data-i18n="letter.x.p16">배달 받을 땐 제발 최소한 겉옷 하나는 걸쳐 줍시다! 진심으로 부탁드린다. 문 열기 전 3초만 생각해 주시면, 배달부의 심장도 조각조각 나지 않고 멀쩡할 수 있다.</p>
+            <p data-i18n="letter.x.p17">오늘도 치열한 배달의 세계에서 무사히 살아남았다.</p>
+            <p class="letter-tags" data-i18n="letter.x.tags">#배달알바 #일상유머 #소소한하루 #번외편</p>
           </div>
         </details>
         <details class="glass letter">
           <summary>
             <span class="letter-no">#6</span>
             <span class="letter-head">
-              <span class="letter-title">지워지지 않는 태초의 잡음, 우주배경복사</span>
+              <span class="letter-title" data-i18n="letter.6.title">지워지지 않는 태초의 잡음, 우주배경복사</span>
               <span class="letter-date">2026.11.26</span>
             </span>
             <span class="letter-toggle" aria-hidden="true"></span>
           </summary>
           <div class="letter-body">
-            <p>1965년, 두 명의 연구자가 거대한 안테나를 하늘로 돌렸습니다. 어느 방향을 향해 귀를 기울여도 사라지지 않는 미세한 잡음이 잡혔습니다.</p>
-            <p>처음에는 기계 고장이나 안테나에 깃든 비둘기 탓인 줄 알았습니다. 구석구석 닦아 내고 다시 측정해도, 그 잔잔한 소리는 여전히 그 자리에 있었습니다.</p>
-            <p>알고 보니 그것은 우주가 태어난 지 약 38만 년 만에 처음 터져 나온 빛이 138억 년의 세월을 건너 식으며 남은 메아리, 우주배경복사였습니다.</p>
-            <p>아무것도 없이 텅 비어 보이는 밤하늘도 사실은 비어 있지 않습니다. 태초의 온기가 지금 이 순간에도 영하 270도 남짓의 옅은 숨결로 우주 전체를 채우고 있습니다.</p>
-            <p>사람의 진심도 그와 닮았는지도 모릅니다. 때로는 겉치레뿐인 말들에 지쳐 세상이 온통 차갑고 공허하게만 느껴질 때가 있습니다.</p>
-            <p>하지만 아무 대가 없이 누군가를 위해 내어준 작은 온기와 묵묵히 걸어온 시간은 당장 큰 메아리로 돌아오지 않을 뿐, 결코 허공에 지워지지 않습니다.</p>
-            <p>우리가 서 있는 이 평범한 하루의 배경에도, 언젠가 누군가가 남긴 다정한 온기가 조용히 흐르고 있을 것입니다.</p>
-            <p class="letter-tags">#우주 #천문학 #물리학 #우주배경복사 #별빛교신 #인생철학</p>
-            <a class="letter-link" href="https://story.kakao.com/_a7fda9/6TI7puO9ZQ9">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
+            <p data-i18n="letter.6.p1">1965년, 두 명의 연구자가 거대한 안테나를 하늘로 돌렸습니다. 어느 방향을 향해 귀를 기울여도 사라지지 않는 미세한 잡음이 잡혔습니다.</p>
+            <p data-i18n="letter.6.p2">처음에는 기계 고장이나 안테나에 깃든 비둘기 탓인 줄 알았습니다. 구석구석 닦아 내고 다시 측정해도, 그 잔잔한 소리는 여전히 그 자리에 있었습니다.</p>
+            <p data-i18n="letter.6.p3">알고 보니 그것은 우주가 태어난 지 약 38만 년 만에 처음 터져 나온 빛이 138억 년의 세월을 건너 식으며 남은 메아리, 우주배경복사였습니다.</p>
+            <p data-i18n="letter.6.p4">아무것도 없이 텅 비어 보이는 밤하늘도 사실은 비어 있지 않습니다. 태초의 온기가 지금 이 순간에도 영하 270도 남짓의 옅은 숨결로 우주 전체를 채우고 있습니다.</p>
+            <p data-i18n="letter.6.p5">사람의 진심도 그와 닮았는지도 모릅니다. 때로는 겉치레뿐인 말들에 지쳐 세상이 온통 차갑고 공허하게만 느껴질 때가 있습니다.</p>
+            <p data-i18n="letter.6.p6">하지만 아무 대가 없이 누군가를 위해 내어준 작은 온기와 묵묵히 걸어온 시간은 당장 큰 메아리로 돌아오지 않을 뿐, 결코 허공에 지워지지 않습니다.</p>
+            <p data-i18n="letter.6.p7">우리가 서 있는 이 평범한 하루의 배경에도, 언젠가 누군가가 남긴 다정한 온기가 조용히 흐르고 있을 것입니다.</p>
+            <p class="letter-tags" data-i18n="letter.6.tags">#우주 #천문학 #물리학 #우주배경복사 #별빛교신 #인생철학</p>
+            <a class="letter-link" data-i18n="letter.6.link" href="https://story.kakao.com/_a7fda9/6TI7puO9ZQ9">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
           </div>
         </details>
         <details class="glass letter">
           <summary>
             <span class="letter-no">#5</span>
             <span class="letter-head">
-              <span class="letter-title">아무 일도 없어 보이는 밤에도 우주는 떨리고 있다</span>
+              <span class="letter-title" data-i18n="letter.5.title">아무 일도 없어 보이는 밤에도 우주는 떨리고 있다</span>
               <span class="letter-date">2026.11.25</span>
             </span>
             <span class="letter-toggle" aria-hidden="true"></span>
           </summary>
           <div class="letter-body">
-            <p>13억 광년 떨어진 곳에서 두 블랙홀이 하나로 합쳐졌다. 그 거대한 충돌이 남긴 흔적은 빛도, 소리도 아닌 시공간 자체의 아주 미세한 출렁임, 중력파였다.</p>
-            <p>그 파동이 지구에 닿았을 때, 거대한 레이저 간섭계가 겨우 읽어낸 흔들림은 양성자 하나 크기보다도 훨씬 작았다. 아무 일도 일어나지 않은 듯 고요한 밤하늘 뒤에서, 공간은 그렇게 보이지 않는 물결을 품고 지나갔다.</p>
-            <p>사람의 마음도 크게 다르지 않은 것 같다. 요란한 말이나 눈에 띄는 행동이 아니어도, 묵묵히 제자리를 지키는 누군가의 진심은 잔잔한 파동이 되어 어딘가로 번져 나간다.</p>
-            <p>당장 눈앞에 아무 변화가 보이지 않는다고 해서 그 마음이 사라지는 것은 아니다. 우주가 그토록 작은 떨림을 13억 년이나 품고 건너와 기어이 전하듯, 조용한 온기 역시 언젠가 누군가의 시간에 닿는다.</p>
-            <p>오늘도 보이지 않는 파동 하나쯤, 조용히 띄워 보낸다.</p>
-            <p class="letter-tags">#우주 #물리학 #중력파 #별빛교신 #인생철학</p>
-            <a class="letter-link" href="https://story.kakao.com/_a7fda9/IA8Sv1Umzra">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
+            <p data-i18n="letter.5.p1">13억 광년 떨어진 곳에서 두 블랙홀이 하나로 합쳐졌다. 그 거대한 충돌이 남긴 흔적은 빛도, 소리도 아닌 시공간 자체의 아주 미세한 출렁임, 중력파였다.</p>
+            <p data-i18n="letter.5.p2">그 파동이 지구에 닿았을 때, 거대한 레이저 간섭계가 겨우 읽어낸 흔들림은 양성자 하나 크기보다도 훨씬 작았다. 아무 일도 일어나지 않은 듯 고요한 밤하늘 뒤에서, 공간은 그렇게 보이지 않는 물결을 품고 지나갔다.</p>
+            <p data-i18n="letter.5.p3">사람의 마음도 크게 다르지 않은 것 같다. 요란한 말이나 눈에 띄는 행동이 아니어도, 묵묵히 제자리를 지키는 누군가의 진심은 잔잔한 파동이 되어 어딘가로 번져 나간다.</p>
+            <p data-i18n="letter.5.p4">당장 눈앞에 아무 변화가 보이지 않는다고 해서 그 마음이 사라지는 것은 아니다. 우주가 그토록 작은 떨림을 13억 년이나 품고 건너와 기어이 전하듯, 조용한 온기 역시 언젠가 누군가의 시간에 닿는다.</p>
+            <p data-i18n="letter.5.p5">오늘도 보이지 않는 파동 하나쯤, 조용히 띄워 보낸다.</p>
+            <p class="letter-tags" data-i18n="letter.5.tags">#우주 #물리학 #중력파 #별빛교신 #인생철학</p>
+            <a class="letter-link" data-i18n="letter.5.link" href="https://story.kakao.com/_a7fda9/IA8Sv1Umzra">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
           </div>
         </details>
         <details class="glass letter">
           <summary>
             <span class="letter-no">#4</span>
             <span class="letter-head">
-              <span class="letter-title">별빛은 언제나 과거에서 온다</span>
+              <span class="letter-title" data-i18n="letter.4.title">별빛은 언제나 과거에서 온다</span>
               <span class="letter-date">2026.11.24</span>
             </span>
             <span class="letter-toggle" aria-hidden="true"></span>
           </summary>
           <div class="letter-body">
-            <p>밤하늘의 별을 올려다보면 우리는 지금의 우주를 보는 것 같지만, 사실은 저마다 다른 옛날을 동시에 바라보고 있습니다.</p>
-            <p>달빛은 1.3초 전의 모습이고, 태양빛은 8분 20초 전의 빛입니다. 밤하늘에 가장 밝게 빛나는 시리우스의 빛은 8년 반을 달려와 오늘 우리 눈에 닿았습니다.</p>
-            <p>우주에는 어떤 정보도 빛보다 빠르게 건널 수 없다는 정직한 규칙이 있습니다. 멀리 있는 빛일수록 우리에게 닿기까지 더 오랜 시간을 건너야 합니다.</p>
-            <p>사람 사이의 마음도 가끔 이와 닮아 있습니다. 어떤 진심은 건넨 그 순간 바로 닿지 못하고, 계절이 몇 번이나 바뀐 뒤에야 뒤늦게 상대의 마음에 도착하기도 합니다.</p>
-            <p>오늘 당장 알아주지 않는다고 해서 내 마음이 허공에 흩어진 것은 아닙니다. 보이지 않는 어둠 속을 조용히 건너고 있는 중일 뿐입니다.</p>
-            <p>지금 내 곁을 스쳐 가는 누군가의 온기도, 사실은 오래전 그 사람이 쏘아 올린 빛일지 모릅니다.</p>
-            <p class="letter-tags">#우주 #천문학 #빛의속도 #별빛교신 #인생철학</p>
-            <a class="letter-link" href="https://story.kakao.com/_a7fda9/4L90c7bxXQ9">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
+            <p data-i18n="letter.4.p1">밤하늘의 별을 올려다보면 우리는 지금의 우주를 보는 것 같지만, 사실은 저마다 다른 옛날을 동시에 바라보고 있습니다.</p>
+            <p data-i18n="letter.4.p2">달빛은 1.3초 전의 모습이고, 태양빛은 8분 20초 전의 빛입니다. 밤하늘에 가장 밝게 빛나는 시리우스의 빛은 8년 반을 달려와 오늘 우리 눈에 닿았습니다.</p>
+            <p data-i18n="letter.4.p3">우주에는 어떤 정보도 빛보다 빠르게 건널 수 없다는 정직한 규칙이 있습니다. 멀리 있는 빛일수록 우리에게 닿기까지 더 오랜 시간을 건너야 합니다.</p>
+            <p data-i18n="letter.4.p4">사람 사이의 마음도 가끔 이와 닮아 있습니다. 어떤 진심은 건넨 그 순간 바로 닿지 못하고, 계절이 몇 번이나 바뀐 뒤에야 뒤늦게 상대의 마음에 도착하기도 합니다.</p>
+            <p data-i18n="letter.4.p5">오늘 당장 알아주지 않는다고 해서 내 마음이 허공에 흩어진 것은 아닙니다. 보이지 않는 어둠 속을 조용히 건너고 있는 중일 뿐입니다.</p>
+            <p data-i18n="letter.4.p6">지금 내 곁을 스쳐 가는 누군가의 온기도, 사실은 오래전 그 사람이 쏘아 올린 빛일지 모릅니다.</p>
+            <p class="letter-tags" data-i18n="letter.4.tags">#우주 #천문학 #빛의속도 #별빛교신 #인생철학</p>
+            <a class="letter-link" data-i18n="letter.4.link" href="https://story.kakao.com/_a7fda9/4L90c7bxXQ9">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
           </div>
         </details>
         <details class="glass letter">
           <summary>
             <span class="letter-no">#3</span>
             <span class="letter-head">
-              <span class="letter-title">창백한 푸른 점, 그 작은 신호 하나</span>
+              <span class="letter-title" data-i18n="letter.3.title">창백한 푸른 점, 그 작은 신호 하나</span>
               <span class="letter-date">2026.11.23</span>
             </span>
             <span class="letter-toggle" aria-hidden="true"></span>
           </summary>
           <div class="letter-body">
-            <p>1990년, 태양계 끝자락을 향해 날아가던 보이저 1호가 뒤를 돌아보며 사진 한 장을 찍었습니다. 거대한 우주의 어둠 속에 햇빛 한 줄기에 걸린 먼지 한 톨. 칼 세이건이 '창백한 푸른 점'이라 불렀던 우리가 사는 지구입니다.</p>
-            <p>지금도 보이저 1호는 지구에서 약 240억 km 떨어진 성간 우주를 홀로 날고 있습니다. 그 먼 곳에서 전구 한 개도 안 되는 약한 출력으로 쏘아 보내는 전파가 지구까지 닿는 데만 스물두 시간이 넘게 걸립니다.</p>
-            <p>가끔은 우리 삶도 그와 닮아 보입니다. 끝없이 넓은 세상 속에서 내가 하는 작은 일과 오늘 하루의 고단함이 먼지처럼 보잘것없게 느껴질 때가 있습니다.</p>
-            <p>하지만 아무리 희미한 신호라도 정직하게 우주를 건너오듯, 묵묵히 제 자리를 지키며 살아가는 하루하루도 결코 헛되이 흩어지지 않습니다. 그 작은 점 위에 오늘도 누군가의 온기가 남아 있으니까요.</p>
-            <p class="letter-tags">#우주 #보이저1호 #창백한푸른점 #물리학 #별빛교신 #인생철학</p>
-            <a class="letter-link" href="https://story.kakao.com/_a7fda9/EHIi5TnfxRA">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
+            <p data-i18n="letter.3.p1">1990년, 태양계 끝자락을 향해 날아가던 보이저 1호가 뒤를 돌아보며 사진 한 장을 찍었습니다. 거대한 우주의 어둠 속에 햇빛 한 줄기에 걸린 먼지 한 톨. 칼 세이건이 '창백한 푸른 점'이라 불렀던 우리가 사는 지구입니다.</p>
+            <p data-i18n="letter.3.p2">지금도 보이저 1호는 지구에서 약 240억 km 떨어진 성간 우주를 홀로 날고 있습니다. 그 먼 곳에서 전구 한 개도 안 되는 약한 출력으로 쏘아 보내는 전파가 지구까지 닿는 데만 스물두 시간이 넘게 걸립니다.</p>
+            <p data-i18n="letter.3.p3">가끔은 우리 삶도 그와 닮아 보입니다. 끝없이 넓은 세상 속에서 내가 하는 작은 일과 오늘 하루의 고단함이 먼지처럼 보잘것없게 느껴질 때가 있습니다.</p>
+            <p data-i18n="letter.3.p4">하지만 아무리 희미한 신호라도 정직하게 우주를 건너오듯, 묵묵히 제 자리를 지키며 살아가는 하루하루도 결코 헛되이 흩어지지 않습니다. 그 작은 점 위에 오늘도 누군가의 온기가 남아 있으니까요.</p>
+            <p class="letter-tags" data-i18n="letter.3.tags">#우주 #보이저1호 #창백한푸른점 #물리학 #별빛교신 #인생철학</p>
+            <a class="letter-link" data-i18n="letter.3.link" href="https://story.kakao.com/_a7fda9/EHIi5TnfxRA">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
           </div>
         </details>
         <details class="glass letter">
           <summary>
             <span class="letter-no">#2</span>
             <span class="letter-head">
-              <span class="letter-title">전리층 너머의 교신, 그리고 조용한 주파수</span>
+              <span class="letter-title" data-i18n="letter.2.title">전리층 너머의 교신, 그리고 조용한 주파수</span>
               <span class="letter-date">2026.11.22</span>
             </span>
             <span class="letter-toggle" aria-hidden="true"></span>
           </summary>
           <div class="letter-body">
-            <p>밤이 깊어지면 지상 수백 킬로미터 위 전리층의 높이가 달라집니다. 덕분에 5와트 남짓한 아주 작은 출력의 전파도, 눈앞의 산을 넘어 수천 킬로미터 떨어진 낯선 이의 수신기까지 닿습니다.</p>
-            <p>요란한 출력이나 거창한 안테나가 있어야만 멀리 가는 것은 아닙니다. 전파는 허공에서 조금의 거짓도 없이 정직하게 반사되고, 그저 주파수가 맞는 곳에서 조용히 문을 두드릴 뿐입니다.</p>
-            <p>사람 사이도 참 닮아 있습니다. 겉으로 보이는 형식이나 큰 목소리보다, 꾸밈없는 진심이 실린 짧은 한마디가 누군가의 긴 밤을 건너게 합니다. 때로는 마음이 통할 줄 알았던 자리에서 사람에게 상처를 입어, 잠시 모든 전원을 내려놓고 싶어질 때도 있습니다.</p>
-            <p>하지만 전파가 물리 법칙을 속이지 않듯, 우리가 내어보내는 선한 온기도 결국 공중에서 사라지지 않습니다. 오늘 밤도 나만의 조용한 주파수로 작은 안부를 띄워 봅니다. 어딘가에서 같은 파장을 기다리는 누군가에게 닿기를 바라며.</p>
-            <p class="letter-tags">#우주 #물리학 #전파 #아마추어무선 #별빛교신 #인생철학</p>
-            <a class="letter-link" href="https://story.kakao.com/_a7fda9/fSwQ6Z5SwRA">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
+            <p data-i18n="letter.2.p1">밤이 깊어지면 지상 수백 킬로미터 위 전리층의 높이가 달라집니다. 덕분에 5와트 남짓한 아주 작은 출력의 전파도, 눈앞의 산을 넘어 수천 킬로미터 떨어진 낯선 이의 수신기까지 닿습니다.</p>
+            <p data-i18n="letter.2.p2">요란한 출력이나 거창한 안테나가 있어야만 멀리 가는 것은 아닙니다. 전파는 허공에서 조금의 거짓도 없이 정직하게 반사되고, 그저 주파수가 맞는 곳에서 조용히 문을 두드릴 뿐입니다.</p>
+            <p data-i18n="letter.2.p3">사람 사이도 참 닮아 있습니다. 겉으로 보이는 형식이나 큰 목소리보다, 꾸밈없는 진심이 실린 짧은 한마디가 누군가의 긴 밤을 건너게 합니다. 때로는 마음이 통할 줄 알았던 자리에서 사람에게 상처를 입어, 잠시 모든 전원을 내려놓고 싶어질 때도 있습니다.</p>
+            <p data-i18n="letter.2.p4">하지만 전파가 물리 법칙을 속이지 않듯, 우리가 내어보내는 선한 온기도 결국 공중에서 사라지지 않습니다. 오늘 밤도 나만의 조용한 주파수로 작은 안부를 띄워 봅니다. 어딘가에서 같은 파장을 기다리는 누군가에게 닿기를 바라며.</p>
+            <p class="letter-tags" data-i18n="letter.2.tags">#우주 #물리학 #전파 #아마추어무선 #별빛교신 #인생철학</p>
+            <a class="letter-link" data-i18n="letter.2.link" href="https://story.kakao.com/_a7fda9/fSwQ6Z5SwRA">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
           </div>
         </details>
         <details class="glass letter">
           <summary>
             <span class="letter-no">#1</span>
             <span class="letter-head">
-              <span class="letter-title">별의 잿더미, 그리고 지금 여기의 우리</span>
+              <span class="letter-title" data-i18n="letter.1.title">별의 잿더미, 그리고 지금 여기의 우리</span>
               <span class="letter-date">2026.11.21</span>
             </span>
             <span class="letter-toggle" aria-hidden="true"></span>
           </summary>
           <div class="letter-body">
-            <p>밤하늘의 별을 올려다보면 아주 멀고 낯선 세계 같지만, 물리학은 전혀 다른 이야기를 해 줍니다.</p>
-            <p>우리 몸을 이루는 뼈 속의 칼슘, 혈액 속의 철분, 숨 쉬는 산소까지—수소와 헬륨을 뺀 거의 모든 원소는 수십억 년 전, 이름 모를 거대한 별이 생을 다해 폭발(초신성)할 때 우주 공간으로 흩뿌린 조각들입니다.</p>
-            <p>칼 세이건이 말했듯, 우리는 우주를 구경하는 이방인이 아니라 우주가 스스로를 바라보기 위해 빚어낸 '별의 물질' 그 자체인 셈이죠.</p>
-            <p>그래서일까요. 삶에서 너무 많은 것을 쥐려 애쓰지 않아도, 우주의 시간표 앞에서 잠시 비워 두고 가볍게 걸어가도 괜찮다는 생각이 듭니다.</p>
-            <p>수십억 년을 돌고 돌아 지금 이 지구 위에서 같은 밤하늘을 마주하고 있다는 사실 하나만으로도, 오늘 하루는 이미 꽤 근사한 우연이니까요.</p>
-            <p class="letter-tags">#우주 #천문학 #물리학 #별빛교신 #인생철학</p>
-            <a class="letter-link" href="https://story.kakao.com/_a7fda9/cUutnvjdvq0">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
+            <p data-i18n="letter.1.p1">밤하늘의 별을 올려다보면 아주 멀고 낯선 세계 같지만, 물리학은 전혀 다른 이야기를 해 줍니다.</p>
+            <p data-i18n="letter.1.p2">우리 몸을 이루는 뼈 속의 칼슘, 혈액 속의 철분, 숨 쉬는 산소까지—수소와 헬륨을 뺀 거의 모든 원소는 수십억 년 전, 이름 모를 거대한 별이 생을 다해 폭발(초신성)할 때 우주 공간으로 흩뿌린 조각들입니다.</p>
+            <p data-i18n="letter.1.p3">칼 세이건이 말했듯, 우리는 우주를 구경하는 이방인이 아니라 우주가 스스로를 바라보기 위해 빚어낸 '별의 물질' 그 자체인 셈이죠.</p>
+            <p data-i18n="letter.1.p4">그래서일까요. 삶에서 너무 많은 것을 쥐려 애쓰지 않아도, 우주의 시간표 앞에서 잠시 비워 두고 가볍게 걸어가도 괜찮다는 생각이 듭니다.</p>
+            <p data-i18n="letter.1.p5">수십억 년을 돌고 돌아 지금 이 지구 위에서 같은 밤하늘을 마주하고 있다는 사실 하나만으로도, 오늘 하루는 이미 꽤 근사한 우연이니까요.</p>
+            <p class="letter-tags" data-i18n="letter.1.tags">#우주 #천문학 #물리학 #별빛교신 #인생철학</p>
+            <a class="letter-link" data-i18n="letter.1.link" href="https://story.kakao.com/_a7fda9/cUutnvjdvq0">카카오스토리 원문 보기 <span aria-hidden="true">↗</span></a>
           </div>
         </details>
       </div>
@@ -465,8 +481,8 @@
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">03 — Projects</p>
-        <h2>직접 기획한 웹앱</h2>
-        <p class="sec-desc">
+        <h2 data-i18n="proj.h2">직접 기획한 웹앱</h2>
+        <p class="sec-desc" data-i18n="proj.desc">
           현장에서 필요한 순간마다, 아이디어를 그대로 프로그램으로 옮겨 만들었습니다.
           다섯 다 지금 이 자리에서 바로 열립니다.
         </p>
@@ -477,19 +493,19 @@
           <div class="project-icon" aria-hidden="true">🎱</div>
           <div class="project-main">
             <div class="project-head">
-              <h3>파이브앤하프 · 4쿠션 당구 시뮬레이터</h3>
+              <h3 data-i18n="proj.1.title">파이브앤하프 · 4쿠션 당구 시뮬레이터</h3>
               <span class="project-go" aria-hidden="true">
                 <svg viewBox="0 0 24 24" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </div>
-            <p>
+            <p data-i18n="proj.1.desc">
               400점을 치며 익힌 실전 감각을 기준으로, 수구의 사방향 1쿠션과 단쿠션 반사까지 계산해
               4쿠션 착지점을 그려 주는 각도 참고 앱. 당구장에서 실제로 쳐 보고 값을 다듬었습니다.
             </p>
             <ul class="project-tags">
-              <li>사방향 1쿠션</li>
-              <li>2:1 반사 보정</li>
-              <li>실전 피드백 반영</li>
+              <li data-i18n="proj.1.t1">사방향 1쿠션</li>
+              <li data-i18n="proj.1.t2">2:1 반사 보정</li>
+              <li data-i18n="proj.1.t3">실전 피드백 반영</li>
             </ul>
           </div>
         </a>
@@ -498,19 +514,19 @@
           <div class="project-icon" aria-hidden="true">🚐</div>
           <div class="project-main">
             <div class="project-head">
-              <h3>운행 시간표</h3>
+              <h3 data-i18n="proj.2.title">운행 시간표</h3>
               <span class="project-go" aria-hidden="true">
                 <svg viewBox="0 0 24 24" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </div>
-            <p>
+            <p data-i18n="proj.2.desc">
               반별 시간표를 현장 동선 그대로 담아, 이름을 누르면 바로 뜨고 번호를 누르면 바로 연결되게 만든
               전용 앱. 인터넷이 끊겨도 열리고, 현장에서 직접 고쳐 쓸 수 있습니다.
             </p>
             <ul class="project-tags">
-              <li>오프라인 동작</li>
-              <li>전화 원터치</li>
-              <li>비밀번호 잠금 운영</li>
+              <li data-i18n="proj.2.t1">오프라인 동작</li>
+              <li data-i18n="proj.2.t2">전화 원터치</li>
+              <li data-i18n="proj.2.t3">비밀번호 잠금 운영</li>
             </ul>
           </div>
         </a>
@@ -519,19 +535,19 @@
           <div class="project-icon" aria-hidden="true">⚡</div>
           <div class="project-main">
             <div class="project-head">
-              <h3>전기차 충전 기록부</h3>
+              <h3 data-i18n="proj.3.title">전기차 충전 기록부</h3>
               <span class="project-go" aria-hidden="true">
                 <svg viewBox="0 0 24 24" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </div>
-            <p>
+            <p data-i18n="proj.3.desc">
               충전할 때마다 오는 결제 메일을 자동으로 모아 기록으로 쌓고, 월별 내역을 A4 보고서로
               인쇄까지 하는 기록 앱. 매일의 충전을 손으로 적던 일을 없앴습니다.
             </p>
             <ul class="project-tags">
-              <li>메일 자동 수집</li>
-              <li>A4 보고서 인쇄</li>
-              <li>비밀번호 잠금 운영</li>
+              <li data-i18n="proj.3.t1">메일 자동 수집</li>
+              <li data-i18n="proj.3.t2">A4 보고서 인쇄</li>
+              <li data-i18n="proj.3.t3">비밀번호 잠금 운영</li>
             </ul>
           </div>
         </a>
@@ -540,22 +556,22 @@
           <div class="project-icon" aria-hidden="true">🧰</div>
           <div class="project-main">
             <div class="project-head">
-              <h3>DS2YTO 무전 도구함</h3>
+              <h3 data-i18n="proj.4.title">DS2YTO 무전 도구함</h3>
               <span class="project-go" aria-hidden="true">
                 <svg viewBox="0 0 24 24" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </div>
-            <p>
+            <p data-i18n="proj.4.desc">
               무전기를 켜기 전에 늘 궁금한 것들을 한곳에 모았습니다. 지금 지구의 낮과 밤이 만나는
               그레이 라인을 지도에 띄우고, 그리드 로케이터로 두 지점의 거리와 출력 대비 도달 거리(km/W)를
               계산합니다. 주파수를 넣으면 파장과 안테나 길이가 나오고, 그 밑에 깔린 맥스웰 방정식 네 줄도
               함께 읽을 수 있습니다.
             </p>
             <ul class="project-tags">
-              <li class="is-open">공개 · 비밀번호 없음</li>
-              <li>그레이 라인 지도</li>
-              <li>전파 거리 · km/W</li>
-              <li>안테나 길이 · 맥스웰 방정식</li>
+              <li class="is-open" data-i18n="proj.4.t1">공개 · 비밀번호 없음</li>
+              <li data-i18n="proj.4.t2">그레이 라인 지도</li>
+              <li data-i18n="proj.4.t3">전파 거리 · km/W</li>
+              <li data-i18n="proj.4.t4">안테나 길이 · 맥스웰 방정식</li>
             </ul>
           </div>
         </a>
@@ -564,21 +580,21 @@
           <div class="project-icon" aria-hidden="true">📻</div>
           <div class="project-main">
             <div class="project-head">
-              <h3>DS2YTO 햄 전파 도우미</h3>
+              <h3 data-i18n="proj.5.title">DS2YTO 햄 전파 도우미</h3>
               <span class="project-go" aria-hidden="true">
                 <svg viewBox="0 0 24 24" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </div>
-            <p>
+            <p data-i18n="proj.5.desc">
               UTC·KST 시계, 그리드 거리·방위각 계산, 콜사인 국가 검색, 전리층 반사와 그레이 라인 도파관
               시뮬레이터까지 담은 오프라인 웹앱.
             </p>
             <ul class="project-tags">
-              <li class="is-open">공개 · 비밀번호 없음</li>
-              <li>UTC · KST 시계</li>
-              <li>그리드 거리 · 방위각</li>
-              <li>콜사인 국가 검색</li>
-              <li>전리층 · 그레이 라인</li>
+              <li class="is-open" data-i18n="proj.5.t1">공개 · 비밀번호 없음</li>
+              <li data-i18n="proj.5.t2">UTC · KST 시계</li>
+              <li data-i18n="proj.5.t3">그리드 거리 · 방위각</li>
+              <li data-i18n="proj.5.t4">콜사인 국가 검색</li>
+              <li data-i18n="proj.5.t5">전리층 · 그레이 라인</li>
             </ul>
           </div>
         </a>
@@ -586,7 +602,7 @@
 
       <p class="project-note">
         <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5l-8-3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        무전 도구함·햄 전파 도우미·파이브앤하프는 누구나 바로 열 수 있고, 운행 시간표와 충전 기록부는 내부 운영용으로 비밀번호를 아는 사람만 내용을 볼 수 있습니다.
+        <span data-i18n="proj.note">무전 도구함·햄 전파 도우미·파이브앤하프는 누구나 바로 열 수 있고, 운행 시간표와 충전 기록부는 내부 운영용으로 비밀번호를 아는 사람만 내용을 볼 수 있습니다.</span>
       </p>
     </div>
   </section>
@@ -595,8 +611,8 @@
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">04 — Gallery</p>
-        <h2>소소한 일상 · <span class="mono">갤러리</span></h2>
-        <p class="sec-desc">
+        <h2 data-i18n="gal.h2">소소한 일상 · <span class="mono">갤러리</span></h2>
+        <p class="sec-desc" data-i18n="gal.desc">
           무전기 앞의 밤, 은하수가 쏟아지던 호수, 당구대 위의 공 몇 개.
           그리고 오늘 새벽 15m로 만난 동네 이웃과 20m 밴드의 반듯한 SWR 그래프,
           남태평양 나우루에서 날아온 교신 화면, 무전기에 붙여 두는 내 호출부호 스티커,
@@ -608,7 +624,7 @@
 
       <div class="gallery-shell">
         <div class="gallery-bar">
-          <p class="gallery-hint">
+          <p class="gallery-hint" data-i18n="gal.hint">
             <span class="mono">↔</span> 옆으로 넘겨 보세요 · <span class="mono">15</span>장
           </p>
           <div class="gallery-navs">
@@ -624,7 +640,7 @@
         <ul class="gallery-track" id="gallery-track" tabindex="0" aria-label="사진 갤러리, 좌우로 넘겨 볼 수 있습니다">
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="1"
                     data-full="assets/shackroom.jpg"
                     data-title="나의 샤크룸 (My Shack Room)" data-date="2026.11.25"
                     data-caption="삼각대 위의 Icom IC-705(7.074 MHz)와 아이폰 FT8 화면. 작은 책상 위, 나만의 무선실."
@@ -641,7 +657,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="2"
                     data-full="assets/gallery/gallery-08-carrot.jpg"
                     data-title="엔젤로 내린 당근 한 잔" data-date="2026.11.26"
                     data-caption="엔젤 녹즙기로 갓 짜낸 당근 주스에 올리브 오일 한 방울. 천문학 영상 틀어 두고 마시는 나만의 작은 건강 루틴."
@@ -658,7 +674,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="3"
                     data-full="assets/gallery/gallery-09-15m.jpg"
                     data-title="전파로 만난 동네 이웃 (15m FT8)" data-date="2026.11.26"
                     data-caption="지구 반대편까지 날아가는 15m(21 MHz) 낮 전파로 만난, 걸어서 5분 거리의 같은 춘천 선배 국장님. 우연이라기엔 너무 반가웠던 동네 마실 교신 한 컷."
@@ -675,7 +691,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="4"
                     data-full="assets/gallery/gallery-10-20m-swr.jpg"
                     data-title="20m 밴드 환상의 정재파비 (14.074 MHz)" data-date="2026.11.26"
                     data-caption="14.054부터 14.094 MHz까지 SWR 1.0 바닥에 일자로 쫙 깔린 IC-705 화면. 반사파 거의 제로, 오늘도 컨디션 최상."
@@ -692,7 +708,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="5"
                     data-full="assets/gallery/gallery-11-nauru.jpg"
                     data-title="남태평양 나우루와의 교신 (C21TS)" data-date="2026.11.26"
                     data-caption="차량 포터블 운용 중 40m 밴드에서 잡은 남태평양 작은 섬나라 나우루(C21TS, RI39). 지도에 점처럼 작은 섬과 주고받은 -10 / R-16 / 73 신호 한 컷."
@@ -709,7 +725,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="6"
                     data-full="assets/gallery/gallery-12-emblem.jpg"
                     data-title="DS2YTO 전용 엠블럼 스티커" data-date="2026.11.26"
                     data-caption="직접 만들어 무전기마다 붙여 두고 쓰는 DS2YTO 전용 원형 스티커. 전파가 뻗어 나가는 지구본 위로 호출부호를 새긴 나만의 시그니처 마크."
@@ -726,7 +742,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="7"
                     data-full="assets/gallery/gallery-13-gentoo.jpg"
                     data-title="젠투 리눅스 워크스테이션 (9950X3D)" data-date="2026.11.26"
                     data-caption="하나하나 직접 컴파일해 올린 젠투 리눅스. Ryzen 9 9950X3D 32스레드와 RTX 4080 SUPER가 쉼 없이 돌아가며 소수를 찾던 날의 기록."
@@ -743,7 +759,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="8"
                     data-full="assets/ft8-mobile.jpg"
                     data-title="아이폰 FT8-Improved 실전 교신" data-date="2026.11.25"
                     data-caption="40m(7.074 MHz) · IC-705 와이파이 연결로 교신 중인 모바일 화면"
@@ -760,7 +776,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="9"
                     data-full="assets/gallery/gallery-07-sheep.jpg"
                     data-title="양의 탈을 쓴 뿔" data-date="2026.11.16"
                     data-caption="겉으로는 한없이 순한 양처럼 굴면서, 뒤에서는 없는 사람과 약한 사람을 이용하려 드는 모습들. 세상의 그런 씁쓸한 아이러니를 잊지 않으려 간직해 둔 그림 한 장."
@@ -777,7 +793,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="10"
                     data-full="assets/gallery/gallery-01-ic705.jpg"
                     data-title="무전기 앞의 밤" data-date="2026.09.11"
                     data-caption="책상 위에 놓인 Icom IC-705와 안테나 케이블. 하루가 저물면 무전기를 켜던 자리."
@@ -794,7 +810,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="11"
                     data-full="assets/gallery/gallery-02-field-radio.jpg"
                     data-title="풀밭 위의 야외 교신" data-date="2026.06.14"
                     data-caption="산자락 아래 나무 테이블에 차린 야외 무전기와 안테나, 로그 노트."
@@ -811,7 +827,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="12"
                     data-full="assets/gallery/gallery-03-milkyway.jpg"
                     data-title="은하수 쏟아지는 호수" data-date="2026.07.13"
                     data-caption="눈 덮인 산 아래 호수 위로 쏟아지는 은하수."
@@ -828,7 +844,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="13"
                     data-full="assets/gallery/gallery-04-sunset-lake.jpg"
                     data-title="노을 진 호숫가" data-date="2026.06.29"
                     data-caption="노을 빛 호숫가에 홀로 서 있는 나무 한 그루."
@@ -845,7 +861,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="14"
                     data-full="assets/gallery/gallery-05-starry-shore.jpg"
                     data-title="별빛 아래 바다" data-date="2026.06.12"
                     data-caption="은하수 아래 바닷가에 서 있는 사람의 뒷모습."
@@ -862,7 +878,7 @@
           </li>
 
           <li class="gallery-item">
-            <button class="glass gallery-card" type="button"
+            <button class="glass gallery-card" type="button" data-i18n-card="15"
                     data-full="assets/gallery/gallery-06-billiard.jpg"
                     data-title="당구대 위의 공" data-date="2026.06.06"
                     data-caption="초록 당구대 위에 놓인 공과 큐."
@@ -882,9 +898,9 @@
       </div>
 
       <div class="gallery-foot">
-        <p class="gallery-note">사진은 카카오스토리 「별빛교신」에 남긴 것들과, 샤크룸에서 직접 찍은 FT8 교신 화면, 그리고 오래 마음에 담아 둔 그림 한 장입니다.</p>
+        <p class="gallery-note" data-i18n="gal.note">사진은 카카오스토리 「별빛교신」에 남긴 것들과, 샤크룸에서 직접 찍은 FT8 교신 화면, 그리고 오래 마음에 담아 둔 그림 한 장입니다.</p>
         <a class="btn btn-ghost btn-sm" href="https://story.kakao.com/_a7fda9">
-          카카오스토리 둘러보기
+          <span data-i18n="gal.btn">카카오스토리 둘러보기</span>
           <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -895,8 +911,8 @@
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">05 — Music</p>
-        <h2>오늘의 노래 · <span class="mono">네 곡</span></h2>
-        <p class="sec-desc">
+        <h2 data-i18n="song.h2">오늘의 노래 · <span class="mono">네 곡</span></h2>
+        <p class="sec-desc" data-i18n="song.desc">
           이 자리에 네 곡 걸어 둡니다. 이찬원의 <strong>〈시절인연 (時節因緣)〉</strong>,
           써드베이스의 <strong>〈진동 (Shaken)〉</strong>,
           차지연의 <strong>〈그대는 어디에 (Feat. 임재범)〉</strong>,
@@ -916,34 +932,34 @@
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
           </div>
-          <p class="song-credit">
+          <p class="song-credit" data-i18n="song.1credit">
             영상 · 1theK(원더케이) 공식 MV. 음원 파일을 직접 올리는 대신 공식 영상으로 연결했습니다.
           </p>
         </div>
 
         <article class="glass song-info">
           <p class="song-label">Now Playing</p>
-          <h3>
+          <h3 data-i18n="song.1h">
             시절인연 <span class="mono">時節因緣</span>
             <span class="song-artist">이찬원 · MBC 〈꼰대인턴〉 OST Part 2 (2020)</span>
           </h3>
-          <blockquote class="song-quote">
+          <blockquote class="song-quote" data-i18n="song.1q">
             가는 인연 잡지를 말고<br>
             오는 인연 막지 마세요<br>
             바람처럼 물처럼
           </blockquote>
-          <p class="song-note">
+          <p class="song-note" data-i18n="song.1n">
             인연의 오고 감을 바람과 물에 비긴 노랫말이 좋아 늘 곁에 두고 듣는 한 곡입니다.
             이 페이지에 머무는 동안 한 번쯤 틀어 보세요.
           </p>
           <ul class="song-meta">
-            <li>1theK 공식 MV</li>
-            <li>4분 24초</li>
-            <li>꼰대인턴 OST Part 2</li>
+            <li data-i18n="song.1m1">1theK 공식 MV</li>
+            <li data-i18n="song.1m2">4분 24초</li>
+            <li data-i18n="song.1m3">꼰대인턴 OST Part 2</li>
           </ul>
           <div class="song-actions">
             <a class="btn btn-ghost btn-sm" href="https://www.youtube.com/watch?v=fV8tu-tPcJE">
-              유튜브에서 듣기
+              <span data-i18n="song.btn">유튜브에서 듣기</span>
               <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
@@ -961,34 +977,34 @@
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
           </div>
-          <p class="song-credit">
+          <p class="song-credit" data-i18n="song.2credit">
             영상 · Third Base 써드베이스(KGospel) 공식 MV. 음원 파일을 직접 올리는 대신 공식 영상으로 연결했습니다.
           </p>
         </div>
 
         <article class="glass song-info">
           <p class="song-label">Next Up</p>
-          <h3>
+          <h3 data-i18n="song.2h">
             진동 <span class="mono">Shaken</span>
             <span class="song-artist">써드베이스 · 싱글 〈진동〉 (2020)</span>
           </h3>
-          <blockquote class="song-quote">
+          <blockquote class="song-quote" data-i18n="song.2q">
             이 땅에 흔들리는 모든 것들이<br>
             흔들리는 그날이 와도<br>
             결코 흔들리지 않는 그것을 붙잡고 가리라
           </blockquote>
-          <p class="song-note">
+          <p class="song-note" data-i18n="song.2n">
             흔들리는 세상 속에서도 변치 않는 진심과 믿음을 붙잡자는 메시지를 담은 곡입니다.
             함께하는 소중한 분들을 떠올리며 곁에 두는 한 곡.
           </p>
           <ul class="song-meta">
-            <li>써드베이스 공식 MV</li>
-            <li>5분 27초</li>
-            <li>2020. 12. 28. 발매</li>
+            <li data-i18n="song.2m1">써드베이스 공식 MV</li>
+            <li data-i18n="song.2m2">5분 27초</li>
+            <li data-i18n="song.2m3">2020. 12. 28. 발매</li>
           </ul>
           <div class="song-actions">
             <a class="btn btn-ghost btn-sm" href="https://www.youtube.com/watch?v=rqDl9qvEhAI">
-              유튜브에서 듣기
+              <span data-i18n="song.btn">유튜브에서 듣기</span>
               <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
@@ -1006,33 +1022,33 @@
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
           </div>
-          <p class="song-credit">
+          <p class="song-credit" data-i18n="song.3credit">
             영상 · 1theK(원더케이) 공식 MV. 음원 파일을 직접 올리는 대신 공식 영상으로 연결했습니다.
           </p>
         </div>
 
         <article class="glass song-info">
           <p class="song-label">One More</p>
-          <h3>
+          <h3 data-i18n="song.3h">
             그대는 어디에 <span class="mono">(Feat. 임재범)</span>
             <span class="song-artist">차지연 · 1theK (원더케이) MV</span>
           </h3>
-          <blockquote class="song-quote">
+          <blockquote class="song-quote" data-i18n="song.3q">
             살다 보니 말로 다 못 할 그리움 하나쯤 가슴 깊은 곳에 샛별처럼 박혀 있네요.<br>
             어디에 있는지, 잘 지내고 있는지... 차마 묻지 못한 안부를 노래 선율에 실어 보냅니다.<br>
             부족한 삶이라 늘 누군가가 그립고 고맙습니다. 오늘 밤, 제 마음이 닿는 곳마다 평안과 위로가 가득하기를 빌어봅니다.
           </blockquote>
-          <p class="song-note">
+          <p class="song-note" data-i18n="song.3n">
             2026년 1월 14일 별빛교신에 남긴 글을 그대로 옮겨 두었습니다.
           </p>
           <ul class="song-meta">
-            <li>1theK(원더케이) 공식 MV</li>
-            <li>임재범 작사·작곡</li>
-            <li>2011. 06. 16. 발매</li>
+            <li data-i18n="song.3m1">1theK(원더케이) 공식 MV</li>
+            <li data-i18n="song.3m2">임재범 작사·작곡</li>
+            <li data-i18n="song.3m3">2011. 06. 16. 발매</li>
           </ul>
           <div class="song-actions">
             <a class="btn btn-ghost btn-sm" href="https://www.youtube.com/watch?v=VuckLY3xfd8">
-              유튜브에서 듣기
+              <span data-i18n="song.btn">유튜브에서 듣기</span>
               <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
@@ -1050,28 +1066,28 @@
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
           </div>
-          <p class="song-credit">
+          <p class="song-credit" data-i18n="song.4credit">
             영상 · 〈우크라이나 마예 탈란트〉 방영분을 올린 유튜브 영상. 음원 파일을 직접 올리는 대신 공개 영상으로 연결했습니다.
           </p>
         </div>
 
         <article class="glass song-info">
           <p class="song-label">Encore</p>
-          <h3>
+          <h3 data-i18n="song.4h">
             She Taught Me To Yodel
             <span class="song-artist">Sofia Shkidchenko · 우크라이나 갓 탤런트</span>
           </h3>
-          <p class="song-note">
+          <p class="song-note" data-i18n="song.4n">
             맑고 경쾌한 목소리로 무대를 휘어잡았던 우크라이나 소녀의 요들송 명무대.
           </p>
           <ul class="song-meta">
-            <li>우크라이나 마예 탈란트 9</li>
-            <li>2017. 03. 공개</li>
-            <li>요들송</li>
+            <li data-i18n="song.4m1">우크라이나 마예 탈란트 9</li>
+            <li data-i18n="song.4m2">2017. 03. 공개</li>
+            <li data-i18n="song.4m3">요들송</li>
           </ul>
           <div class="song-actions">
             <a class="btn btn-ghost btn-sm" href="https://www.youtube.com/watch?v=5R9PbibXul8">
-              유튜브에서 듣기
+              <span data-i18n="song.btn">유튜브에서 듣기</span>
               <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
@@ -1082,19 +1098,19 @@
 
 </main>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="사진 크게 보기" hidden>
-  <button class="lightbox-btn lightbox-close" type="button" aria-label="사진 크게 보기 닫기">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="사진 크게 보기" data-i18n-aria="lb.aria" hidden>
+  <button class="lightbox-btn lightbox-close" type="button" aria-label="사진 크게 보기 닫기" data-i18n-aria="lb.close">
     <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
   </button>
-  <button class="lightbox-btn lightbox-prev" type="button" aria-label="이전 사진">
+  <button class="lightbox-btn lightbox-prev" type="button" aria-label="이전 사진" data-i18n-aria="lb.prev">
     <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
-  <button class="lightbox-btn lightbox-next" type="button" aria-label="다음 사진">
+  <button class="lightbox-btn lightbox-next" type="button" aria-label="다음 사진" data-i18n-aria="lb.next">
     <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
-  <button class="lightbox-btn lightbox-close-bottom" type="button" aria-label="사진 크게 보기 닫기">
+  <button class="lightbox-btn lightbox-close-bottom" type="button" aria-label="사진 크게 보기 닫기" data-i18n-aria="lb.close">
     <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg>
-    <span class="lightbox-close-label">닫기</span>
+    <span class="lightbox-close-label" data-i18n="lb.closeText">닫기</span>
   </button>
   <figure class="lightbox-figure">
     <img id="lightbox-img" src="assets/gallery/gallery-01-ic705.jpg" alt="">
@@ -1108,19 +1124,19 @@
 
 <div class="vstats" id="vstats" role="dialog" aria-modal="true" aria-labelledby="vstats-title" hidden>
   <div class="vstats-card" tabindex="-1">
-    <button class="vstats-close" type="button" aria-label="닫기">
+    <button class="vstats-close" type="button" aria-label="닫기" data-i18n-aria="lb.closeText">
       <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
     </button>
     <p class="vstats-kicker">VISITORS</p>
-    <h2 id="vstats-title">방문 기록</h2>
+    <h2 id="vstats-title" data-i18n="vstats.title">방문 기록</h2>
     <div class="vstats-nums">
       <div>
         <span class="vstats-num" id="vstats-total">—</span>
-        <span class="vstats-label">누적 방문</span>
+        <span class="vstats-label" data-i18n="vstats.total">누적 방문</span>
       </div>
       <div>
         <span class="vstats-num" id="vstats-today">—</span>
-        <span class="vstats-label">오늘</span>
+        <span class="vstats-label" data-i18n="vstats.today">오늘</span>
       </div>
     </div>
     <ul class="vstats-bars" id="vstats-bars"></ul>
@@ -1240,6 +1256,8 @@
     else if (e.key === 'ArrowLeft') { show(current - 1); }
     else if (e.key === 'ArrowRight') { show(current + 1); }
   });
+  // 언어를 바꾸면 열려 있는 사진 설명도 그 언어로 다시 그린다
+  document.addEventListener('langchange', function () { if (!box.hidden) show(current); });
 })();
 
 (function () {
@@ -1333,13 +1351,16 @@
       else { el.classList.toggle('is-folded', !expanded); }
       slot++;
     });
+    var t = window.Lang5 ? window.Lang5.t : function (k) { return k; };
     btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    label.textContent = expanded ? '접기' : '지난 글 더 보기';
+    label.textContent = expanded ? t('letters.less') : t('letters.more');
     if (count) {
-      count.textContent = expanded ? '' : '(' + extra + '편)';
+      count.textContent = expanded ? '' : t('letters.moreCount').replace('{n}', extra);
       count.hidden = expanded;
     }
   }
+  // 언어를 바꾸면 버튼 문구도 함께 바뀐다
+  document.addEventListener('langchange', render);
 
   btn.addEventListener('click', function () {
     expanded = !expanded;
@@ -1364,6 +1385,10 @@
   var todayEl = document.getElementById('vstats-today');
   var barsEl = document.getElementById('vstats-bars');
   var footEl = document.getElementById('vstats-foot');
+  var last = null;
+
+  // 언어를 바꾸면 문구를 다시 그린다
+  document.addEventListener('langchange', function () { if (last && !box.hidden) render(last); });
 
   function api(action) {
     return fetch(ENDPOINT + '?a=' + action + '&t=' + Date.now(), { cache: 'no-store' })
@@ -1383,9 +1408,14 @@
 
   function tidy(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 
+  function t(key) {
+    return window.Lang5 ? window.Lang5.t(key) : key;
+  }
+
   function render(d) {
+    last = d;
     if (!d || !d.ok) {
-      footEl.textContent = '방문 기록을 불러오지 못했습니다.';
+      footEl.textContent = t('vstats.error');
       return;
     }
     totalEl.textContent = tidy(d.total || 0);
@@ -1397,7 +1427,7 @@
     days.forEach(function (x) {
       var li = document.createElement('li');
       li.className = 'vstats-bar' + (x.n ? '' : ' is-zero');
-      li.title = x.d + ' · ' + x.n + '회';
+      li.title = t('vstats.hits').replace('{date}', x.d).replace('{n}', x.n);
       var fill = document.createElement('span');
       fill.className = 'vstats-bar-fill';
       fill.style.height = Math.max(8, Math.round((x.n / max) * 42)) + 'px';
@@ -1408,14 +1438,15 @@
       li.appendChild(label);
       barsEl.appendChild(li);
     });
-    footEl.textContent = d.updated ? ('마지막 기록 ' + stamp(d.updated)) : '최근 7일';
+    footEl.textContent = d.updated ? t('vstats.updated').replace('{time}', stamp(d.updated)) : t('vstats.recent');
   }
 
   function stamp(iso) {
     var t = new Date(iso);
     if (isNaN(t.getTime())) return '';
     try {
-      return t.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
+      var loc = window.Lang5 ? window.Lang5.locale() : 'ko-KR';
+      return t.toLocaleString(loc, { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
     } catch (err) {
       return t.toISOString().slice(0, 16).replace('T', ' ');
     }
@@ -1428,9 +1459,9 @@
     totalEl.textContent = '—';
     todayEl.textContent = '—';
     barsEl.innerHTML = '';
-    footEl.textContent = '불러오는 중…';
+    footEl.textContent = t('vstats.loading');
     api('get').then(render).catch(function () {
-      footEl.textContent = '방문 기록을 불러오지 못했습니다.';
+      footEl.textContent = t('vstats.error');
     });
     var card = box.querySelector('.vstats-card');
     if (card) card.focus();
@@ -1480,5 +1511,10 @@
   }
 })();
 </script>
+<script src="assets/i18n-en.js?v=1"></script>
+<script src="assets/i18n-ja.js?v=1"></script>
+<script src="assets/i18n-zh.js?v=1"></script>
+<script src="assets/i18n-ru.js?v=1"></script>
+<script src="assets/i18n.js?v=1"></script>
 </body>
 </html>
