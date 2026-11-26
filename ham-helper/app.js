@@ -1142,17 +1142,10 @@ const Sim = (() => {
     // 그레이 라인: 반대편 도달 지점
     if (mode === 'grey') {
       const end = pts[n - 1].p;
-      ctx.strokeStyle = 'rgba(169,236,255,.3)';
-      ctx.setLineDash([2, 4]);
-      ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(end[0], end[1]); ctx.lineTo(end[0], end[1] - 30); ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.fillStyle = 'rgba(223,244,255,.9)';
-      ctx.font = '600 8.5px ui-monospace, monospace';
-      ctx.textAlign = 'right';
-      ctx.fillText('지구 반대편', W - 6, end[1] - 34);
-      ctx.beginPath(); ctx.arc(end[0], end[1] - 4, 2.4, 0, 7);
+      ctx.beginPath(); ctx.arc(end[0], end[1] - 4, 2.6, 0, 7);
       ctx.fillStyle = '#a9ecff'; ctx.fill();
+      ctx.beginPath(); ctx.arc(end[0], end[1] - 4, 7, 0, 7);
+      ctx.strokeStyle = 'rgba(169,236,255,.35)'; ctx.lineWidth = 1; ctx.stroke();
     }
   }
 
