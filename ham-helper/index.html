@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DS2YTO 햄 전파 도우미</title>
+<meta name="description" content="UTC·KST 시계와 FT8 15초 타이머, 그리드 거리·방위각, 콜사인 국가 검색, FT8 주파수와 포터블 준비물 — 인터넷 없이도 열리는 DS2YTO 전파 도우미.">
+<meta name="author" content="Seokhoon Jang">
+<meta name="theme-color" content="#05070f">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="햄 도우미">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DS2YTO 햄 전파 도우미">
+<meta property="og:description" content="UTC·KST 시계 · FT8 15초 타이머 · 그리드 거리·방위 · 콜사인 국가 검색 · 오프라인 동작">
+<meta property="og:url" content="https://jangsh1015.github.io/ham-helper/">
+<meta property="og:locale" content="ko_KR">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true"><div class="stars" id="stars"></div><div class="glow glow-a"></div><div class="glow glow-b"></div></div>
+
+<header class="hdr">
+  <a class="back" href="https://jangsh1015.github.io/" aria-label="홈페이지로 돌아가기">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>홈</span>
+  </a>
+  <div class="brand">
+    <span class="brand-k">DS2YTO</span>
+    <span class="brand-n">햄 전파 도우미</span>
+  </div>
+  <span class="live" id="liveBadge"><i></i><em id="liveText">OFFLINE</em></span>
+</header>
+
+<nav class="jump" aria-label="바로가기">
+  <a href="#clock">시계</a>
+  <a href="#band">밴드</a>
+  <a href="#grid">거리</a>
+  <a href="#call">콜사인</a>
+  <a href="#freq">주파수</a>
+  <a href="#pack">준비물</a>
+  <a href="#iono">전리층</a>
+  <a href="#sim">시뮬</a>
+</nav>
+
+<main>
+  <!-- ── 시계 & FT8 ───────────────────────────── -->
+  <section class="card clock" id="clock">
+    <div class="clocks">
+      <div class="clk">
+        <div class="clk-lab">UTC <span>세계표준</span></div>
+        <div class="clk-time" id="clkUtc">--:--:--</div>
+        <div class="clk-date" id="clkUtcDate">—</div>
+      </div>
+      <div class="clk now">
+        <div class="clk-lab">KST <span>한국</span></div>
+        <div class="clk-time" id="clkKst">--:--:--</div>
+        <div class="clk-date" id="clkKstDate">—</div>
+      </div>
+    </div>
+
+    <div class="ft8">
+      <div class="ft8-head">
+        <span class="ft8-t">FT8 · 15초 주기</span>
+        <span class="slot" id="slotParity">EVEN</span>
+        <span class="ft8-left"><b id="slotLeft">0.0</b><em>초</em></span>
+      </div>
+      <div class="bar" role="progressbar" aria-label="현재 15초 구간 진행" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0" id="slotBar">
+        <div class="bar-fill" id="barFill"></div>
+        <i class="tick t1"></i><i class="tick t2"></i><i class="tick t3"></i>
+      </div>
+      <div class="ft8-foot">
+        <span id="slotRange">초 00–15</span>
+        <span id="slotNext">다음 슬롯 ODD</span>
+      </div>
+    </div>
+
+    <div class="phase-line">
+      <span id="phaseIcon">☀️</span>
+      <b id="phaseName">낮</b>
+      <span class="dot">·</span>
+      <span>태양 고도 <b id="sunAlt">0°</b></span>
+      <span class="dot">·</span>
+      <span id="phaseNow">추천 20m</span>
+    </div>
+  </section>
+
+  <!-- ── 추천 밴드 ────────────────────────────── -->
+  <section class="card" id="band">
+    <h2><span class="num">01</span>지금 시간대 추천 밴드</h2>
+    <p class="sub">춘천(PM37) 하늘의 태양 고도로 낮·황혼·밤을 계산합니다.</p>
+
+    <div class="phase-grid">
+      <div class="phase" id="phDay">
+        <span class="ph-ico">☀️</span>
+        <b>낮</b>
+        <span class="ph-b">15m · 12m · 10m</span>
+      </div>
+      <div class="phase" id="phDusk">
+        <span class="ph-ico">🌇</span>
+        <b>황혼</b>
+        <span class="ph-b">20m · 17m · 40m</span>
+      </div>
+      <div class="phase" id="phNight">
+        <span class="ph-ico">🌙</span>
+        <b>밤</b>
+        <span class="ph-b">40m · 80m · 160m</span>
+      </div>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <span class="rec-tag" id="recTag">지금</span>
+        <span class="rec-title" id="recTitle">밤 · 40m가 주력</span>
+      </div>
+      <p class="rec-tip" id="recTip">D층이 사라져 7 MHz가 멀리 갑니다.</p>
+      <div class="rec-freqs" id="recFreqs"></div>
+    </div>
+  </section>
+
+  <!-- ── 그리드 거리·방위 ─────────────────────── -->
+  <section class="card" id="grid">
+    <h2><span class="num">02</span>그리드 거리 · 방위각</h2>
+    <p class="sub">Maidenhead 4자리·6자리를 위경도로 바꿔 대권 거리와 방위를 계산합니다.</p>
+
+    <label class="field">
+      <span class="field-lab">내 그리드</span>
+      <input id="gridMine" class="inp" type="text" value="PM37" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" inputmode="text" aria-label="내 그리드 로케이터">
+    </label>
+
+    <label class="field">
+      <span class="field-lab">상대 그리드</span>
+      <input id="gridTarget" class="inp" type="text" placeholder="예: FN30" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" inputmode="text" aria-label="상대 그리드 로케이터">
+    </label>
+
+    <div class="chips" id="gridPresets">
+      <button type="button" class="chip" data-grid="PM95">도쿄 PM95</button>
+      <button type="button" class="chip" data-grid="FN30">뉴욕 FN30</button>
+      <button type="button" class="chip" data-grid="RI39">나우루 RI39</button>
+      <button type="button" class="chip" data-grid="IO91">런던 IO91</button>
+      <button type="button" class="chip" data-grid="QF56">시드니 QF56</button>
+      <button type="button" class="chip" data-grid="BL11">호놀룰루 BL11</button>
+      <button type="button" class="chip" data-grid="GG66">상파울루 GG66</button>
+    </div>
+
+    <div class="err" id="gridErr" hidden></div>
+
+    <div class="grid-res" id="gridRes" hidden>
+      <div class="dist">
+        <span class="dist-num" id="distNum">0</span>
+        <span class="dist-unit">km</span>
+        <span class="dist-lab">대권 직선거리</span>
+      </div>
+
+      <div class="compass-wrap">
+        <svg class="compass" viewBox="0 0 200 200" role="img" aria-label="방위각 나침반">
+          <defs>
+            <linearGradient id="needleGrad" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#7fd8ff" stop-opacity=".15"/>
+              <stop offset="100%" stop-color="#7fd8ff"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="88" class="c-ring"/>
+          <circle cx="100" cy="100" r="60" class="c-ring2"/>
+          <g class="c-ticks">
+            <line x1="100" y1="14" x2="100" y2="26"/><line x1="100" y1="174" x2="100" y2="186"/>
+            <line x1="14" y1="100" x2="26" y2="100"/><line x1="174" y1="100" x2="186" y2="100"/>
+            <line x1="39" y1="39" x2="48" y2="48" class="diag"/><line x1="161" y1="39" x2="152" y2="48" class="diag"/>
+            <line x1="39" y1="161" x2="48" y2="152" class="diag"/><line x1="161" y1="161" x2="152" y2="152" class="diag"/>
+          </g>
+          <text x="100" y="12" class="c-lab">N</text>
+          <text x="100" y="196" class="c-lab">S</text>
+          <text x="190" y="105" class="c-lab">E</text>
+          <text x="10" y="105" class="c-lab">W</text>
+          <g id="lpArrow" class="lp">
+            <line x1="100" y1="100" x2="100" y2="30"/>
+            <circle cx="100" cy="30" r="3"/>
+          </g>
+          <g id="spArrow" class="sp">
+            <line x1="100" y1="100" x2="100" y2="26"/>
+            <path d="M100 14 L108 34 L100 29 L92 34 Z"/>
+          </g>
+          <circle cx="100" cy="100" r="6" class="c-hub"/>
+        </svg>
+      </div>
+
+      <div class="bearing">
+        <div class="b-row">
+          <span class="b-lab">단거리</span>
+          <span class="b-val" id="spDeg">0.0°</span>
+          <span class="b-dir" id="spDir">북</span>
+        </div>
+        <div class="b-row lp-row">
+          <span class="b-lab">장거리</span>
+          <span class="b-val" id="lpDeg">0.0°</span>
+          <span class="b-dir" id="lpDir">남</span>
+        </div>
+      </div>
+      <p class="grid-note" id="gridNote"></p>
+    </div>
+  </section>
+
+  <!-- ── 콜사인 국가 검색 ─────────────────────── -->
+  <section class="card" id="call">
+    <h2><span class="num">03</span>콜사인 국가 검색</h2>
+    <p class="sub">앞자리(DXCC 접두사)로 국가·대륙·CQ/ITU 존을 찾습니다. 인터넷 없이 내장 데이터로.</p>
+
+    <label class="field">
+      <span class="field-lab">콜사인 또는 앞자리</span>
+      <input id="callIn" class="inp" type="text" placeholder="예: HL2IDT" maxlength="14" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="콜사인 또는 접두사">
+    </label>
+
+    <div class="chips" id="callPresets">
+      <button type="button" class="chip" data-call="HL2IDT">HL2IDT</button>
+      <button type="button" class="chip" data-call="4U1UN">4U1UN</button>
+      <button type="button" class="chip" data-call="C21TS">C21TS</button>
+      <button type="button" class="chip" data-call="JA1">JA1</button>
+      <button type="button" class="chip" data-call="VK2">VK2</button>
+      <button type="button" class="chip" data-call="W6">W6</button>
+      <button type="button" class="chip" data-call="P5">P5</button>
+    </div>
+
+    <div class="call-res" id="callRes">
+      <div class="call-empty" id="callEmpty">콜사인을 넣으면 국가·존 정보가 바로 나옵니다.</div>
+      <div class="call-card" id="callCard" hidden>
+        <div class="cc-top">
+          <span class="cc-flag" id="ccFlag">🌐</span>
+          <div>
+            <div class="cc-name" id="ccName">—</div>
+            <div class="cc-en" id="ccEn">—</div>
+          </div>
+        </div>
+        <div class="cc-grid">
+          <div class="cc-cell"><span>대륙</span><b id="ccCont">—</b></div>
+          <div class="cc-cell"><span>CQ Zone</span><b id="ccCq">—</b></div>
+          <div class="cc-cell"><span>ITU Zone</span><b id="ccItu">—</b></div>
+          <div class="cc-cell"><span>매칭 접두사</span><b id="ccPrefix">—</b></div>
+        </div>
+      </div>
+      <div class="call-none" id="callNone" hidden>
+        <b>일치하는 접두사가 없습니다.</b>
+        <span>앞 1~3자만 넣어 보세요. 예: <code>JA</code> · <code>VK</code> · <code>DL</code></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FT8 주파수 ───────────────────────────── -->
+  <section class="card" id="freq">
+    <h2><span class="num">04</span>FT8 주파수</h2>
+    <p class="sub">누르면 주파수가 복사됩니다. 모두 <b>USB</b> 데이터 모드, 15초 주기.</p>
+    <div class="freq-list" id="freqList"></div>
+    <p class="freq-note">표준 FT8 다이얼 주파수입니다. 실제 신호는 이 주파수 위 3 kHz 안에서 수 kHz 폭으로 모입니다.</p>
+  </section>
+
+  <!-- ── 포터블 준비물 ────────────────────────── -->
+  <section class="card" id="pack">
+    <h2><span class="num">05</span>QRP 포터블 체크리스트</h2>
+    <p class="sub">나가기 전 한 번씩. 체크 상태는 이 기기에 저장됩니다.</p>
+    <ul class="pack" id="packList"></ul>
+    <div class="pack-foot">
+      <span id="packCount">0 / 6 완료</span>
+      <button type="button" class="mini" id="packReset">초기화</button>
+    </div>
+  </section>
+
+  <!-- ── 전리층 ──────────────────────────────── -->
+  <section class="card" id="iono">
+    <h2><span class="num">06</span>주파수별 전리층 반사</h2>
+    <p class="sub">낮은 주파수는 낮은 층에서, 높은 주파수는 높은 층에서 꺾입니다.</p>
+
+    <figure class="fig">
+      <img src="ionosphere.jpg" alt="전리층 반사 그림: 주황은 40m, 파랑은 20m, 보라는 15m, 흰색은 VHF가 우주로 직진하는 모습" width="1200" height="800" loading="lazy" decoding="async">
+      <figcaption>7 · 14 · 21 MHz와 VHF의 이동 경로</figcaption>
+    </figure>
+
+    <ul class="legend">
+      <li class="lg o"><i></i><div><b>7 MHz · 40m</b><span>낮은 층(E·하부 F층)에 반사돼 국내·근거리 교신에 강함. 밤에 더 잘 열림</span></div></li>
+      <li class="lg b"><i></i><div><b>14 MHz · 20m</b><span>중간~높은 F2층을 타고 바다를 건너 아시아·태평양으로 뻗음</span></div></li>
+      <li class="lg p"><i></i><div><b>21 MHz · 15m</b><span>낮 햇빛 아래 D층을 뚫고 최고층 F2에서 튕겨 초장거리(DX) 도달. 스킵 존이 넓음</span></div></li>
+      <li class="lg w"><i></i><div><b>50 MHz 이상 · VHF/UHF</b><span>전리층에 꺾이지 않고 그대로 뚫고 우주로 직진 (직접파·위성용)</span></div></li>
+    </ul>
+  </section>
+
+  <!-- ── 낮과 밤 ─────────────────────────────── -->
+  <section class="card" id="daynight">
+    <h2><span class="num">07</span>낮과 밤, 전리층이 달라진다</h2>
+    <p class="sub">해가 지면 D층이 사라집니다. 같은 7 MHz가 밤에만 멀리 가는 이유입니다.</p>
+
+    <figure class="fig">
+      <img src="ionosphere-daynight.jpg" alt="낮과 밤 전리층 비교: 낮에는 D층이 두꺼워 낮은 주파수가 흡수되고, 밤에는 40m가 F층에서 멀리 반사됨" width="1200" height="800" loading="lazy" decoding="async">
+      <figcaption>왼쪽 낮 · 오른쪽 밤 · 가운데 경계선이 그레이 라인</figcaption>
+    </figure>
+
+    <div class="dn">
+      <div class="dn-card day">
+        <div class="dn-top"><span>☀️</span><b>왼쪽 · 낮</b><em>15m · 10m</em></div>
+        <p>햇빛으로 아래쪽 붉은 <b>D층</b>이 두꺼워져 낮은 주파수(주황 40m·80m)는 중간에 흡수됩니다. 높은 주파수(보라 15m·파랑 20m)만 뚫고 올라가 <b>F2층</b>에 튕겨 멀리 갑니다.</p>
+      </div>
+      <div class="dn-card night">
+        <div class="dn-top"><span>🌙</span><b>오른쪽 · 밤</b><em>40m · 80m</em></div>
+        <p>해가 지면 D층이 사라져 <b>40m(주황)</b>가 방해 없이 F층에 튕겨 쭉쭉 멀리 날아갑니다. 가운데 경계선이 바로 <b>그레이 라인</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 전리층 4층 단면 ─────────────────────── -->
+  <section class="card" id="layers">
+    <h2><span class="num">08</span>전리층 4층 단면</h2>
+    <p class="sub">지표에서 올라가며 만나는 층. 높은 층일수록 높은 주파수를 되돌려 보냅니다.</p>
+
+    <div class="layers">
+      <img src="ionosphere-layers.jpg" alt="지구에서 올라가며 D층·E층·F1층·F2층을 지나는 전파의 단면" width="900" height="1125" loading="lazy" decoding="async">
+      <span class="ltag lt-f2"><b>F2층</b><em>220~500km</em></span>
+      <span class="ltag lt-f1"><b>F1층</b><em>150~220km</em></span>
+      <span class="ltag lt-e"><b>E층</b><em>90~150km</em></span>
+      <span class="ltag lt-d"><b>D층</b><em>60~90km</em></span>
+    </div>
+
+    <ul class="layer-notes">
+      <li class="f2"><b>F2</b><span>220~500 km · 가장 높은 층. 낮에도 남아 있어 21~28 MHz 장거리를 실어 나릅니다.</span></li>
+      <li class="f1"><b>F1</b><span>150~220 km · 낮에만 생깁니다. 15m·20m가 여기서 한 번 꺾여 올라갑니다.</span></li>
+      <li class="e"><b>E</b><span>90~150 km · 낮 시간대 근거리(수백~1,500 km) 반사를 맡습니다. 여름 스포라딕 E의 주인공.</span></li>
+      <li class="d"><b>D</b><span>60~90 km · 낮에만 두꺼워지는 흡수층. 40m·80m를 먹어 버리고, 해가 지면 사라집니다.</span></li>
+    </ul>
+  </section>
+
+  <!-- ── 그레이 라인 시뮬레이터 ───────────────── -->
+  <section class="card" id="sim">
+    <h2><span class="num">09</span>그레이 라인 도파관</h2>
+    <p class="sub">낮·밤·황혼 세 경우를 한 화면에서 견줘 봅니다.</p>
+
+    <div class="sim-top">
+      <div class="seg" id="simModes" role="group" aria-label="전파 환경 선택">
+        <button type="button" data-mode="day">☀️ 주간</button>
+        <button type="button" data-mode="night">🌙 야간</button>
+        <button type="button" data-mode="grey" class="on">🌇 그레이</button>
+      </div>
+      <button type="button" class="play" id="playBtn" aria-label="일시정지">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      </button>
+    </div>
+
+    <div class="sim-stage" id="simStage">
+      <canvas id="simCanvas" width="720" height="580" role="img" aria-label="전리층과 지표 사이를 튕기며 나아가는 전파 애니메이션"></canvas>
+    </div>
+
+    <p class="sim-cap"><b>해 뜰 녘·해 질 녘</b> 낮과 밤의 경계선(그레이 라인)에서는 D층 흡수는 줄고 전리층 경사가 맞물려, 전파가 파이프(도파관)를 타듯 적은 손실로 지구 반대편까지 날아갑니다.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-brand">DS2YTO <span>·</span> 춘천 PM37</div>
+  <div class="foot-links">
+    <a href="https://jangsh1015.github.io/">홈페이지</a>
+    <span>·</span>
+    <a href="https://www.qrz.com/db/DS2YTO">QRZ</a>
+  </div>
+  <div class="foot-note" id="swNote">오프라인 저장 준비 중…</div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="18%" r="85%">
+      <stop offset="0%" stop-color="#132347"/>
+      <stop offset="55%" stop-color="#0a1226"/>
+      <stop offset="100%" stop-color="#050810"/>
+    </radialGradient>
+    <linearGradient id="mast" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dff1ff"/>
+      <stop offset="100%" stop-color="#7fd8ff"/>
+    </linearGradient>
+    <linearGradient id="arc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7fd8ff" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#7fd8ff"/>
+      <stop offset="100%" stop-color="#b9a8ff"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <circle cx="256" cy="150" r="4" fill="#ffd9a0" opacity=".9"/>
+  <circle cx="120" cy="96" r="2.5" fill="#cfe3ff" opacity=".7"/>
+  <circle cx="396" cy="112" r="2" fill="#cfe3ff" opacity=".6"/>
+  <circle cx="82" cy="250" r="2" fill="#9fb6dd" opacity=".5"/>
+
+  <!-- ground -->
+  <path d="M76 396 Q256 366 436 396" stroke="#2b4a78" stroke-width="6" fill="none" stroke-linecap="round" opacity=".9"/>
+
+  <!-- antenna mast -->
+  <g filter="url(#glow)">
+    <path d="M256 150 L214 396 M256 150 L298 396" stroke="url(#mast)" stroke-width="11" stroke-linecap="round" fill="none"/>
+    <path d="M232 268 L280 268 M224 314 L288 314 M218 356 L294 356 M256 150 L256 396" stroke="#9fdcff" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+    <circle cx="256" cy="150" r="13" fill="#ffd9a0"/>
+  </g>
+
+  <!-- wave arcs -->
+  <g fill="none" stroke="url(#arc)" stroke-linecap="round" filter="url(#glow)">
+    <path d="M196 132 A86 86 0 0 1 316 132" stroke-width="12" opacity=".95"/>
+    <path d="M156 118 A140 140 0 0 1 356 118" stroke-width="10" opacity=".7"/>
+    <path d="M116 106 A196 196 0 0 1 396 106" stroke-width="8" opacity=".45"/>
+  </g>
+</svg>
