@@ -127,7 +127,7 @@
   'letter.1.link': 'Read the original on KakaoStory <span aria-hidden="true">↗</span>',
 
   'proj.h2': 'Apps I planned and built myself',
-  'proj.desc': 'Whenever something was needed on site, I turned the idea straight into a program. All five open right here.',
+  'proj.desc': 'Whenever something was needed on site, I turned the idea straight into a program. All six open right here.',
   'proj.1.title': 'Five and a Half · four-cushion billiards simulator',
   'proj.1.desc': 'An angle reference app that calculates the cue ball’s four-directional one-cushion and short-cushion reflections and draws the four-cushion landing point, based on the feel I learned playing up to 400 points. I refined the numbers by actually shooting with it at the hall.',
   'proj.1.t1': 'four-direction one cushion',
@@ -156,7 +156,12 @@
   'proj.5.t3': 'grid distance · bearing',
   'proj.5.t4': 'call sign lookup',
   'proj.5.t5': 'ionosphere · grey line',
-  'proj.note': 'The radio toolbox, the ham radio helper and Five and a Half open for anyone; the timetable and the charging log are for internal use, so only those who know the password can see inside.',
+  'proj.6.title': 'DS2YTO Morse code (CW) trainer',
+  'proj.6.desc': 'A trainer for learning Morse by ear. Switch on Farnsworth spacing and band noise (QRN), send with a straight key or iambic paddles and watch your dots and dashes turn into letters as you go, then copy call signs in a real-QSO listening quiz — all on your own. It opens even without an internet connection.',
+  'proj.6.t1': 'Farnsworth · QRN',
+  'proj.6.t2': 'live key decoding',
+  'proj.6.t3': 'real-QSO quiz',
+  'proj.note': 'The radio toolbox, the ham radio helper, the CW trainer and Five and a Half open for anyone; the timetable and the charging log are for internal use, so only those who know the password can see inside.',
 
   'gal.h2': 'The little everyday · <span class="mono">Gallery</span>',
   'gal.desc': 'A night in front of the radio, a lake under a pouring Milky Way, a few balls on a billiard table. And a neighbour met on 15 m at dawn today, a tidy SWR curve on 20 m, a contact screen that flew in from Nauru in the South Pacific, the call sign sticker I keep on my rigs, a terminal pushing Gentoo Linux up, the FT8 screen on my iPhone, a glass of carrot juice on the desk every morning. Swipe the photos sideways; tap one to see it large.',
