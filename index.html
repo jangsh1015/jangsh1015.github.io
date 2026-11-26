@@ -49,7 +49,7 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="assets/style.css?v=21">
+<link rel="stylesheet" href="assets/style.css?v=22">
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -831,6 +831,10 @@
   <button class="lightbox-btn lightbox-next" type="button" aria-label="다음 사진">
     <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
+  <button class="lightbox-btn lightbox-close-bottom" type="button" aria-label="사진 크게 보기 닫기">
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg>
+    <span class="lightbox-close-label">닫기</span>
+  </button>
   <figure class="lightbox-figure">
     <img id="lightbox-img" src="assets/gallery/gallery-01-ic705.jpg" alt="">
     <figcaption class="lightbox-caption">
@@ -922,6 +926,7 @@
   var dateEl = document.getElementById('lightbox-date');
   var descEl = document.getElementById('lightbox-desc');
   var btnClose = box.querySelector('.lightbox-close');
+  var btnCloseBottom = box.querySelector('.lightbox-close-bottom');
   var btnPrev = box.querySelector('.lightbox-prev');
   var btnNext = box.querySelector('.lightbox-next');
   var current = 0;
@@ -961,10 +966,12 @@
     card.addEventListener('click', function () { open(i); });
   });
   btnClose.addEventListener('click', close);
+  if (btnCloseBottom) btnCloseBottom.addEventListener('click', close);
   btnPrev.addEventListener('click', function () { show(current - 1); });
   btnNext.addEventListener('click', function () { show(current + 1); });
+  // 배경(어두운 여백)을 탭하면 닫기 — 사진·캡션 글자를 누를 때는 닫히지 않는다
   box.addEventListener('click', function (e) {
-    if (e.target === box || e.target === img.parentNode) close();
+    if (e.target === box) close();
   });
   document.addEventListener('keydown', function (e) {
     if (box.hidden) return;

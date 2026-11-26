@@ -1460,11 +1460,52 @@ html.lb-open { overflow: hidden; }
 .lightbox-btn:hover { background: rgba(127, 216, 255, 0.16); border-color: rgba(127, 216, 255, 0.5); }
 .lightbox-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
 
-.lightbox-close { top: 18px; right: 18px; }
+.lightbox-close {
+  top: calc(env(safe-area-inset-top, 0px) + 18px);
+  right: calc(env(safe-area-inset-right, 0px) + 18px);
+  width: 48px;
+  height: 48px;
+  background: rgba(6, 10, 22, 0.92);
+  border: 1.5px solid rgba(255, 255, 255, 0.42);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+}
+.lightbox-close .ico { width: 22px; height: 22px; }
+.lightbox-close:hover { background: rgba(127, 216, 255, 0.22); border-color: rgba(127, 216, 255, 0.7); }
 .lightbox-prev { left: 18px; top: 50%; transform: translateY(-50%); }
 .lightbox-next { right: 18px; top: 50%; transform: translateY(-50%); }
 .lightbox-prev:hover { transform: translateY(-50%) translateX(-2px); }
 .lightbox-next:hover { transform: translateY(-50%) translateX(2px); }
+
+/* 하단 가운데 알약 모양 닫기 버튼 — 한 손 엄지로 바로 닫기 */
+.lightbox-close-bottom {
+  left: 50%;
+  top: auto;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: auto;
+  height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: rgba(8, 13, 28, 0.94);
+  border: 1.5px solid rgba(255, 255, 255, 0.34);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.lightbox-close-bottom .ico { width: 18px; height: 18px; }
+.lightbox-close-bottom:hover {
+  transform: translateX(-50%);
+  background: rgba(127, 216, 255, 0.22);
+  border-color: rgba(127, 216, 255, 0.7);
+}
+.lightbox-close-bottom:active { transform: translateX(-50%) scale(0.97); }
 
 /* ── private visitor stats (숨김 · ?stats / © 2026 다섯 번 탭) ── */
 
@@ -1690,18 +1731,23 @@ html.vs-open { overflow: hidden; }
   .gallery-meta { padding: 11px 12px 13px; }
   .gallery-title { font-size: 13.5px; }
   .gallery-date { font-size: 10px; }
-  .lightbox-close { top: 12px; right: 12px; }
+  .lightbox { padding: 12px 12px 84px; }
+  .lightbox-close { top: calc(env(safe-area-inset-top, 0px) + 12px); right: calc(env(safe-area-inset-right, 0px) + 12px); }
   .lightbox-prev { left: 10px; }
   .lightbox-next { right: 10px; }
   .lightbox-btn { width: 40px; height: 40px; }
-  .lightbox-figure img { max-height: calc(100vh - 150px); max-height: calc(100dvh - 150px); }
+  .lightbox-close { width: 44px; height: 44px; }
+  .lightbox-close-bottom { width: auto; height: 44px; padding: 0 20px; font-size: 14.5px; }
+  .lightbox-figure img { max-height: calc(100vh - 190px); max-height: calc(100dvh - 190px); }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
 
 @media (max-width: 520px) {
   .hero-visual { width: 208px; }
   .gallery-meta { flex-direction: column; align-items: flex-start; gap: 4px; }
-  .lightbox-prev, .lightbox-next { top: auto; bottom: 16px; transform: none; }
+  .lightbox-prev, .lightbox-next { top: auto; bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); transform: none; }
+  .lightbox-prev { left: 10px; }
+  .lightbox-next { right: 10px; }
   .lightbox-prev:hover, .lightbox-next:hover { transform: none; }
 }
 
