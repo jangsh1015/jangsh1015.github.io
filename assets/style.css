@@ -1224,6 +1224,15 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-dim);
 }
 
+/* 정사각 그림 한 장 — 사진은 정사각, 설명은 오른쪽에 */
+.gallery-featured-square .gallery-card {
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+}
+.gallery-featured-square .gallery-photo {
+  aspect-ratio: 1 / 1;
+  align-self: center;
+}
+
 .gallery-foot {
   display: flex;
   flex-wrap: wrap;
@@ -1717,6 +1726,17 @@ html.vs-open { overflow: hidden; }
   .gallery-featured .gallery-meta { padding: 12px 14px 14px; }
   .gallery-featured-split .gallery-card { grid-template-columns: minmax(0, 46%) minmax(0, 1fr); }
   .gallery-featured-split .gallery-photo { aspect-ratio: 691 / 1200; }
+  /* 정사각 그림은 좁은 화면에서 사진 위·설명 아래로 */
+  .gallery-featured-square .gallery-card { grid-template-columns: 1fr; }
+  .gallery-featured-square .gallery-photo { aspect-ratio: 1 / 1; align-self: stretch; }
+  .gallery-featured-square .gallery-meta {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    gap: 6px;
+    padding: 14px 16px 16px;
+  }
+  .gallery-featured-square .gallery-title { font-size: 17px; }
+  .gallery-featured-square .gallery-desc { font-size: 13.5px; line-height: 1.68; }
   .gallery-featured-split .gallery-meta { padding: 16px 16px 18px; gap: 7px; }
   .gallery-featured-split .gallery-title { font-size: 15.5px; }
   .gallery-featured-split .gallery-desc { font-size: 12.8px; line-height: 1.65; }
