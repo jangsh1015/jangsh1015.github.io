@@ -7,6 +7,13 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const pad2 = n => String(n).padStart(2, '0');
 const HS_KEY = 'ham-helper.v1';
+const CALL_KEY = HS_KEY + '.call';
+const GRID_KEY = HS_KEY + '.grid';
+
+/* 기본은 DS2YTO · PM37. 방문한 국장님은 자기 콜사인·그리드로 바꿔 쓰고, 이 기기에 저장된다. */
+const DEF_ME = { call: 'DS2YTO', grid: 'PM37' };
+const me = { call: DEF_ME.call, grid: DEF_ME.grid };
+const CALL_RE = /^[A-Z0-9/]{3,10}$/;
 
 /* ── 배경 별 ─────────────────────────────────────────────── */
 (function stars() {
@@ -23,8 +30,8 @@ const HS_KEY = 'ham-helper.v1';
   box.innerHTML = html;
 })();
 
-/* ── 태양 고도 (춘천) ────────────────────────────────────── */
-const HOME_LAT = 37.85, HOME_LON = 127.74;
+/* ── 태양 고도 (내 그리드 기준) ────────────────────────────── */
+let HOME_LAT = 37.85, HOME_LON = 127.74;
 
 function solarAltitude(date, latDeg, lonDeg) {
   const RAD = Math.PI / 180;
@@ -231,8 +238,10 @@ async function copy(text, msg) {
       document.body.removeChild(ta);
     }
     toast(msg);
+    return true;
   } catch (e) {
     toast(text + ' — 길게 눌러 복사하세요');
+    return false;
   }
 }
 
@@ -335,14 +344,13 @@ function computeGrid() {
 }
 
 function bindGrid() {
-  try {
-    const saved = localStorage.getItem(HS_KEY + '.grid');
-    if (saved && gridToLatLon(saved)) grid.mine.value = saved.toUpperCase();
-  } catch (e) { /* 저장소 없음 */ }
-
   grid.mine.addEventListener('input', () => {
     grid.mine.value = grid.mine.value.toUpperCase();
-    try { localStorage.setItem(HS_KEY + '.grid', grid.mine.value); } catch (e) {}
+    const v = normGrid(grid.mine.value);
+    if (gridToLatLon(v) && (v.length === 4 || v.length === 6) && v !== me.grid) {
+      me.grid = v;
+      applyMe(true);
+    }
     computeGrid();
   });
   grid.target.addEventListener('input', () => {
@@ -356,6 +364,150 @@ function bindGrid() {
     grid.target.value = b.dataset.grid;
     computeGrid();
     grid.res.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+}
+
+/* ── 내 국 (콜사인 · 그리드) ─────────────────────────────────── */
+function normCall(v) {
+  return (v || '').toUpperCase().replace(/\s+/g, '').replace(/[^A-Z0-9/]/g, '').slice(0, 10);
+}
+function normGrid(v) {
+  return (v || '').toUpperCase().replace(/\s+/g, '').slice(0, 6);
+}
+
+function loadMe() {
+  try {
+    const c = normCall(localStorage.getItem(CALL_KEY));
+    if (CALL_RE.test(c)) me.call = c;
+    const g = normGrid(localStorage.getItem(GRID_KEY));
+    if (gridToLatLon(g) && (g.length === 4 || g.length === 6)) me.grid = g;
+  } catch (e) { /* 저장소 없음 */ }
+  applyMe(false);
+}
+
+function applyMe(persist) {
+  const loc = gridToLatLon(me.grid);
+  if (loc) { HOME_LAT = loc.lat; HOME_LON = loc.lon; }
+
+  $('#brandCall').textContent = me.call;
+  document.title = me.call + ' 햄 전파 도우미';
+  $('#meCallTop').textContent = me.call;
+  $('#meGridTop').textContent = me.grid;
+
+  const sub = $('#bandSub');
+  if (sub) {
+    sub.textContent = (me.call === DEF_ME.call && me.grid === DEF_ME.grid)
+      ? '춘천(' + me.grid + ') 하늘의 태양 고도로 낮·황혼·밤을 계산합니다.'
+      : '내 그리드 ' + me.grid + ' 상공의 태양 고도로 낮·황혼·밤을 계산합니다.';
+  }
+
+  if (grid.mine.value !== me.grid) grid.mine.value = me.grid;
+  const cIn = $('#meCall'), gIn = $('#meGrid');
+  if (cIn && document.activeElement !== cIn) cIn.value = me.call;
+  if (gIn && document.activeElement !== gIn) gIn.value = me.grid;
+
+  if (persist) {
+    try {
+      localStorage.setItem(CALL_KEY, me.call);
+      localStorage.setItem(GRID_KEY, me.grid);
+    } catch (e) { /* 저장소 없음 */ }
+  }
+
+  computeGrid();
+  if (Sim && Sim.setStation) Sim.setStation(me.call, me.grid);
+  updatePhase(new Date());
+}
+
+function bindMe() {
+  const btn = $('#meBtn'), panel = $('#mePanel');
+  const cIn = $('#meCall'), gIn = $('#meGrid'), hint = $('#meHint');
+  if (!btn || !panel) return;
+  const HINT = hint.textContent;
+
+  function setOpen(open) {
+    panel.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) cIn.focus({ preventScroll: true });
+  }
+  function ok() {
+    cIn.classList.remove('bad'); gIn.classList.remove('bad');
+    hint.classList.remove('bad');
+    hint.textContent = HINT;
+  }
+  function bad(msg, node) {
+    node.classList.add('bad');
+    hint.classList.add('bad');
+    hint.textContent = msg;
+    return false;
+  }
+  function readCall() {
+    const v = normCall(cIn.value);
+    if (cIn.value !== v) cIn.value = v;
+    if (!CALL_RE.test(v)) return bad('콜사인을 확인하세요. 예: HL2IDT', cIn);
+    me.call = v;
+    return true;
+  }
+  function readGrid() {
+    const v = normGrid(gIn.value);
+    if (gIn.value !== v) gIn.value = v;
+    if (!gridToLatLon(v) || (v.length !== 4 && v.length !== 6)) {
+      return bad('그리드는 4자리(PM37) 또는 6자리(PM37aa)입니다.', gIn);
+    }
+    me.grid = v;
+    return true;
+  }
+  function apply() {
+    if (!readCall() || !readGrid()) return false;
+    ok();
+    applyMe(true);
+    return true;
+  }
+
+  btn.addEventListener('click', () => setOpen(panel.hidden));
+
+  cIn.addEventListener('input', apply);
+  gIn.addEventListener('input', apply);
+  [cIn, gIn].forEach(inp => inp.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    if (apply()) { setOpen(false); toast(me.call + ' · ' + me.grid + ' 로 설정했습니다'); }
+  }));
+
+  $('#meSave').addEventListener('click', () => {
+    if (!apply()) return;
+    setOpen(false);
+    toast(me.call + ' · ' + me.grid + ' 로 설정했습니다');
+  });
+
+  $('#meReset').addEventListener('click', () => {
+    me.call = DEF_ME.call;
+    me.grid = DEF_ME.grid;
+    cIn.value = DEF_ME.call;
+    gIn.value = DEF_ME.grid;
+    ok();
+    applyMe(true);
+    toast('DS2YTO 기본값으로 되돌렸습니다');
+  });
+}
+
+/* ── 푸터: 앱 주소 복사 ────────────────────────────── */
+function bindShare() {
+  const btn = $('#shareBtn');
+  if (!btn) return;
+  const LABEL = btn.innerHTML;
+  let timer = 0;
+
+  btn.addEventListener('click', async () => {
+    const url = location.origin + location.pathname;
+    const done = await copy(url, '앱 주소를 복사했습니다 — 다른 국장님께 붙여넣어 보내세요');
+    if (!done) return;
+    btn.classList.add('done');
+    btn.innerHTML = '<span aria-hidden="true">✅</span> 복사됨!';
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      btn.classList.remove('done');
+      btn.innerHTML = LABEL;
+    }, 1800);
   });
 }
 
@@ -753,7 +905,7 @@ function buildPack() {
 const Sim = (() => {
   const stage = $('#simStage');
   const canvas = $('#simCanvas');
-  if (!canvas) return { setMode() {}, toggle() {} };
+  if (!canvas) return { setMode() {}, toggle() {}, setStation() {} };
   const ctx = canvas.getContext('2d');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -767,6 +919,8 @@ const Sim = (() => {
   let stars = [];
   let cities = [];
   let raf = 0;
+  let ready = false;
+  let txCall = DEF_ME.call, txGrid = DEF_ME.grid;   // 송신국 = 내 국
 
   const LAYERS = [
     { k: 'D', h: 30, color: '#ffb26b', name: 'D 60–90' },
@@ -1036,7 +1190,7 @@ const Sim = (() => {
     }
     ctx.globalAlpha = 1;
 
-    // 송신 지점 — DS2YTO 안테나
+    // 송신 지점 — 내국 안테나
     const tx = txFrac() * W;
     const [tx1, ty1] = ground(tx);
 
@@ -1062,8 +1216,8 @@ const Sim = (() => {
     ctx.fillStyle = '#ffd9a0'; ctx.fill();
 
     // 호출부호 배지 (지표 아래)
-    const label = 'DS2YTO';
-    const sub = 'PM37';
+    const label = txCall;
+    const sub = txGrid;
     ctx.font = '700 9px ui-monospace, monospace';
     const lw = ctx.measureText(label).width;
     ctx.font = '600 7.5px ui-monospace, monospace';
@@ -1230,6 +1384,7 @@ const Sim = (() => {
   function init() {
     resize();
     setMode('grey');
+    ready = true;
     $('#playBtn').innerHTML = playIcon(!playing);
     $('#playBtn').setAttribute('aria-label', playing ? '일시정지' : '재생');
     $('#simModes').addEventListener('click', e => {
@@ -1261,7 +1416,14 @@ const Sim = (() => {
     if (playing) start(); else frame(performance.now());
   }
 
-  return { init, setMode, toggle, get playing() { return playing; } };
+  /* 내 국이 바뀌면 송신국 라벨도 그 국 기준으로 */
+  function setStation(call, g) {
+    txCall = (call || DEF_ME.call).toUpperCase();
+    txGrid = (g || DEF_ME.grid).toUpperCase();
+    if (ready && !playing) frame(performance.now());
+  }
+
+  return { init, setMode, toggle, setStation, get playing() { return playing; } };
 })();
 
 /* ── 서비스워커 ────────────────────────────────────────── */
@@ -1294,7 +1456,10 @@ function initSW() {
 /* ── 시작 ──────────────────────────────────────────────── */
 buildFreqTable();
 markHotBands(['40m', '80m', '160m', '30m']);
+loadMe();
 bindGrid();
+bindMe();
+bindShare();
 computeGrid();
 bindCall();
 buildPack();

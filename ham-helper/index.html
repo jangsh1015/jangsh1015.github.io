@@ -21,7 +21,7 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 <div class="sky" aria-hidden="true"><div class="stars" id="stars"></div><div class="glow glow-a"></div><div class="glow glow-b"></div></div>
@@ -32,11 +32,39 @@
     <span>홈</span>
   </a>
   <div class="brand">
-    <span class="brand-k">DS2YTO</span>
+    <span class="brand-k" id="brandCall">DS2YTO</span>
     <span class="brand-n">햄 전파 도우미</span>
   </div>
   <span class="live" id="liveBadge"><i></i><em id="liveText">OFFLINE</em></span>
 </header>
+
+<!-- ── 내 국 (콜사인·그리드) ─────────────────── -->
+<div class="me-bar">
+  <button type="button" class="me-toggle" id="meBtn" aria-expanded="false" aria-controls="mePanel">
+    <span class="me-dot" aria-hidden="true">📻</span>
+    <b class="me-call" id="meCallTop">DS2YTO</b>
+    <em class="me-grid" id="meGridTop">PM37</em>
+    <span class="me-act"><span aria-hidden="true">⚙️</span> 내 국 변경</span>
+  </button>
+
+  <div class="me-panel" id="mePanel" hidden>
+    <div class="me-fields">
+      <label class="me-f">
+        <span>내 콜사인</span>
+        <input class="me-inp" id="meCall" type="text" maxlength="10" value="DS2YTO" placeholder="HL2IDT" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="내 콜사인">
+      </label>
+      <label class="me-f me-f-grid">
+        <span>내 그리드</span>
+        <input class="me-inp" id="meGrid" type="text" maxlength="6" value="PM37" placeholder="PM37" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="내 그리드 로케이터">
+      </label>
+    </div>
+    <div class="me-btns">
+      <button type="button" class="me-save" id="meSave">저장</button>
+      <button type="button" class="me-reset" id="meReset">DS2YTO 기본값 복원</button>
+    </div>
+    <p class="me-hint" id="meHint">이 기기에만 저장됩니다. 콜사인·그리드를 바꾸면 위 배지, 거리 계산 출발지, 그레이 라인 송신국이 함께 바뀝니다.</p>
+  </div>
+</div>
 
 <nav class="jump" aria-label="바로가기">
   <a href="#clock">시계</a>
@@ -95,7 +123,7 @@
   <!-- ── 추천 밴드 ────────────────────────────── -->
   <section class="card" id="band">
     <h2><span class="num">01</span>지금 시간대 추천 밴드</h2>
-    <p class="sub">춘천(PM37) 하늘의 태양 고도로 낮·황혼·밤을 계산합니다.</p>
+    <p class="sub" id="bandSub">춘천(PM37) 하늘의 태양 고도로 낮·황혼·밤을 계산합니다.</p>
 
     <div class="phase-grid">
       <div class="phase" id="phDay">
@@ -405,10 +433,14 @@
     <span>·</span>
     <a href="https://www.qrz.com/db/DS2YTO">QRZ</a>
   </div>
+  <div class="foot-share">
+    <button type="button" class="share-btn" id="shareBtn"><span aria-hidden="true">🔗</span> 앱 주소 복사하기</button>
+    <p class="share-note">다른 국장님께 주소를 공유하면 각자 콜사인·그리드를 바꿔 쓰실 수 있습니다</p>
+  </div>
   <div class="foot-note" id="swNote">오프라인 저장 준비 중…</div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="app.js?v=8"></script>
+<script src="app.js?v=9"></script>
 </body>
 </html>

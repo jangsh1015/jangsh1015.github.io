@@ -1,5 +1,5 @@
 /* DS2YTO 햄 전파 도우미 — 오프라인 캐시 */
-const CACHE = 'ham-helper-v8';
+const CACHE = 'ham-helper-v9';
 const ASSETS = [
   './',
   './index.html',
