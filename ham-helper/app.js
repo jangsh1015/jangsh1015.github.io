@@ -1277,7 +1277,7 @@ function initSW() {
     return;
   }
 
-  navigator.serviceWorker.register('sw.js').then(() => {
+  navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(reg => {
     badge.classList.add('off');
     badge.style.background = 'rgba(143,240,192,.1)';
     badge.style.borderColor = 'rgba(143,240,192,.3)';

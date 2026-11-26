@@ -1,5 +1,5 @@
 /* DS2YTO 햄 전파 도우미 — 오프라인 캐시 */
-const CACHE = 'ham-helper-v7';
+const CACHE = 'ham-helper-v8';
 const ASSETS = [
   './',
   './index.html',
@@ -14,6 +14,11 @@ const ASSETS = [
   './ionosphere-daynight.jpg',
   './ionosphere-layers.jpg'
 ];
+
+/* 오프라인 fallback: 같은 경로면 ?v= 같은 쿼리가 달라도 꺼내 쓴다 */
+function fromCache(req) {
+  return caches.match(req).then(hit => hit || caches.match(req, { ignoreSearch: true }));
+}
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -31,6 +36,7 @@ self.addEventListener('activate', event => {
   );
 });
 
+/* 네트워크 우선: 배포 직후에도 항상 새 파일을 먼저 받는다. 끊겼을 때만 캐시. */
 self.addEventListener('fetch', event => {
   const req = event.request;
   if (req.method !== 'GET') return;
@@ -38,33 +44,26 @@ self.addEventListener('fetch', event => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
 
-  // 페이지 이동: 네트워크 우선, 끊기면 캐시
-  if (req.mode === 'navigate') {
-    event.respondWith(
-      fetch(req)
-        .then(res => {
-          const copy = res.clone();
-          caches.open(CACHE).then(c => c.put('./index.html', copy)).catch(() => {});
-          return res;
-        })
-        .catch(() => caches.match('./index.html').then(r => r || caches.match('./')))
-    );
-    return;
-  }
-
-  // 나머지: 캐시 우선 + 뒤에서 갱신
   event.respondWith(
-    caches.match(req).then(hit => {
-      const network = fetch(req)
-        .then(res => {
-          if (res && res.status === 200 && res.type === 'basic') {
-            const copy = res.clone();
-            caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
+    fetch(req)
+      .then(res => {
+        if (res && res.status === 200 && res.type === 'basic') {
+          const copy = res.clone();
+          const idxCopy = req.mode === 'navigate' ? res.clone() : null;
+          caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
+          // 페이지 이동이면 오프라인용 index.html도 같이 새로 저장
+          if (idxCopy) {
+            caches.open(CACHE).then(c => c.put('./index.html', idxCopy)).catch(() => {});
           }
-          return res;
+        }
+        return res;
+      })
+      .catch(() =>
+        fromCache(req).then(hit => {
+          if (hit) return hit;
+          if (req.mode === 'navigate') return fromCache('./index.html');
+          return Response.error();
         })
-        .catch(() => hit);
-      return hit || network;
-    })
+      )
   );
 });
