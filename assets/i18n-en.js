@@ -71,6 +71,16 @@
   'letter.x.p17': 'Today I survived the fierce world of delivery once again.',
   'letter.x.tags': '#DeliveryWork #EverydayHumor #LittleDays #BonusPost',
 
+  'letter.7.title': 'Until we look, the universe is not fixed to a single answer',
+  'letter.7.p1': 'Send one particle of light toward two narrow slits, and that tiny grain does something remarkable: it does not choose just one path.',
+  'letter.7.p2': 'With no eye watching, it spreads out like a wave, passes through both slits at once, and draws a ripple pattern on the screen. But the moment you try to check which slit it went through, the wave scatters and turns into a single point.',
+  'letter.7.p3': 'While we look away, a particle in the microscopic world does not hold one settled shape; it exists as countless possibilities laid over one another. Physics calls this “superposition.”',
+  'letter.7.p4': 'People are a little like that too. Tomorrow that has not yet been opened, and the heart of someone met for the first time, stay open as countless possibilities until we cut them to shape in advance.',
+  'letter.7.p5': 'Look at the world through a single tinted lens and the other person, and my own day, end up shut inside that narrow frame. But when one warm glance reaches them, a possibility that was hesitating becomes a living reality.',
+  'letter.7.p6': 'The day we face today is still a wave not yet decided. The pattern of this morning changes with the eyes we bring to it.',
+  'letter.7.tags': '#Universe #Physics #QuantumMechanics #DoubleSlit #StarlightLetters #LifePhilosophy',
+  'letter.7.link': 'Read the original on KakaoStory <span aria-hidden="true">↗</span>',
+
   'letter.6.title': 'The primeval hum that never fades — the cosmic microwave background',
   'letter.6.p1': 'In 1965 two researchers turned a large antenna toward the sky. Whichever way they listened, a faint hiss was there and would not go away.',
   'letter.6.p2': 'At first they blamed a faulty machine, or the pigeons roosting in the antenna. They cleaned every corner and measured again, and the soft sound was still there.',
