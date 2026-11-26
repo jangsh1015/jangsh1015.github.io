@@ -47,6 +47,7 @@
   <a href="#pack">준비물</a>
   <a href="#iono">전리층</a>
   <a href="#sim">시뮬</a>
+  <a href="#ft8color">색상</a>
 </nav>
 
 <main>
@@ -351,6 +352,45 @@
     </div>
 
     <p class="sim-cap"><b>해 뜰 녘·해 질 녘</b> 낮과 밤의 경계선(그레이 라인)에서는 D층 흡수는 줄고 전리층 경사가 맞물려, 전파가 파이프(도파관)를 타듯 적은 손실로 지구 반대편까지 날아갑니다.</p>
+  </section>
+
+  <!-- ── FT8 화면 색상 기준 ─────────────────────── -->
+  <section class="card" id="ft8color">
+    <h2><span class="num">10</span>FT8 화면 색상 기준</h2>
+    <p class="sub">아이폰 <b>FT8-Improved</b> 화면에서 색이 뜻하는 것. 15초마다 쏟아지는 줄에서 색만 보고 상태를 가려냅니다.</p>
+
+    <div class="fx-strip-lab">15초 슬롯 · 글씨 색</div>
+    <div class="fx-strip" role="group" aria-label="15초 슬롯별 글씨 색 순서">
+      <span class="ev"><b>:00</b><em>짝수</em></span>
+      <span class="od"><b>:15</b><em>홀수</em></span>
+      <span class="ev"><b>:30</b><em>짝수</em></span>
+      <span class="od"><b>:45</b><em>홀수</em></span>
+    </div>
+
+    <div class="fx" role="list">
+      <div class="fx-item" role="listitem">
+        <div class="fx-prev"><span class="fx-t">123000</span><span class="fx-m cq">CQ HL2IDT PM37</span></div>
+        <div class="fx-lab"><b>연두색 바탕</b><span>CQ를 부르고 있는 국. 지금 응답할 수 있는 상태입니다.</span></div>
+      </div>
+      <div class="fx-item" role="listitem">
+        <div class="fx-prev"><span class="fx-t">123000</span><span class="fx-m ev">HL2IDT DS2YTO -12</span></div>
+        <div class="fx-lab"><b>초록색 글씨</b><span>짝수 타임슬롯(<em class="fx-tm">:00</em> · <em class="fx-tm">:30</em> 시작)에 잡힌 수신.</span></div>
+      </div>
+      <div class="fx-item" role="listitem">
+        <div class="fx-prev"><span class="fx-t">123015</span><span class="fx-m od">HL2IDT DS2YTO R-12</span></div>
+        <div class="fx-lab"><b>파란색 글씨</b><span>홀수 타임슬롯(<em class="fx-tm od">:15</em> · <em class="fx-tm od">:45</em> 시작)에 잡힌 수신.</span></div>
+      </div>
+      <div class="fx-item" role="listitem">
+        <div class="fx-prev"><span class="fx-t">123030</span><span class="fx-m tx">DS2YTO HL2IDT R-12</span></div>
+        <div class="fx-lab"><b>노란색 바탕</b><span>내가 보낸 송신(TX). 여러 줄 속에서 내 줄만 따로 눈에 걸립니다.</span></div>
+      </div>
+      <div class="fx-item" role="listitem">
+        <div class="fx-prev"><span class="fx-t">123045</span><span class="fx-m qso">JA1XYZ W6ABC 73</span></div>
+        <div class="fx-lab"><b>하얀색 바탕</b><span>이미 서로 교신 중인 국. 상호 응답이 오가는 중입니다.</span></div>
+      </div>
+    </div>
+
+    <p class="fx-note">짝수·홀수는 <b>글씨 색</b>, CQ·내 송신·교신 중은 <b>바탕색</b>입니다. 색이 겹쳐 보이면 짝수 줄과 홀수 줄을 번갈아 읽으면 상대 차례가 바로 드러납니다.</p>
   </section>
 </main>
 
