@@ -1234,7 +1234,10 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* 세로 3:4 사진 한 장 — 사진은 오른쪽, 설명은 왼쪽에 두어 위 카드들과 결을 달리한다 */
-.gallery-featured-tall .gallery-photo { aspect-ratio: 3 / 4; }
+.gallery-featured-tall .gallery-photo {
+  aspect-ratio: 3 / 4;
+  align-self: center;
+}
 .gallery-featured-flip .gallery-card {
   grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
 }
@@ -1741,7 +1744,10 @@ html.vs-open { overflow: hidden; }
   .gallery-featured-split .gallery-card { grid-template-columns: minmax(0, 46%) minmax(0, 1fr); }
   .gallery-featured-split .gallery-photo { aspect-ratio: 691 / 1200; }
   .gallery-featured-flip .gallery-card { grid-template-columns: minmax(0, 1fr) minmax(0, 46%); }
-  .gallery-featured-tall .gallery-photo { aspect-ratio: 3 / 4; }
+  .gallery-featured-tall .gallery-photo {
+    aspect-ratio: 3 / 4;
+    align-self: center;
+  }
   /* 정사각 그림은 좁은 화면에서 사진 위·설명 아래로 */
   .gallery-featured-square .gallery-card { grid-template-columns: 1fr; }
   .gallery-featured-square .gallery-photo { aspect-ratio: 1 / 1; align-self: stretch; }
