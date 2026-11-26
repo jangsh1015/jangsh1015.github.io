@@ -263,6 +263,7 @@
     const T = timing();
     const chars = Array.from(String(text).toUpperCase());
     const items = [];
+    let skipped = 0;
     const start = A.ctx.currentTime + 0.12;
     let t = start;
     for (let i = 0; i < chars.length; i++) {
@@ -270,7 +271,7 @@
       if (ch === '\n') { t += T.wordGap * 1.6; continue; }
       if (ch === ' ') { t += T.wordGap; continue; }
       const code = MORSE[ch];
-      if (!code) continue;
+      if (!code) { skipped++; continue; }
       for (let k = 0; k < code.length; k++) {
         const len = code[k] === '.' ? T.unit : T.unit * 3;
         items.push({ i, k, sym: code[k], start: t, end: t + len });
@@ -279,7 +280,7 @@
       }
       t += T.charGap;
     }
-    return { items, chars, start, end: t };
+    return { items, chars, start, end: t, skipped };
   }
 
   function renderRibbon(chars) {
@@ -309,7 +310,8 @@
     if (!ensureAudio()) { toast('이 브라우저에서는 소리를 낼 수 없습니다'); return; }
     stopPlayback();
     const b = buildPlayback(text);
-    if (!b.items.length) { toast('재생할 글자가 없습니다'); return; }
+    if (!b.items.length) { toast('재생할 글자가 없습니다 — A~Z, 0~9와 기호만 부호가 있습니다'); return; }
+    if (b.skipped) toast('한글 등 모르스 부호가 없는 ' + b.skipped + '자는 건너뜁니다');
     P.items = b.items;
     P.chars = b.chars;
     P.startAbs = b.start;

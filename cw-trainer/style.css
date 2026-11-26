@@ -165,6 +165,7 @@ input,textarea{font:inherit;color:inherit}
   border-top:1px solid var(--line);
 }
 .tab{
+  position:relative;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
   min-height:var(--nav-h);border-radius:13px;
   font-size:10px;font-weight:600;letter-spacing:-.02em;color:var(--dim);
@@ -173,7 +174,7 @@ input,textarea{font:inherit;color:inherit}
 .tab .ico{font-size:15px;line-height:1;filter:grayscale(.75) opacity(.75);transition:filter .18s,transform .18s}
 .tab.on{color:#e9f8ff;background:linear-gradient(180deg,rgba(127,216,255,.16),rgba(127,216,255,.04))}
 .tab.on .ico{filter:none;transform:translateY(-1px)}
-.tab.on::after{content:"";position:absolute;bottom:calc(3px + env(safe-area-inset-bottom));width:16px;height:2px;border-radius:2px;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.tab.on::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:5px;width:16px;height:2px;border-radius:2px;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
 
 /* ── 패널/카드 ────────────────────────────────────── */
 main{padding:10px var(--pad) 4px}
