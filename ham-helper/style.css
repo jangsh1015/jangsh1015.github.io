@@ -485,7 +485,7 @@ code{font-family:var(--mono);font-size:11px;padding:1px 4px;border-radius:4px;ba
 
 .fx{display:flex;flex-direction:column;gap:7px;margin-top:11px}
 .fx-item{
-  padding:8px 9px 9px;border-radius:12px;
+  padding:7px 9px 8px;border-radius:12px;
   border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.022);
 }
 .fx-prev{
@@ -502,7 +502,7 @@ code{font-family:var(--mono);font-size:11px;padding:1px 4px;border-radius:4px;ba
 .fx-m.qso{background:#eef3fb;color:#0b1020;font-weight:700}
 .fx-m.ev{color:#5ff09b;font-weight:600;text-shadow:0 0 10px rgba(95,240,155,.35)}
 .fx-m.od{color:#6fb6ff;font-weight:600;text-shadow:0 0 10px rgba(111,182,255,.35)}
-.fx-lab{display:flex;flex-direction:column;gap:1px;padding:6px 2px 0}
+.fx-lab{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 6px;padding:6px 2px 0}
 .fx-lab b{font-size:12.5px;font-weight:650;color:var(--ink);letter-spacing:-.01em}
 .fx-lab span{font-size:11.5px;line-height:1.55;color:var(--soft)}
 .fx-tm{font-style:normal;font-family:var(--mono);font-size:11px;color:#5ff09b}
