@@ -49,7 +49,7 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="assets/style.css?v=26">
+<link rel="stylesheet" href="assets/style.css?v=27">
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -575,170 +575,218 @@
         <h2>소소한 일상 · <span class="mono">갤러리</span></h2>
         <p class="sec-desc">
           무전기 앞의 밤, 은하수가 쏟아지던 호수, 당구대 위의 공 몇 개.
-          그리고 오늘 밤 찍은 내 샤크룸과 아이폰 FT8 교신 화면,
+          그리고 오늘 새벽 15m로 만난 동네 이웃과 아이폰 FT8 교신 화면,
           아침마다 마시는 책상 위 당근 주스 한 잔.
-          사진을 누르면 크게 볼 수 있습니다.
+          사진은 옆으로 넘겨 보고, 누르면 크게 볼 수 있습니다.
         </p>
       </header>
 
-      <ul class="gallery-grid">
-        <li class="gallery-featured">
-          <button class="glass gallery-card" type="button"
-                  data-full="assets/shackroom.jpg"
-                  data-title="나의 샤크룸 (My Shack Room)" data-date="2026.11.25"
-                  data-caption="삼각대 위의 Icom IC-705(7.074 MHz)와 아이폰 FT8 화면. 작은 책상 위, 나만의 무선실."
-                  aria-label="나의 샤크룸 사진 크게 보기">
-            <span class="gallery-photo">
-              <img src="assets/shackroom.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="삼각대에 올린 Icom IC-705 무전기와 아이폰 FT8 화면, 그 옆으로 노트북과 키보드가 놓인 작은 책상">
-            </span>
-            <span class="gallery-meta">
-              <span class="gallery-title">나의 샤크룸 (My Shack Room)</span>
-              <span class="gallery-date">2026.11.25</span>
-            </span>
-          </button>
-        </li>
+      <div class="gallery-shell">
+        <div class="gallery-bar">
+          <p class="gallery-hint">
+            <span class="mono">↔</span> 옆으로 넘겨 보세요 · <span class="mono">11</span>장
+          </p>
+          <div class="gallery-navs">
+            <button class="gallery-nav" type="button" data-dir="-1" aria-controls="gallery-track" aria-label="이전 사진 보기">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="gallery-nav" type="button" data-dir="1" aria-controls="gallery-track" aria-label="다음 사진 보기">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
 
-        <li class="gallery-featured gallery-featured-split gallery-featured-tall gallery-featured-flip">
-          <button class="glass gallery-card" type="button"
-                  data-full="assets/gallery/gallery-08-carrot.jpg"
-                  data-title="엔젤로 내린 당근 한 잔" data-date="2026.11.26"
-                  data-caption="엔젤 녹즙기로 갓 짜낸 당근 주스에 올리브 오일 한 방울. 천문학 영상 틀어 두고 마시는 나만의 작은 건강 루틴."
-                  aria-label="책상 위 당근 주스 사진 크게 보기">
-            <span class="gallery-photo">
-              <img src="assets/gallery/gallery-08-carrot.jpg" width="1080" height="1440" loading="lazy" decoding="async" alt="스테인리스 컵에 담긴 당근 주스와 그 옆 기계식 키보드, 뒤쪽 태블릿에는 우주 다큐멘터리가 흐르는 책상">
-            </span>
-            <span class="gallery-meta">
-              <span class="gallery-title">엔젤로 내린 당근 한 잔</span>
-              <span class="gallery-date">2026.11.26</span>
-              <span class="gallery-desc">엔젤 녹즙기로 갓 짜낸 당근 주스에 올리브 오일 한 방울. 천문학 영상 틀어 두고 마시는 나만의 작은 건강 루틴.</span>
-            </span>
-          </button>
-        </li>
+        <ul class="gallery-track" id="gallery-track" tabindex="0" aria-label="사진 갤러리, 좌우로 넘겨 볼 수 있습니다">
 
-        <li class="gallery-featured gallery-featured-split">
-          <button class="glass gallery-card" type="button"
-                  data-full="assets/ft8-mobile.jpg"
-                  data-title="아이폰 FT8-Improved 실전 교신" data-date="2026.11.25"
-                  data-caption="40m(7.074 MHz) · IC-705 와이파이 연결로 교신 중인 모바일 화면"
-                  aria-label="아이폰 FT8-Improved 실전 교신 사진 크게 보기">
-            <span class="gallery-photo">
-              <img src="assets/ft8-mobile.jpg" width="691" height="1200" loading="lazy" decoding="async" alt="거치대에 세운 아이폰의 FT8-Improved 화면. 40m 밴드, VFO 7.074, IC-705 표시와 BD6JJP·BG6QAL 등과 주고받은 교신 기록이 보인다">
-            </span>
-            <span class="gallery-meta">
-              <span class="gallery-title">아이폰 FT8-Improved 실전 교신</span>
-              <span class="gallery-date">2026.11.25</span>
-              <span class="gallery-desc">40m(7.074 MHz) · IC-705 와이파이 연결로 교신 중인 모바일 화면</span>
-            </span>
-          </button>
-        </li>
+          <li class="gallery-item">
+            <button class="glass gallery-card" type="button"
+                    data-full="assets/shackroom.jpg"
+                    data-title="나의 샤크룸 (My Shack Room)" data-date="2026.11.25"
+                    data-caption="삼각대 위의 Icom IC-705(7.074 MHz)와 아이폰 FT8 화면. 작은 책상 위, 나만의 무선실."
+                    aria-label="나의 샤크룸 사진 크게 보기">
+              <span class="gallery-photo">
+                <img src="assets/shackroom.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="삼각대에 올린 Icom IC-705 무전기와 아이폰 FT8 화면, 그 옆으로 노트북과 키보드가 놓인 작은 책상">
+              </span>
+              <span class="gallery-meta">
+                <span class="gallery-title">나의 샤크룸 (My Shack Room)</span>
+                <span class="gallery-date">2026.11.25</span>
+                <span class="gallery-desc">삼각대 위의 IC-705와 아이폰 FT8 화면. 작은 책상 위, 나만의 무선실.</span>
+              </span>
+            </button>
+          </li>
 
-        <li class="gallery-featured gallery-featured-split gallery-featured-square">
-          <button class="glass gallery-card" type="button"
-                  data-full="assets/gallery/gallery-07-sheep.jpg"
-                  data-title="양의 탈을 쓴 뿔" data-date="2026.11.16"
-                  data-caption="겉으로는 한없이 순한 양처럼 굴면서, 뒤에서는 없는 사람과 약한 사람을 이용하려 드는 모습들. 세상의 그런 씁쓸한 아이러니를 잊지 않으려 간직해 둔 그림 한 장."
-                  aria-label="양의 탈을 쓴 뿔 그림 크게 보기">
-            <span class="gallery-photo">
-              <img src="assets/gallery/gallery-07-sheep.jpg" width="1024" height="1024" loading="lazy" decoding="async" alt="큰 뿔이 휘어진 양이 안경 쓴 남자를 옆구리로 밀어붙이는 모습을 그린 그림">
-            </span>
-            <span class="gallery-meta">
-              <span class="gallery-title">양의 탈을 쓴 뿔</span>
-              <span class="gallery-date">2026.11.16</span>
-              <span class="gallery-desc">겉으로는 한없이 순한 양처럼 굴면서, 뒤에서는 없는 사람과 약한 사람을 이용하려 드는 모습들. 세상의 그런 씁쓸한 아이러니를 잊지 않으려 간직해 둔 그림 한 장.</span>
-            </span>
-          </button>
-        </li>
+          <li class="gallery-item">
+            <button class="glass gallery-card" type="button"
+                    data-full="assets/gallery/gallery-08-carrot.jpg"
+                    data-title="엔젤로 내린 당근 한 잔" data-date="2026.11.26"
+                    data-caption="엔젤 녹즙기로 갓 짜낸 당근 주스에 올리브 오일 한 방울. 천문학 영상 틀어 두고 마시는 나만의 작은 건강 루틴."
+                    aria-label="책상 위 당근 주스 사진 크게 보기">
+              <span class="gallery-photo">
+                <img src="assets/gallery/gallery-08-carrot.jpg" width="1080" height="1440" loading="lazy" decoding="async" alt="스테인리스 컵에 담긴 당근 주스와 그 옆 기계식 키보드, 뒤쪽 태블릿에는 우주 다큐멘터리가 흐르는 책상">
+              </span>
+              <span class="gallery-meta">
+                <span class="gallery-title">엔젤로 내린 당근 한 잔</span>
+                <span class="gallery-date">2026.11.26</span>
+                <span class="gallery-desc">엔젤 녹즙기로 갓 짜낸 당근 주스. 천문학 영상 틀어 두고 마시는 작은 건강 루틴.</span>
+              </span>
+            </button>
+          </li>
 
-        <li>
-          <button class="glass gallery-card" type="button"
-                  data-full="assets/gallery/gallery-01-ic705.jpg"
-                  data-title="무전기 앞의 밤" data-date="2026.09.11"
-                  aria-label="무전기 앞의 밤 사진 크게 보기">
-            <span class="gallery-photo">
-              <img src="assets/gallery/gallery-01-ic705.jpg" width="720" height="959" loading="lazy" decoding="async" alt="책상 위에 놓인 Icom IC-705 무전기와 안테나 케이블">
-            </span>
-            <span class="gallery-meta">
-              <span class="gallery-title">무전기 앞의 밤</span>
-              <span class="gallery-date">2026.09.11</span>
-            </span>
-          </button>
-        </li>
+          <li class="gallery-item">
+            <button class="glass gallery-card" type="button"
+                    data-full="assets/gallery/gallery-09-15m.jpg"
+                    data-title="전파로 만난 동네 이웃 (15m FT8)" data-date="2026.11.26"
+                    data-caption="지구 반대편까지 날아가는 15m(21 MHz) 낮 전파로 만난, 걸어서 5분 거리의 같은 춘천 선배 국장님. 우연이라기엔 너무 반가웠던 동네 마실 교신 한 컷."
+                    aria-label="15m FT8 동네 이웃 교신 화면 크게 보기">
+              <span class="gallery-photo is-shot">
+                <img src="assets/gallery/gallery-09-15m.jpg" width="943" height="1052" loading="lazy" decoding="async" alt="아이폰 FT8-Improved 화면. 15m 밴드에서 04:44:44부터 04:45:44 UTC까지 CQ와 보고, R-10, RR73을 주고받고 QSO finished로 끝난 교신 기록">
+              </span>
+              <span class="gallery-meta">
+                <span class="gallery-title">전파로 만난 동네 이웃 (15m FT8)</span>
+                <span class="gallery-date">2026.11.26</span>
+                <span class="gallery-desc">지구 반대편까지 날아가는 15m(21 MHz) 낮 전파로 만난, 걸어서 5분 거리의 같은 춘천 선배 국장님. 우연이라기엔 너무 반가웠던 동네 마실 교신 한 컷.</span>
+              </span>
+            </button>
+          </li>
 
-        <li>
-          <button class="glass gallery-card" type="button"
-                  data-full="assets/gallery/gallery-02-field-radio.jpg"
-                  data-title="풀밭 위의 야외 교신" data-date="2026.06.14"
-                  aria-label="풀밭 위의 야외 교신 사진 크게 보기">
-            <span class="gallery-photo">
-              <img src="assets/gallery/gallery-02-field-radio.jpg" width="720" height="437" loading="lazy" decoding="async" alt="산자락 아래 나무 테이블에 차린 야외 무전기와 안테나, 로그 노트">
-            </span>
-            <span class="gallery-meta">
-              <span class="gallery-title">풀밭 위의 야외 교신</span>
-              <span class="gallery-date">2026.06.14</span>
-            </span>
-          </button>
-        </li>
+          <li class="gallery-item">
+            <button class="glass gallery-card" type="button"
+                    data-full="assets/ft8-mobile.jpg"
+                    data-title="아이폰 FT8-Improved 실전 교신" data-date="2026.11.25"
+                    data-caption="40m(7.074 MHz) · IC-705 와이파이 연결로 교신 중인 모바일 화면"
+                    aria-label="아이폰 FT8-Improved 실전 교신 사진 크게 보기">
+              <span class="gallery-photo is-shot">
+                <img src="assets/ft8-mobile.jpg" width="691" height="1200" loading="lazy" decoding="async" alt="거치대에 세운 아이폰의 FT8-Improved 화면. 40m 밴드, VFO 7.074, IC-705 표시와 BD6JJP·BG6QAL 등과 주고받은 교신 기록이 보인다">
+              </span>
+              <span class="gallery-meta">
+                <span class="gallery-title">아이폰 FT8-Improved 실전 교신</span>
+                <span class="gallery-date">2026.11.25</span>
+                <span class="gallery-desc">40m(7.074 MHz) · IC-705 와이파이 연결로 교신 중인 모바일 화면.</span>
+              </span>
+            </button>
+          </li>
 
-        <li>
-          <button class="glass gallery-card" type="button"
-                  data-full="assets/gallery/gallery-03-milkyway.jpg"
-                  data-title="은하수 쏟아지는 호수" data-date="2026.07.13"
-                  aria-label="은하수 쏟아지는 호수 사진 크게 보기">
-            <span class="gallery-photo">
-              <img src="assets/gallery/gallery-03-milkyway.jpg" width="720" height="486" loading="lazy" decoding="async" alt="눈 덮인 산 아래 호수 위로 쏟아지는 은하수">
-            </span>
-            <span class="gallery-meta">
-              <span class="gallery-title">은하수 쏟아지는 호수</span>
-              <span class="gallery-date">2026.07.13</span>
-            </span>
-          </button>
-        </li>
+          <li class="gallery-item">
+            <button class="glass gallery-card" type="button"
+                    data-full="assets/gallery/gallery-07-sheep.jpg"
+                    data-title="양의 탈을 쓴 뿔" data-date="2026.11.16"
+                    data-caption="겉으로는 한없이 순한 양처럼 굴면서, 뒤에서는 없는 사람과 약한 사람을 이용하려 드는 모습들. 세상의 그런 씁쓸한 아이러니를 잊지 않으려 간직해 둔 그림 한 장."
+                    aria-label="양의 탈을 쓴 뿔 그림 크게 보기">
+              <span class="gallery-photo">
+                <img src="assets/gallery/gallery-07-sheep.jpg" width="1024" height="1024" loading="lazy" decoding="async" alt="큰 뿔이 휘어진 양이 안경 쓴 남자를 옆구리로 밀어붙이는 모습을 그린 그림">
+              </span>
+              <span class="gallery-meta">
+                <span class="gallery-title">양의 탈을 쓴 뿔</span>
+                <span class="gallery-date">2026.11.16</span>
+                <span class="gallery-desc">순한 양처럼 굴면서 뒤에서는 약한 사람을 이용하려 드는 모습들. 그 씁쓸한 아이러니를 잊지 않으려 간직한 그림.</span>
+              </span>
+            </button>
+          </li>
 
-        <li>
-          <button class="glass gallery-card" type="button"
-                  data-full="assets/gallery/gallery-04-sunset-lake.jpg"
-                  data-title="노을 진 호숫가" data-date="2026.06.29"
-                  aria-label="노을 진 호숫가 사진 크게 보기">
-            <span class="gallery-photo">
-              <img src="assets/gallery/gallery-04-sunset-lake.jpg" width="720" height="426" loading="lazy" decoding="async" alt="노을 빛 호숫가에 서 있는 나무 한 그루">
-            </span>
-            <span class="gallery-meta">
-              <span class="gallery-title">노을 진 호숫가</span>
-              <span class="gallery-date">2026.06.29</span>
-            </span>
-          </button>
-        </li>
+          <li class="gallery-item">
+            <button class="glass gallery-card" type="button"
+                    data-full="assets/gallery/gallery-01-ic705.jpg"
+                    data-title="무전기 앞의 밤" data-date="2026.09.11"
+                    data-caption="책상 위에 놓인 Icom IC-705와 안테나 케이블. 하루가 저물면 무전기를 켜던 자리."
+                    aria-label="무전기 앞의 밤 사진 크게 보기">
+              <span class="gallery-photo">
+                <img src="assets/gallery/gallery-01-ic705.jpg" width="720" height="959" loading="lazy" decoding="async" alt="책상 위에 놓인 Icom IC-705 무전기와 안테나 케이블">
+              </span>
+              <span class="gallery-meta">
+                <span class="gallery-title">무전기 앞의 밤</span>
+                <span class="gallery-date">2026.09.11</span>
+                <span class="gallery-desc">책상 위 IC-705와 안테나 케이블. 하루가 저물면 무전기를 켜던 자리.</span>
+              </span>
+            </button>
+          </li>
 
-        <li>
-          <button class="glass gallery-card" type="button"
-                  data-full="assets/gallery/gallery-05-starry-shore.jpg"
-                  data-title="별빛 아래 바다" data-date="2026.06.12"
-                  aria-label="별빛 아래 바다 사진 크게 보기">
-            <span class="gallery-photo">
-              <img src="assets/gallery/gallery-05-starry-shore.jpg" width="720" height="393" loading="lazy" decoding="async" alt="은하수 아래 바닷가에 서 있는 사람의 뒷모습">
-            </span>
-            <span class="gallery-meta">
-              <span class="gallery-title">별빛 아래 바다</span>
-              <span class="gallery-date">2026.06.12</span>
-            </span>
-          </button>
-        </li>
+          <li class="gallery-item">
+            <button class="glass gallery-card" type="button"
+                    data-full="assets/gallery/gallery-02-field-radio.jpg"
+                    data-title="풀밭 위의 야외 교신" data-date="2026.06.14"
+                    data-caption="산자락 아래 나무 테이블에 차린 야외 무전기와 안테나, 로그 노트."
+                    aria-label="풀밭 위의 야외 교신 사진 크게 보기">
+              <span class="gallery-photo">
+                <img src="assets/gallery/gallery-02-field-radio.jpg" width="720" height="437" loading="lazy" decoding="async" alt="산자락 아래 나무 테이블에 차린 야외 무전기와 안테나, 로그 노트">
+              </span>
+              <span class="gallery-meta">
+                <span class="gallery-title">풀밭 위의 야외 교신</span>
+                <span class="gallery-date">2026.06.14</span>
+                <span class="gallery-desc">산자락 아래 나무 테이블에 차린 야외 무전기와 안테나, 로그 노트.</span>
+              </span>
+            </button>
+          </li>
 
-        <li>
-          <button class="glass gallery-card" type="button"
-                  data-full="assets/gallery/gallery-06-billiard.jpg"
-                  data-title="당구대 위의 공" data-date="2026.06.06"
-                  aria-label="당구대 위의 공 사진 크게 보기">
-            <span class="gallery-photo">
-              <img src="assets/gallery/gallery-06-billiard.jpg" width="720" height="354" loading="lazy" decoding="async" alt="초록 당구대 위에 놓인 공과 큐">
-            </span>
-            <span class="gallery-meta">
-              <span class="gallery-title">당구대 위의 공</span>
-              <span class="gallery-date">2026.06.06</span>
-            </span>
-          </button>
-        </li>
-      </ul>
+          <li class="gallery-item">
+            <button class="glass gallery-card" type="button"
+                    data-full="assets/gallery/gallery-03-milkyway.jpg"
+                    data-title="은하수 쏟아지는 호수" data-date="2026.07.13"
+                    data-caption="눈 덮인 산 아래 호수 위로 쏟아지는 은하수."
+                    aria-label="은하수 쏟아지는 호수 사진 크게 보기">
+              <span class="gallery-photo">
+                <img src="assets/gallery/gallery-03-milkyway.jpg" width="720" height="486" loading="lazy" decoding="async" alt="눈 덮인 산 아래 호수 위로 쏟아지는 은하수">
+              </span>
+              <span class="gallery-meta">
+                <span class="gallery-title">은하수 쏟아지는 호수</span>
+                <span class="gallery-date">2026.07.13</span>
+                <span class="gallery-desc">눈 덮인 산 아래 호수 위로 쏟아지는 은하수.</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-item">
+            <button class="glass gallery-card" type="button"
+                    data-full="assets/gallery/gallery-04-sunset-lake.jpg"
+                    data-title="노을 진 호숫가" data-date="2026.06.29"
+                    data-caption="노을 빛 호숫가에 홀로 서 있는 나무 한 그루."
+                    aria-label="노을 진 호숫가 사진 크게 보기">
+              <span class="gallery-photo">
+                <img src="assets/gallery/gallery-04-sunset-lake.jpg" width="720" height="426" loading="lazy" decoding="async" alt="노을 빛 호숫가에 서 있는 나무 한 그루">
+              </span>
+              <span class="gallery-meta">
+                <span class="gallery-title">노을 진 호숫가</span>
+                <span class="gallery-date">2026.06.29</span>
+                <span class="gallery-desc">노을 빛 호숫가에 홀로 서 있는 나무 한 그루.</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-item">
+            <button class="glass gallery-card" type="button"
+                    data-full="assets/gallery/gallery-05-starry-shore.jpg"
+                    data-title="별빛 아래 바다" data-date="2026.06.12"
+                    data-caption="은하수 아래 바닷가에 서 있는 사람의 뒷모습."
+                    aria-label="별빛 아래 바다 사진 크게 보기">
+              <span class="gallery-photo">
+                <img src="assets/gallery/gallery-05-starry-shore.jpg" width="720" height="393" loading="lazy" decoding="async" alt="은하수 아래 바닷가에 서 있는 사람의 뒷모습">
+              </span>
+              <span class="gallery-meta">
+                <span class="gallery-title">별빛 아래 바다</span>
+                <span class="gallery-date">2026.06.12</span>
+                <span class="gallery-desc">은하수 아래 바닷가에 서 있는 사람의 뒷모습.</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-item">
+            <button class="glass gallery-card" type="button"
+                    data-full="assets/gallery/gallery-06-billiard.jpg"
+                    data-title="당구대 위의 공" data-date="2026.06.06"
+                    data-caption="초록 당구대 위에 놓인 공과 큐."
+                    aria-label="당구대 위의 공 사진 크게 보기">
+              <span class="gallery-photo">
+                <img src="assets/gallery/gallery-06-billiard.jpg" width="720" height="354" loading="lazy" decoding="async" alt="초록 당구대 위에 놓인 공과 큐">
+              </span>
+              <span class="gallery-meta">
+                <span class="gallery-title">당구대 위의 공</span>
+                <span class="gallery-date">2026.06.06</span>
+                <span class="gallery-desc">초록 당구대 위에 놓인 공과 큐.</span>
+              </span>
+            </button>
+          </li>
+
+        </ul>
+      </div>
 
       <div class="gallery-foot">
         <p class="gallery-note">사진은 카카오스토리 「별빛교신」에 남긴 것들과, 샤크룸에서 직접 찍은 FT8 교신 화면, 그리고 오래 마음에 담아 둔 그림 한 장입니다.</p>
@@ -1014,6 +1062,46 @@
     else if (e.key === 'ArrowLeft') { show(current - 1); }
     else if (e.key === 'ArrowRight') { show(current + 1); }
   });
+})();
+
+(function () {
+  // ── 04 GALLERY 가로 트랙: ‹ › 버튼·키보드로 한 장씩 넘기기 ──────
+  var track = document.getElementById('gallery-track');
+  if (!track) return;
+  var prev = document.querySelector('.gallery-nav[data-dir="-1"]');
+  var next = document.querySelector('.gallery-nav[data-dir="1"]');
+
+  function gap() {
+    var g = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap);
+    return isNaN(g) ? 0 : g;
+  }
+  function step() {
+    var item = track.querySelector('.gallery-item');
+    if (!item) return track.clientWidth;
+    return item.getBoundingClientRect().width + gap();
+  }
+  function go(dir) {
+    track.scrollBy({ left: dir * step(), behavior: 'smooth' });
+  }
+  function sync() {
+    if (!prev || !next) return;
+    var max = track.scrollWidth - track.clientWidth;
+    var over = max > 2;
+    prev.disabled = !over || track.scrollLeft <= 1;
+    next.disabled = !over || track.scrollLeft >= max - 1;
+  }
+
+  if (prev) prev.addEventListener('click', function () { go(-1); });
+  if (next) next.addEventListener('click', function () { go(1); });
+  track.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+  });
+  sync();
+  // 사진이 늦게 로드되면 트랙 폭이 바뀌므로 한 번 더 맞춘다
+  window.addEventListener('load', sync);
 })();
 
 (function () {
