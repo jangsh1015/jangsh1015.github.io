@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="DS2YTO 모르스 부호(CW) 연습기">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1730"/>
+      <stop offset="1" stop-color="#05070f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="28%" r="62%">
+      <stop offset="0" stop-color="#2d64ad" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#2d64ad" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="104" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="104" fill="url(#glow)"/>
+  <g fill="#cfe4ff" opacity=".8">
+    <circle cx="96" cy="96" r="2.4"/><circle cx="420" cy="120" r="2"/><circle cx="150" cy="166" r="1.6"/>
+    <circle cx="382" cy="72" r="1.6"/><circle cx="60" cy="228" r="1.4"/><circle cx="452" cy="206" r="2.2"/>
+  </g>
+  <g fill="none" stroke="#7fd8ff" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M56 208 q25 -48 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0" stroke-width="22" opacity=".22" filter="url(#soft)"/>
+    <path d="M56 208 q25 -48 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0" stroke-width="9"/>
+  </g>
+  <g fill="#ffd9a0">
+    <circle cx="173" cy="330" r="34" opacity=".3" filter="url(#soft)"/>
+    <rect x="225" y="296" width="150" height="68" rx="34" opacity=".3" filter="url(#soft)"/>
+    <circle cx="173" cy="330" r="26"/>
+    <rect x="233" y="304" width="132" height="52" rx="26"/>
+  </g>
+  <text x="256" y="424" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+        font-size="23" letter-spacing="6" fill="#7fd8ff" opacity=".62">DS2YTO</text>
+</svg>

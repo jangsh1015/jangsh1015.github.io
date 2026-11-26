@@ -1,0 +1,24 @@
+{
+  "name": "DS2YTO 모르스 부호(CW) 연습기",
+  "short_name": "CW 연습기",
+  "description": "모르스 부호 송신·재생, 전건 타건 자동 해독, 청취 퀴즈, 부호표. Farnsworth 간격과 QRN 밴드 잡음까지 — 인터넷 없이 열립니다.",
+  "lang": "ko",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#05070f",
+  "theme_color": "#05070f",
+  "categories": ["education", "utilities"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "송신·재생", "url": "./" },
+    { "name": "전건 타건", "url": "./#key" },
+    { "name": "청취 퀴즈", "url": "./#quiz" }
+  ]
+}
