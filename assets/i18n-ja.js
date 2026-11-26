@@ -16,9 +16,9 @@
   'hero.leadB': '必要な道具は自分の手で作っています。',
   'hero.jump1': 'アマチュア無線',
   'hero.jump2': '星光交信',
-  'hero.jump3': '自分で作ったアプリ',
+  'hero.jump3': '作ったアプリ',
   'hero.jump4': '音楽',
-  'hero.btnProjects': '自分で作ったアプリを見る',
+  'hero.btnProjects': '作ったアプリを見る',
   'hero.tagQrp': 'QRP · 5W 以下',
   'hero.foot': '星の光と電波、ささやかな日常',
 
