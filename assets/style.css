@@ -1396,6 +1396,8 @@ html.lb-open { overflow: hidden; }
   display: grid;
   place-items: center;
   padding: clamp(16px, 4vw, 48px);
+  /* 하단 알약 닫기 버튼(높이 48 + 여백 18)에 설명 문구가 가라앉지 않게 */
+  padding-bottom: max(clamp(16px, 4vw, 48px), 92px);
   background: rgba(3, 5, 12, 0.9);
   backdrop-filter: blur(14px) saturate(130%);
   -webkit-backdrop-filter: blur(14px) saturate(130%);
@@ -1416,8 +1418,8 @@ html.lb-open { overflow: hidden; }
 }
 .lightbox-figure img {
   max-width: 100%;
-  max-height: calc(100vh - 170px);
-  max-height: calc(100dvh - 170px);
+  max-height: calc(100vh - 230px);
+  max-height: calc(100dvh - 230px);
   width: auto;
   height: auto;
   border-radius: 16px;
