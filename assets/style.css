@@ -399,6 +399,31 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.01em;
   color: var(--ink-dim);
 }
+.hero-app-tag {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0;
+  vertical-align: 1px;
+  color: #05121b;
+  background: linear-gradient(135deg, #a9ecff, #7fd8ff 60%, #b9a8ff 140%);
+}
+.hero-app-credit {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.45;
+  color: #9fe4ff;
+}
+.hero-app-credit b { font-weight: 800; letter-spacing: 0.04em; }
+.hero-app-note {
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: rgba(190, 210, 235, 0.68);
+}
 .hero-app-btn {
   flex: none;
   margin-left: auto;
@@ -1162,6 +1187,37 @@ a { color: inherit; text-decoration: none; }
   border-color: rgba(127, 216, 255, 0.32);
   box-shadow: 0 24px 60px rgba(55, 100, 190, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
+.project-changes {
+  margin-top: 14px;
+  padding: 12px 14px 13px;
+  border-radius: 13px;
+  border: 1px solid rgba(127, 216, 255, 0.24);
+  background: rgba(127, 216, 255, 0.055);
+}
+.project-changes-title {
+  margin: 0 0 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--cyan);
+}
+.project-changes ol {
+  margin: 0;
+  padding-left: 1.15em;
+  display: grid;
+  gap: 6px;
+}
+.project-changes li {
+  font-size: 12.8px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  padding-left: 2px;
+}
+.project-changes li::marker { color: rgba(127, 216, 255, 0.75); font-weight: 700; }
+.project-changes b {
+  font-weight: 700;
+  color: #eaf2ff;
+}
 .project-badge {
   display: inline-flex;
   align-items: center;
@@ -1847,6 +1903,10 @@ html.vs-open { overflow: hidden; }
   .hero-app-body { flex: 1 1 0; }
   .hero-app-title { font-size: 13.5px; }
   .hero-app-sub { font-size: 11px; }
+  .hero-app-credit { font-size: 11.5px; }
+  .hero-app-note { font-size: 10.5px; }
+  .project-changes { padding: 11px 12px 12px; }
+  .project-changes li { font-size: 12.2px; line-height: 1.6; }
   .hero-app-btn {
     width: 100%;
     justify-content: center;
