@@ -16,6 +16,7 @@
   'hero.appTitle': 'FT8CN KR (Korean edition) — FT8 for Android',
   'hero.appSub': 'v0.93-kr2 · Interval Auto CQ · APK 22 MB',
   'hero.appNote': 'Allow \'unknown sources\' once when installing',
+  'hero.appCredit': 'Modified & released by <b>DS2YTO</b>',
   'hero.appBtn': 'Download APK',
   'hero.leadA': 'I send out radio waves from Chuncheon, record the universe and the everyday,',
   'hero.leadB': 'and build the tools I need with my own hands.',

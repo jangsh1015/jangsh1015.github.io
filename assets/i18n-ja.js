@@ -16,6 +16,7 @@
   'hero.appTitle': 'FT8CN KR（韓国語版）— Android 用 FT8',
   'hero.appSub': 'v0.93-kr2 · 間欠 Auto CQ · APK 22MB',
   'hero.appNote': 'インストール時に「提供元不明」を一度許可',
+  'hero.appCredit': '改変・配布 <b>DS2YTO</b>',
   'hero.appBtn': 'APK ダウンロード',
   'hero.leadA': '春川から電波を飛ばし、宇宙と日常を記録しながら、',
   'hero.leadB': '必要な道具は自分の手で作っています。',
