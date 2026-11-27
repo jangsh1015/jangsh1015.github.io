@@ -178,7 +178,7 @@
   'proj.app.wifi1': '<b>Turn the radio on</b> — switch on the IC-705 and check that its WLAN is on',
   'proj.app.wifi2': '<b>Connect the tablet / phone to the <span class="mono">ic-705</span> Wi-Fi first</b> — before starting FT8CN, join the radio\'s Wi-Fi in the device settings',
   'proj.app.wifi3': '<b>Start FT8CN, then log in over the network</b> — log in to the radio network in the app so control and audio connect together',
-  'proj.app.releases': 'Older versions — all releases (kr1–kr10)',
+  'proj.app.releases': 'Older versions — all releases',
   'proj.app.tbTitle': 'Tablet mode — not a separate download',
   'proj.app.tbLead': 'The same single APK recognises a tablet in landscape and changes to the screens below by itself. On a phone, or held upright, it shows the one screen as before.',
   'proj.app.tb1': '<b>Spectrum tab · three panes</b> — dark blue waterfall on the left, decode and call on the right; drag the divider to set the widths',
