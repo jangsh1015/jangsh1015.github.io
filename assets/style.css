@@ -1280,6 +1280,10 @@ a { color: inherit; text-decoration: none; }
   background: linear-gradient(135deg, #b9a8ff, #7fd8ff);
 }
 .project-tablet-list b { font-weight: 700; color: #efeaff; }
+@media (min-width: 721px) {
+  /* 넓은 화면에서는 목록을 제목·설명 글줄에 맞춰 들여쓴다 */
+  .project-tablet-list { padding-left: 40px; }
+}
 .project-badge {
   display: inline-flex;
   align-items: center;
