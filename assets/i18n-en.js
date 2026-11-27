@@ -158,6 +158,7 @@
   'proj.app.download': 'Download APK (v0.93-kr11 · 22 MB)',
   'proj.app.source': 'Source code (GitHub)',
   'proj.app.videoCap': '46-second demo — a live three-pane QSO on a tablet, the Korean grid &amp; PSK map, Korean country badges and the credits screen',
+  'proj.app.youtube': 'Watch on YouTube',
   'proj.app.chTitle': 'Everything DS2YTO changed from the original N0BOY / FT8CN',
   'proj.app.ch1': '<b>Full Korean UI, multilingual kept</b> — all 511 app strings, the help, the info window and the radio model list are in Korean, while the original English and Chinese UI stay inside the same APK, so an English or Chinese phone shows that language by itself',
   'proj.app.ch2': '<b>Interval Auto CQ timer (every 5–60 min)</b> — instead of transmitting every 15 seconds and worrying about heat and battery, it sends CQ only 1–5 times per interval and just listens in between; it switches straight into an automatic QSO when someone calls',

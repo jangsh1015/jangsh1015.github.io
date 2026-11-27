@@ -157,6 +157,7 @@
   'proj.app.download': '下载 APK（v0.93-kr11 · 22MB）',
   'proj.app.source': '源代码（GitHub）',
   'proj.app.videoCap': '演示视频 46秒 — 平板三分栏实战通联、韩语网格＆PSK 地图、韩文国家标记、信息与鸣谢',
+  'proj.app.youtube': '在 YouTube 观看',
   'proj.app.chTitle': '相对原作 N0BOY / FT8CN，DS2YTO 修改的全部内容',
   'proj.app.ch1': '<b>韩语界面全译·多语言保留</b> — 把应用的 511 条文字、帮助、信息窗口和电台型号列表都译成韩语。同一个 APK 里保留英文、中文原界面，设备语言是英语或中文时就会自动显示该语言',
   'proj.app.ch2': '<b>间歇 Auto CQ 定时器（每 5~60 分钟）</b> — 原来每 15 秒不停发射，担心发热和电池；现在按设定周期只发 1~5 次 CQ，其余时间只接收。听到有人呼叫就立刻转入自动通联',
