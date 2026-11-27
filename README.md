@@ -5,7 +5,7 @@
 - 아마추어무선 **DS2YTO** — QRP 5W 이하 · FT8 교신, Icom IC-705 · IC-2730A · ID-51E
 - **별빛교신** — 우주·물리·인생 사색 연재 (카카오스토리)
 - **Projects** — FT8CN KR 안드로이드 APK 배포(맨 첫 카드, `📱 안드로이드 APK · 한국어 & 간헐 Auto CQ` 배지 · 다운로드 버튼과 소스 코드 링크, 원작 BG7YOZ/N0BOY + 한국어·간헐 Auto CQ DS2YTO 표기) · 파이브앤하프 4쿠션 시뮬레이터 · 2호차 셔틀 시간표 · 전기차 충전 기록부 · DS2YTO 무전 도구함(`/ds2yto-tools/` — 그레이 라인·전파 거리·안테나 길이와 맥스웰 방정식, 공개) · DS2YTO 햄 전파 도우미 · CW 연습기
-- **APK 파일** — `FT8CN_KR.apk`(22,237,345바이트, v0.93-kr1, 패키지 `com.bg7yoz.ft8cn.kr`)는 `jangsh1015/charge-Public-` 저장소의 Release `v0.93-kr1` 자산으로 올려 두었습니다. 주소: `https://github.com/jangsh1015/charge-Public-/releases/download/v0.93-kr1/FT8CN_KR.apk`(302 → `application/vnd.android.package-archive`). 새 버전을 올릴 때는 Release 자산을 교체하고 홈페이지의 버전·용량 문구를 함께 고칩니다.
+- **APK 파일** — `FT8CN_KR.apk`(22,243,492바이트, v0.93-kr2, 패키지 `com.bg7yoz.ft8cn.kr`)는 `jangsh1015/charge-Public-` 저장소의 Release `v0.93-kr2` 자산으로 올려 두었습니다. 주소: `https://github.com/jangsh1015/charge-Public-/releases/download/v0.93-kr2/FT8CN_KR.apk`(302 → `application/vnd.android.package-archive`). 새 버전을 올릴 때는 Release 자산을 교체하고 홈페이지의 버전·용량 문구를 함께 고칩니다.
 - **Gallery** — 카카오스토리에 남긴 소소한 일상 사진 6장 (썸네일 그리드 + 라이트박스, `assets/gallery/`)
 - **Music** — 오늘의 노래 두 곡. ① 이찬원 〈시절인연 (時節因緣)〉 — 공식 뮤직비디오(1theK, `fV8tu-tPcJE`) ② 써드베이스 〈진동 (Shaken)〉 — 공식 뮤직비디오(Third Base 써드베이스(KGospel), `rqDl9qvEhAI`). 둘 다 youtube-nocookie iframe으로 재생하고 [유튜브에서 듣기] 링크를 함께 둔다. 음원 파일은 올리지 않는다.
 - **방문자 카운터(비공개)** — 화면에는 아무 표시도 없이 조용히 방문 수를 기록합니다. 확인은 주소 끝에 `?stats`를 붙이거나(`https://jangsh1015.github.io/?stats`) 푸터의 `© 2026`을 5번 연속 탭하면 누적·오늘·최근 7일이 작은 창으로 뜹니다. 같은 브라우저 세션에서는 한 번만 기록합니다(`sessionStorage`). 값은 구글 Apps Script 웹 앱(`홈페이지 방문자 카운터 API`, `doGet?a=hit`·`?a=get`)이 스크립트 속성에 보관합니다. 카운터를 0으로 되돌리려면 그 프로젝트 편집기에서 `resetCounter`를 실행합니다.

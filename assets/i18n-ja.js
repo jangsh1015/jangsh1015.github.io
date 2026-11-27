@@ -12,7 +12,7 @@
   'nav.gallery': 'ギャラリー',
 
   'hero.jumpAria': 'セクションへ移動',
-  'hero.appAria': 'FT8CN KR Android APK をダウンロード（v0.93-kr1 · 22MB）',
+  'hero.appAria': 'FT8CN KR Android APK をダウンロード（v0.93-kr2 · 22MB）',
   'hero.appTitle': 'FT8CN KR — Android 用 FT8 の韓国語版',
   'hero.appSub': "間欠 Auto CQ · APK 22MB · インストール時に「提供元不明」を一度許可",
   'hero.appBtn': 'APK ダウンロード',
@@ -150,7 +150,7 @@
   'proj.app.t3': '間欠 CQ 5〜60分',
   'proj.app.t4': '呼ばれたら即交信',
   'proj.app.t5': '元の FT8CN と並んでインストール',
-  'proj.app.download': 'APK ダウンロード（v0.93-kr1 · 22MB）',
+  'proj.app.download': 'APK ダウンロード（v0.93-kr2 · 22MB）',
   'proj.app.source': 'ソースコード（GitHub）',
   'proj.app.credit': '原作：FT8CN — BG7YOZ / N0BOY（MIT ライセンス）· 韓国語訳と間欠 Auto CQ：DS2YTO',
   'proj.1.title': 'ファイブアンドハーフ · 4クッション・ビリヤード・シミュレーター',

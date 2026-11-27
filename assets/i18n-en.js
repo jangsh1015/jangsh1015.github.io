@@ -12,7 +12,7 @@
   'nav.gallery': 'Gallery',
 
   'hero.jumpAria': 'Jump to section',
-  'hero.appAria': 'Download the FT8CN KR Android APK (v0.93-kr1 · 22 MB)',
+  'hero.appAria': 'Download the FT8CN KR Android APK (v0.93-kr2 · 22 MB)',
   'hero.appTitle': 'FT8CN KR — FT8 for Android, in Korean',
   'hero.appSub': "Interval Auto CQ · APK 22 MB · allow 'unknown sources' once when installing",
   'hero.appBtn': 'Download APK',
@@ -150,7 +150,7 @@
   'proj.app.t3': 'interval CQ, 5–60 min',
   'proj.app.t4': 'instant switch to QSO',
   'proj.app.t5': 'installs beside the original FT8CN',
-  'proj.app.download': 'Download APK (v0.93-kr1 · 22 MB)',
+  'proj.app.download': 'Download APK (v0.93-kr2 · 22 MB)',
   'proj.app.source': 'Source code (GitHub)',
   'proj.app.credit': 'Original: FT8CN — BG7YOZ / N0BOY (MIT License) · Korean translation and interval Auto CQ: DS2YTO',
   'proj.1.title': 'Five and a Half · four-cushion billiards simulator',

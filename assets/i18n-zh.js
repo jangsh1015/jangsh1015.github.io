@@ -11,7 +11,7 @@
   'nav.projects': '项目',
   'nav.gallery': '相册',
 
-  'hero.appAria': '下载 FT8CN KR 安卓 APK（v0.93-kr1 · 22MB）',
+  'hero.appAria': '下载 FT8CN KR 安卓 APK（v0.93-kr2 · 22MB）',
   'hero.appTitle': 'FT8CN KR — 安卓上的韩语 FT8',
   'hero.appSub': "间歇 Auto CQ · APK 22MB · 安装时需允许一次「未知来源」",
   'hero.appBtn': '下载 APK',
@@ -149,7 +149,7 @@
   'proj.app.t3': '间歇 CQ 5~60 分钟',
   'proj.app.t4': '有人呼叫立即通联',
   'proj.app.t5': '可与原版 FT8CN 并存安装',
-  'proj.app.download': '下载 APK（v0.93-kr1 · 22MB）',
+  'proj.app.download': '下载 APK（v0.93-kr2 · 22MB）',
   'proj.app.source': '源代码（GitHub）',
   'proj.app.credit': '原作：FT8CN — BG7YOZ / N0BOY（MIT 许可证）· 韩语翻译与间歇 Auto CQ：DS2YTO',
   'proj.1.title': '五点半 · 四库台球模拟器',

@@ -11,7 +11,7 @@
   'nav.projects': 'Проекты',
   'nav.gallery': 'Галерея',
 
-  'hero.appAria': 'Скачать APK FT8CN KR для Android (v0.93-kr1 · 22 МБ)',
+  'hero.appAria': 'Скачать APK FT8CN KR для Android (v0.93-kr2 · 22 МБ)',
   'hero.appTitle': 'FT8CN KR — FT8 для Android на корейском',
   'hero.appSub': "Периодический Auto CQ · APK 22 МБ · при установке разрешить «из неизвестного источника»",
   'hero.appBtn': 'Скачать APK',
@@ -149,7 +149,7 @@
   'proj.app.t3': 'период CQ 5–60 мин',
   'proj.app.t4': 'сразу в связь по вызову',
   'proj.app.t5': 'ставится рядом с оригиналом',
-  'proj.app.download': 'Скачать APK (v0.93-kr1 · 22 МБ)',
+  'proj.app.download': 'Скачать APK (v0.93-kr2 · 22 МБ)',
   'proj.app.source': 'Исходный код (GitHub)',
   'proj.app.credit': 'Оригинал: FT8CN — BG7YOZ / N0BOY (лицензия MIT) · корейский перевод и периодический Auto CQ: DS2YTO',
   'proj.1.title': 'Пять с половиной · симулятор бильярда в четыре борта',
