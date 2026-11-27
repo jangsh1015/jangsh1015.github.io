@@ -1284,6 +1284,86 @@ a { color: inherit; text-decoration: none; }
   /* 넓은 화면에서는 목록을 제목·설명 글줄에 맞춰 들여쓴다 */
   .project-tablet-list { padding-left: 40px; }
 }
+
+/* 다음 버전 테스트 중 안내 (0.93-kr14 · 업데이트 예정) */
+.project-prep {
+  margin-top: 14px;
+  padding: 13px 14px 14px;
+  border-radius: 13px;
+  border: 1px dashed rgba(255, 209, 134, 0.46);
+  background:
+    radial-gradient(130% 160% at 0% 0%, rgba(255, 197, 110, 0.15), rgba(255, 197, 110, 0) 66%),
+    rgba(255, 217, 160, 0.04);
+}
+.project-prep-head { display: flex; align-items: flex-start; gap: 10px; }
+.project-prep-ico {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 209, 134, 0.42);
+  background: rgba(255, 197, 110, 0.15);
+}
+.project-prep-title {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  color: #ffe2b6;
+}
+.project-prep-lead {
+  margin: 3px 0 0;
+  font-size: 12.2px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.project-prep-list {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 7px;
+}
+.project-prep-list li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 12.4px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+.project-prep-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd98a, #ffb26b);
+}
+.project-prep-list b { font-weight: 700; color: #fff3e0; }
+@media (min-width: 721px) {
+  .project-prep-list { padding-left: 40px; }
+}
+@media (max-width: 520px) {
+  .project-prep { padding: 11px 12px 12px; }
+  .project-prep-lead { font-size: 11.9px; }
+  .project-prep-list { gap: 6px; }
+  .project-prep-list li { font-size: 12px; }
+}
+
+/* 첫 화면 영상 아래 한 줄 안내 (0.93-kr14 테스트) */
+.hero-video-note {
+  margin: 8px 0 0;
+  font-size: 11.8px;
+  line-height: 1.55;
+  color: var(--ink-dim);
+}
+
 /* IC-705 무선(Wi-Fi) 연결 순서 참고사항 (0.93-kr11) */
 .project-wifi {
   margin-top: 14px;
