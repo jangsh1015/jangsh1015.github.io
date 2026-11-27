@@ -125,7 +125,7 @@
           </span>
         </a>
 
-        <div class="hero-video" id="hero-video">
+        <div class="hero-video" id="ft8-demo">
           <button class="hero-video-btn" type="button" id="hero-video-btn" aria-expanded="false" aria-controls="hero-video-panel">
             <span class="hv-open"><span class="hv-play" aria-hidden="true">▶</span><span data-i18n="hero.videoBtn">작동 영상 보기 · 45초</span></span>
             <span class="hv-close" data-i18n="hero.videoClose">영상 접기</span>
@@ -135,7 +135,6 @@
                    poster="assets/ft8cn-kr-poster.jpg"
                    aria-label="FT8CN KR 작동 영상 (45초, 한국어)" data-i18n-aria="hero.videoAria">
               <source src="assets/ft8cn-kr-demo.mp4" type="video/mp4">
-              이 브라우저는 video 태그를 지원하지 않습니다.
             </video>
           </div>
         </div>
@@ -557,7 +556,6 @@
                      poster="assets/ft8cn-kr-poster.jpg"
                      aria-label="FT8CN KR 작동 영상 (45초, 한국어)" data-i18n-aria="hero.videoAria">
                 <source src="assets/ft8cn-kr-demo.mp4" type="video/mp4">
-                이 브라우저는 video 태그를 지원하지 않습니다.
               </video>
               <figcaption data-i18n="proj.app.videoCap">작동 영상 45초 — 한국어 UI와 간헐 Auto CQ 실전 동작</figcaption>
             </figure>
@@ -1650,23 +1648,29 @@
     var panel = document.getElementById('hero-video-panel');
     if (!btn || !panel) return;
     var video = panel.querySelector('video');
-    btn.addEventListener('click', function () {
-      var willOpen = panel.hasAttribute('hidden');
-      if (willOpen) {
-        panel.removeAttribute('hidden');
-        btn.classList.add('is-open');
-        btn.setAttribute('aria-expanded', 'true');
-        if (video && video.play) {
-          var p = video.play();
-          if (p && p.catch) p.catch(function () {});
-        }
-      } else {
-        panel.setAttribute('hidden', '');
-        btn.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
-        if (video) video.pause();
+
+    function openVideo() {
+      panel.removeAttribute('hidden');
+      btn.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+      if (video && video.play) {
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {});
       }
+    }
+    function closeVideo() {
+      panel.setAttribute('hidden', '');
+      btn.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+      if (video) video.pause();
+    }
+
+    btn.addEventListener('click', function () {
+      if (panel.hasAttribute('hidden')) { openVideo(); } else { closeVideo(); }
     });
+
+    // 공유용 딥링크: https://jangsh1015.github.io/#ft8-demo
+    if (location.hash === '#ft8-demo') { openVideo(); }
   })();
 </script>
 </body>
