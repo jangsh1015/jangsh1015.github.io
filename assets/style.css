@@ -1284,6 +1284,72 @@ a { color: inherit; text-decoration: none; }
   /* 넓은 화면에서는 목록을 제목·설명 글줄에 맞춰 들여쓴다 */
   .project-tablet-list { padding-left: 40px; }
 }
+/* IC-705 무선(Wi-Fi) 연결 순서 참고사항 (0.93-kr11) */
+.project-wifi {
+  margin-top: 14px;
+  padding: 13px 14px 14px;
+  border-radius: 13px;
+  border: 1px solid rgba(126, 224, 168, 0.32);
+  background:
+    radial-gradient(130% 160% at 100% 0%, rgba(126, 224, 168, 0.13), rgba(126, 224, 168, 0) 64%),
+    rgba(127, 216, 255, 0.045);
+}
+.project-wifi-head { display: flex; align-items: flex-start; gap: 10px; }
+.project-wifi-ico {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  border-radius: 9px;
+  border: 1px solid rgba(126, 224, 168, 0.4);
+  background: rgba(126, 224, 168, 0.13);
+}
+.project-wifi-title {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  color: #cdf5e0;
+}
+.project-wifi-lead {
+  margin: 3px 0 0;
+  font-size: 12.2px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.project-wifi-steps {
+  margin: 10px 0 0;
+  padding-left: 1.35em;
+  display: grid;
+  gap: 7px;
+}
+.project-wifi-steps li {
+  font-size: 12.4px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+.project-wifi-steps li::marker { color: rgba(126, 224, 168, 0.9); font-weight: 800; }
+.project-wifi-steps b { font-weight: 700; color: #e4fff1; }
+@media (min-width: 721px) {
+  .project-wifi-steps { padding-left: calc(40px + 1.35em); }
+}
+
+/* 다운로드 버튼 아래 작은 보조 링크 (전체 릴리스) */
+.project-releases {
+  margin: 9px 0 0;
+  font-size: 11.5px;
+  line-height: 1.6;
+}
+.project-releases a {
+  color: var(--ink-dim);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(127, 216, 255, 0.4);
+}
+.project-releases a:hover { color: #cfeeff; border-bottom-color: rgba(207, 238, 255, 0.7); }
+
 .project-badge {
   display: inline-flex;
   align-items: center;
