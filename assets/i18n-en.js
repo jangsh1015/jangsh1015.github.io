@@ -81,6 +81,15 @@
   'letter.x.p17': 'Today I survived the fierce world of delivery once again.',
   'letter.x.tags': '#DeliveryWork #EverydayHumor #LittleDays #BonusPost',
 
+  'letter.8.title': 'In a universe that keeps scattering, gathering the warmth again',
+  'letter.8.p1': 'A hot cup of coffee goes cold, and a sandcastle we piled up crumbles in the wind. Physics calls this “entropy increasing.”',
+  'letter.8.p2': 'Left to itself, everything in the universe drifts from order to disorder, from gathering to scattering. It is also why the arrow of time flies in only one direction.',
+  'letter.8.p3': 'But when we look up at the night sky, something a little strange is going on. In one corner of a universe that should only scatter, stars clump together, planets turn, and one day life and mind were born, able to look back at themselves.',
+  'letter.8.p4': 'The human heart is much the same. The world keeps leaning toward scattering and cooling, and yet someone gathers a broken heart again and warms the cold air with a small, wordless kindness.',
+  'letter.8.p5': 'That small gesture that gathers warmth even against the great current of the universe may be the most dazzling miracle breathing on top of these cold laws of physics.',
+  'letter.8.tags': '#Universe #Physics #Entropy #ArrowOfTime #StarlightLetters #LifePhilosophy',
+  'letter.8.link': 'Read the original on KakaoStory <span aria-hidden="true">↗</span>',
+
   'letter.7.title': 'Until we look, the universe is not fixed to a single answer',
   'letter.7.p1': 'Send one particle of light toward two narrow slits, and that tiny grain does something remarkable: it does not choose just one path.',
   'letter.7.p2': 'With no eye watching, it spreads out like a wave, passes through both slits at once, and draws a ripple pattern on the screen. But the moment you try to check which slit it went through, the wave scatters and turns into a single point.',
