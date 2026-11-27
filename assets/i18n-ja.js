@@ -198,6 +198,8 @@
   'proj.app.wifi1': '<b>無線機の電源を入れる</b> — IC-705 を点け、無線 LAN（WLAN）がオンか確かめます',
   'proj.app.wifi2': '<b>タブレット／スマホを先に <span class="mono">ic-705</span> の Wi-Fi へ</b> — FT8CN を起動する前に、端末の設定で無線機の Wi-Fi につなぎます',
   'proj.app.wifi3': '<b>FT8CN を起動してネットワークにログイン</b> — アプリから無線機のネットワークにログインし、制御とオーディオを一緒につなぎます',
+  'proj.app.usbTitle': 'USB（有線）接続 — スペクトラムが真っ黒でデコードが出ないとき',
+  'proj.app.usbTip': '設定の一番下の<b>ビット深度</b>を<b>16ビット整数</b>に変えてから、アプリを起動し直します。（Samsung Galaxy S10 など一部の Android 端末）',
   'proj.app.releases': '過去のバージョン — 全リリース',
   'proj.app.tbTitle': 'タブレットモード — 別のファイルではありません',
   'proj.app.tbLead': '同じ APK 1つがタブレットの横向き画面を見分け、下の画面にひとりでに切り替わります。スマホや縦向きでは今までどおり1画面です。',

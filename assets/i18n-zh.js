@@ -197,6 +197,8 @@
   'proj.app.wifi1': '<b>先开电台电源</b> — 打开 IC-705，确认无线（WLAN）已开启',
   'proj.app.wifi2': '<b>先用平板／手机连上 <span class="mono">ic-705</span> 的 Wi-Fi</b> — 启动 FT8CN 之前，在设备设置里连上电台的无线网络',
   'proj.app.wifi3': '<b>再启动 FT8CN，登录网络</b> — 在应用里登录电台网络，让控制和音频一起连上',
+  'proj.app.usbTitle': 'USB（有线）连接 — 频谱一片漆黑、解不出码时',
+  'proj.app.usbTip': '把设置最下面的<b>位深度</b>改为<b>16 位整数</b>，再重新启动应用。（三星 Galaxy S10 等部分安卓机型）',
   'proj.app.releases': '查看旧版本 — 全部发布',
   'proj.app.tbTitle': '平板模式 — 不是另一个文件',
   'proj.app.tbLead': '同一个 APK 会识别平板横屏，自动切换成下面的画面。手机和竖屏下仍是原来的一屏。',
