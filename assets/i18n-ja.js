@@ -14,7 +14,7 @@
   'hero.jumpAria': 'セクションへ移動',
   'hero.appAria': 'FT8CN KR Android APK をダウンロード（v0.93-kr2 · 22MB）',
   'hero.appTitle': 'FT8CN KR — Android 用 FT8 の韓国語版',
-  'hero.appSub': "間欠 Auto CQ · APK 22MB · インストール時に「提供元不明」を一度許可",
+  'hero.appSub': "v0.93-kr2 · 間欠 Auto CQ · APK 22MB · インストール時に「提供元不明」を一度許可",
   'hero.appBtn': 'APK ダウンロード',
   'hero.leadA': '春川から電波を飛ばし、宇宙と日常を記録しながら、',
   'hero.leadB': '必要な道具は自分の手で作っています。',

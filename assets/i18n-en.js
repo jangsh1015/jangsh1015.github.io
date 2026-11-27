@@ -14,7 +14,7 @@
   'hero.jumpAria': 'Jump to section',
   'hero.appAria': 'Download the FT8CN KR Android APK (v0.93-kr2 · 22 MB)',
   'hero.appTitle': 'FT8CN KR — FT8 for Android, in Korean',
-  'hero.appSub': "Interval Auto CQ · APK 22 MB · allow 'unknown sources' once when installing",
+  'hero.appSub': "v0.93-kr2 · Interval Auto CQ · APK 22 MB · allow 'unknown sources' once when installing",
   'hero.appBtn': 'Download APK',
   'hero.leadA': 'I send out radio waves from Chuncheon, record the universe and the everyday,',
   'hero.leadB': 'and build the tools I need with my own hands.',

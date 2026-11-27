@@ -13,7 +13,7 @@
 
   'hero.appAria': '下载 FT8CN KR 安卓 APK（v0.93-kr2 · 22MB）',
   'hero.appTitle': 'FT8CN KR — 安卓上的韩语 FT8',
-  'hero.appSub': "间歇 Auto CQ · APK 22MB · 安装时需允许一次「未知来源」",
+  'hero.appSub': "v0.93-kr2 · 间歇 Auto CQ · APK 22MB · 安装时需允许一次「未知来源」",
   'hero.appBtn': '下载 APK',
   'hero.leadA': '在春川发射电波，记录宇宙与日常，',
   'hero.leadB': '需要的工具就自己动手做出来。',
