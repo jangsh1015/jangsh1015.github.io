@@ -237,7 +237,7 @@
   'proj.app.credit': 'Original open source: BG7YOZ / N0BOY — FT8CN (MIT License)',
   'proj.app.credit2': 'This version is a Korean translation with feature changes, modified and released by DS2YTO.',
 
-  'proj.kft8.badge': 'K-FT8 v1.6 · dark cockpit edition (APK)',
+  'proj.kft8.badge': 'K-FT8 v1.7 · dark cockpit edition (APK)',
   'proj.kft8.title': 'K-FT8 — an Android FT8 app shaped like a cockpit',
   'proj.kft8.desc': 'I put this one together just for fun — give it a try, no strings attached. The screens are rebuilt to stay simple so you can get on the air the moment the radio is on, and it installs alongside FT8CN KR.',
   'proj.kft8.noteTitle': 'Connection',
@@ -248,8 +248,8 @@
   'proj.kft8.f4': 'Korean · English · Japanese · Chinese',
   'proj.kft8.f5': 'defaults: IC-705 · 40 m',
   'proj.kft8.f6': 'closed source · APK only',
-  'proj.kft8.download': 'Download K-FT8 APK (v1.6 · 22 MB)',
-  'proj.kft8.btnAria': 'Download the K-FT8 v1.6 Android APK (22 MB)',
+  'proj.kft8.download': 'Download K-FT8 APK (v1.7 · 22 MB)',
+  'proj.kft8.btnAria': 'Download the K-FT8 v1.7 Android APK (22 MB)',
   'proj.kft8.credit': 'Copyright © DS2YTO · the source is not released; only the APK is distributed.',
 
   'proj.1.title': 'Five and a Half · four-cushion billiards simulator',
