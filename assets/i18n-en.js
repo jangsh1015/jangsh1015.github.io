@@ -316,6 +316,17 @@
   'song.4m3': 'yodel',
   'song.btn': 'Listen on YouTube',
 
+  'series.h': 'The Reason I Exist <span class="mono">1 — 8</span>',
+  'series.desc': 'Eight chapters of one heart — from the first song of 1996 to the eighth in 2013 — gathered here in order. I set a fence around them so they do not blur into the four songs above.',
+  'series.chip1': 'eight songs',
+  'series.chip3': 'official audio · KBS stage',
+  'series.now': 'Now playing',
+  'series.hint': 'Tap a number and the player above switches to that part.',
+  'series.srcAudio': 'official audio',
+  'series.srcKbs': 'KBS live stage',
+  'series.credit': 'Video · official audio from Kim Jong Hwan’s Topic channel and official KBS stages. Rather than uploading audio files, I linked to the official videos.',
+  'series.list': 'The Reason I Exist, parts 1 to 8',
+
   'lb.aria': 'View photo large',
   'lb.close': 'Close photo view',
   'lb.prev': 'Previous photo',

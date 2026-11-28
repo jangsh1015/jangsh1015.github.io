@@ -49,7 +49,7 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="assets/style.css?v=41">
+<link rel="stylesheet" href="assets/style.css?v=42">
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="a11y.skip">본문으로 건너뛰기</a>
@@ -1320,6 +1320,125 @@
           </div>
         </article>
       </div>
+
+      <!-- ── 김종환 〈존재의 이유〉 1~8 — 위의 네 곡과 섞이지 않게 따로 두는 시리즈 ── -->
+      <div class="series" id="series">
+        <div class="series-rule" aria-hidden="true"><span>SERIES</span></div>
+
+        <header class="series-head">
+          <p class="series-kicker">김종환 · Kim Jong Hwan</p>
+          <h3 class="series-title" data-i18n="series.h">존재의 이유 <span class="mono">1 — 8</span></h3>
+          <p class="series-desc" data-i18n="series.desc">
+            1996년의 첫 곡에서 2013년의 여덟 번째 곡까지, 한 사람을 향한 마음의 여덟 장을 차례로 모았습니다.
+            위의 네 곡과 섞이지 않도록 울타리를 하나 두었습니다.
+          </p>
+          <ul class="series-chips">
+            <li data-i18n="series.chip1">여덟 곡</li>
+            <li data-i18n="series.chip3">공식 음원 · KBS 무대</li>
+            <li>1996 — 2013</li>
+          </ul>
+        </header>
+
+        <div class="series-grid">
+          <div class="glass series-player">
+            <div class="song-frame">
+              <iframe
+                id="series-frame"
+                src="https://www.youtube-nocookie.com/embed/hHGEo5aMbAw?rel=0"
+                title="김종환 — 존재의 이유 1 (공식 음원)"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+
+            <div class="series-now">
+              <p class="series-now-label">
+                <span class="dot" aria-hidden="true"></span>
+                <span data-i18n="series.now">지금 듣는 곡</span>
+              </p>
+              <p class="series-now-title">
+                <span class="series-now-no" id="series-no">01</span>
+                <span id="series-name">존재의 이유</span>
+              </p>
+              <p class="series-now-sub">
+                <span id="series-sub" data-i18n="series.srcAudio">공식 음원</span>
+                <span class="series-now-len" id="series-len">4:45</span>
+              </p>
+              <a class="btn btn-ghost btn-sm series-now-btn" id="series-link" href="https://www.youtube.com/watch?v=hHGEo5aMbAw">
+                <span data-i18n="song.btn">유튜브에서 듣기</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+
+            <p class="song-credit" data-i18n="series.credit">
+              영상 · 김종환 Topic 공식 음원과 KBS 공식 무대. 음원 파일을 직접 올리는 대신 공식 영상으로 연결했습니다.
+            </p>
+          </div>
+
+          <div class="series-side">
+            <ol class="glass series-list" id="series-list" aria-label="존재의 이유 1~8 곡 목록" data-i18n-aria="series.list">
+              <li>
+                <button type="button" class="series-track is-on" data-video="hHGEo5aMbAw" data-no="01" data-name="존재의 이유" data-src="series.srcAudio" data-len="4:45" aria-pressed="true">
+                  <span class="st-no">01</span>
+                  <span class="st-name">존재의 이유</span>
+                  <span class="st-len">4:45</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="series-track" data-video="EZhNP8KJJ38" data-no="02" data-name="존재의 이유 2" data-src="series.srcAudio" data-len="3:43" aria-pressed="false">
+                  <span class="st-no">02</span>
+                  <span class="st-name">존재의 이유 2</span>
+                  <span class="st-len">3:43</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="series-track" data-video="vaEWv-x9xqs" data-no="03" data-name="존재의 이유 3" data-src="series.srcAudio" data-len="4:35" aria-pressed="false">
+                  <span class="st-no">03</span>
+                  <span class="st-name">존재의 이유 3</span>
+                  <span class="st-len">4:35</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="series-track" data-video="9eA09xh-PnU" data-no="04" data-name="존재의 이유 4" data-src="series.srcKbs" data-len="4:36" aria-pressed="false">
+                  <span class="st-no">04</span>
+                  <span class="st-name">존재의 이유 4</span>
+                  <span class="st-len">4:36</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="series-track" data-video="WU9AnKDIZRk" data-no="05" data-name="고백 (존재의 이유 5)" data-src="series.srcKbs" data-len="4:27" aria-pressed="false">
+                  <span class="st-no">05</span>
+                  <span class="st-name">고백</span>
+                  <span class="st-len">4:27</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="series-track" data-video="iMZUQy_E-6k" data-no="06" data-name="존재의 이유 6" data-src="series.srcAudio" data-len="4:07" aria-pressed="false">
+                  <span class="st-no">06</span>
+                  <span class="st-name">존재의 이유 6</span>
+                  <span class="st-len">4:07</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="series-track" data-video="8jQmiVco0jA" data-no="07" data-name="사랑하니까 (존재의 이유 7)" data-src="series.srcAudio" data-len="4:19" aria-pressed="false">
+                  <span class="st-no">07</span>
+                  <span class="st-name">사랑하니까</span>
+                  <span class="st-len">4:19</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="series-track" data-video="GyUInZwxt_U" data-no="08" data-name="세상에 저려진 나를 (존재의 이유 8)" data-src="series.srcAudio" data-len="4:02" aria-pressed="false">
+                  <span class="st-no">08</span>
+                  <span class="st-name">세상에 저려진 나를</span>
+                  <span class="st-len">4:02</span>
+                </button>
+              </li>
+            </ol>
+            <p class="series-hint" data-i18n="series.hint">번호를 누르면 위 화면이 그 곡으로 바뀝니다.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1738,11 +1857,70 @@
   }
 })();
 </script>
-<script src="assets/i18n-en.js?v=22"></script>
-<script src="assets/i18n-ja.js?v=22"></script>
-<script src="assets/i18n-zh.js?v=22"></script>
-<script src="assets/i18n-ru.js?v=22"></script>
-<script src="assets/i18n.js?v=2"></script>
+<script src="assets/i18n-en.js?v=23"></script>
+<script src="assets/i18n-ja.js?v=23"></script>
+<script src="assets/i18n-zh.js?v=23"></script>
+<script src="assets/i18n-ru.js?v=23"></script>
+<script src="assets/i18n.js?v=3"></script>
+<script>
+  /* 김종환 〈존재의 이유〉 1~8 — 번호를 누르면 위 플레이어가 그 곡으로 바뀐다 */
+  (function () {
+    var frame = document.getElementById('series-frame');
+    var list = document.getElementById('series-list');
+    if (!frame || !list) return;
+
+    var noEl = document.getElementById('series-no');
+    var nameEl = document.getElementById('series-name');
+    var subEl = document.getElementById('series-sub');
+    var lenEl = document.getElementById('series-len');
+    var linkEl = document.getElementById('series-link');
+
+    var tracks = Array.prototype.slice.call(list.querySelectorAll('.series-track'));
+    if (!tracks.length) return;
+    var cur = tracks[0];
+
+    function label(key) {
+      if (window.Lang5 && typeof window.Lang5.t === 'function') return window.Lang5.t(key);
+      return '';
+    }
+
+    function paint(btn, play) {
+      var video = btn.getAttribute('data-video');
+      var name = btn.getAttribute('data-name');
+
+      for (var i = 0; i < tracks.length; i++) {
+        var on = tracks[i] === btn;
+        tracks[i].classList.toggle('is-on', on);
+        tracks[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+      }
+
+      noEl.textContent = btn.getAttribute('data-no');
+      nameEl.textContent = name;
+      lenEl.textContent = btn.getAttribute('data-len');
+      subEl.textContent = label(btn.getAttribute('data-src'));
+      linkEl.href = 'https://www.youtube.com/watch?v=' + video;
+      frame.title = '김종환 — ' + name;
+
+      if (play) {
+        frame.src = 'https://www.youtube-nocookie.com/embed/' + video + '?rel=0&autoplay=1';
+      }
+      cur = btn;
+    }
+
+    list.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('.series-track') : null;
+      if (!btn || !list.contains(btn)) return;
+      paint(btn, true);
+    });
+
+    /* 언어를 바꾸면 지금 곡의 출처 표기도 그 언어로 */
+    document.addEventListener('langchange', function () {
+      subEl.textContent = label(cur.getAttribute('data-src'));
+    });
+
+    paint(cur, false);
+  })();
+</script>
 <script>
   (function () {
     var btn = document.getElementById('hero-video-btn');

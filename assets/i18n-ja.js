@@ -316,6 +316,17 @@
   'song.4m3': 'ヨーデル',
   'song.btn': 'YouTube で聴く',
 
+  'series.h': '存在の理由 <span class="mono">1 — 8</span>',
+  'series.desc': '1996年の最初の曲から2013年の八番目の曲まで、一人を想う心を八章に綴ったシリーズです。上の四曲と混ざらないよう、囲いを一つ置きました。',
+  'series.chip1': '八曲',
+  'series.chip3': '公式音源 · KBS ステージ',
+  'series.now': '再生中',
+  'series.hint': '番号を押すと上のプレーヤーがその曲に切り替わります。',
+  'series.srcAudio': '公式音源',
+  'series.srcKbs': 'KBS 公式ステージ',
+  'series.credit': '映像 · Kim Jong Hwan 公式音源チャンネルと KBS 公式ステージ。音源ファイルを直接載せる代わりに公式映像へつないでいます。',
+  'series.list': '存在の理由 1〜8 の曲一覧',
+
   'lb.aria': '写真を大きく見る',
   'lb.close': '写真を大きく見るのを閉じる',
   'lb.prev': '前の写真',

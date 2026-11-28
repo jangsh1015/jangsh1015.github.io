@@ -315,6 +315,17 @@
   'song.4m3': '约德尔唱法',
   'song.btn': '在 YouTube 收听',
 
+  'series.h': '存在的理由 <span class="mono">1 — 8</span>',
+  'series.desc': '从1996年的第一首到2013年的第八首，把对一个人的心意分成八章收在这里。为了不与上面四首歌混在一起，另外隔了一道围栏。',
+  'series.chip1': '八首',
+  'series.chip3': '官方音源 · KBS 舞台',
+  'series.now': '正在播放',
+  'series.hint': '点编号即可让上方播放器切到那一首。',
+  'series.srcAudio': '官方音源',
+  'series.srcKbs': 'KBS 官方舞台',
+  'series.credit': '影像 · Kim Jong Hwan 官方音源频道与 KBS 官方舞台。不直接上传音源文件，而是链接官方视频。',
+  'series.list': '存在的理由 1~8 曲目',
+
   'lb.aria': '放大查看照片',
   'lb.close': '关闭放大照片',
   'lb.prev': '上一张照片',
