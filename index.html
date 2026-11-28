@@ -1624,7 +1624,9 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      // 화면보다 훨씬 긴 카드(폰에서 긴 번역문이 붙은 프로젝트 카드 등)는
+      // 비율 0.12를 채울 수 없어 영영 나타나지 않으므로 문턱을 낮게 둔다
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
     Array.prototype.forEach.call(items, function (el) { el.classList.add('reveal'); io.observe(el); });
   }
 })();
