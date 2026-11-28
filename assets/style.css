@@ -793,6 +793,120 @@ a { color: inherit; text-decoration: none; }
 }
 .radio-note { margin: 0; font-size: 14px; color: var(--ink-dim); }
 
+/* ── ft8 story ───────────────────────────────────────────── */
+
+.ft8-story {
+  margin-top: 16px;
+  padding: clamp(22px, 3vw, 32px);
+  overflow: hidden;
+}
+.ft8-story::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: -150px;
+  top: -190px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(185, 168, 255, 0.15), rgba(185, 168, 255, 0) 70%);
+  pointer-events: none;
+}
+.ft8-head, .ft8-steps, .ft8-quote { position: relative; z-index: 1; }
+.ft8-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--violet);
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: rgba(185, 168, 255, 0.1);
+  border: 1px solid rgba(185, 168, 255, 0.22);
+}
+.ft8-story h3 {
+  margin: 14px 0 0;
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+}
+.ft8-lead {
+  margin: 10px 0 0;
+  max-width: 70ch;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+.ft8-lead strong { color: #fff; font-weight: 600; }
+.ft8-lead .mono { color: var(--cyan); font-size: 0.94em; }
+
+.ft8-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.ft8-steps li {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 16px 17px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  background: rgba(255, 255, 255, 0.03);
+}
+.ft8-k {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--violet);
+}
+.ft8-steps h4 {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.ft8-steps p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--ink-dim);
+}
+
+.ft8-quote {
+  position: relative;
+  margin: 18px 0 0;
+  padding: 16px 18px 15px;
+  border-left: 2px solid var(--gold);
+  border-radius: 0 12px 12px 0;
+  background: linear-gradient(90deg, rgba(255, 217, 160, 0.07), rgba(255, 217, 160, 0.015));
+}
+.ft8-quote p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.ft8-quote cite {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+}
+
 /* ── ft8 reach ───────────────────────────────────────────── */
 
 .reach-card {
@@ -2389,6 +2503,7 @@ html.vs-open { overflow: hidden; }
   .hero-visual { order: -1; }
   .hero-tag { display: none; }
   .radio-grid { grid-template-columns: 1fr; }
+  .ft8-steps { grid-template-columns: 1fr; }
   .song-layout { grid-template-columns: 1fr; }
   .series-grid { grid-template-columns: 1fr; }
 }
