@@ -1879,9 +1879,13 @@
     if (!tracks.length) return;
     var cur = tracks[0];
 
+    /* 한국어 원문 (다른 언어는 i18n 파일에서 가져온다) */
+    var KO = { 'series.srcAudio': '공식 음원', 'series.srcKbs': 'KBS 공식 무대' };
+
     function label(key) {
-      if (window.Lang5 && typeof window.Lang5.t === 'function') return window.Lang5.t(key);
-      return '';
+      var v = (window.Lang5 && typeof window.Lang5.t === 'function') ? window.Lang5.t(key) : '';
+      if (!v || v === key) v = KO[key] || '';
+      return v;
     }
 
     function paint(btn, play) {
