@@ -845,7 +845,7 @@ a { color: inherit; text-decoration: none; }
 
 .ft8-steps {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.16fr) minmax(0, 1fr);
   gap: 10px;
   margin: 20px 0 0;
   padding: 0;
@@ -884,10 +884,10 @@ a { color: inherit; text-decoration: none; }
 .ft8-quote {
   position: relative;
   margin: 18px 0 0;
-  padding: 16px 18px 15px;
-  border-left: 2px solid var(--gold);
+  padding: 16px 20px 16px 18px;
+  border-left: 3px solid var(--gold);
   border-radius: 0 12px 12px 0;
-  background: linear-gradient(90deg, rgba(255, 217, 160, 0.07), rgba(255, 217, 160, 0.015));
+  background: linear-gradient(90deg, rgba(255, 217, 160, 0.09), rgba(255, 217, 160, 0.02));
 }
 .ft8-quote p {
   margin: 0;
