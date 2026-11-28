@@ -30,6 +30,7 @@
   'hero.btnProjects': '看看我做的应用',
   'hero.tagQrp': 'QRP · 5W 以下',
   'hero.foot': '星光与电波，小小的日常',
+  'hero.portraitCap': '十年前，年轻时的肖像',
 
   'radio.h2': '业余无线电 · <span class="mono">DS2YTO</span>',
   'radio.desc': '以呼号 <strong>DS2YTO</strong> 与电波之上的世界通联。一台能装进背包的收发信机、一根天线，用 5W 以下的小功率（QRP）享受 FT8。我喜欢亲耳听见宇宙发来的信号。',

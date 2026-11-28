@@ -31,6 +31,7 @@
   'hero.btnProjects': '作ったアプリを見る',
   'hero.tagQrp': 'QRP · 5W 以下',
   'hero.foot': '星の光と電波、ささやかな日常',
+  'hero.portraitCap': '10年前、若き日の肖像',
 
   'radio.h2': 'アマチュア無線 · <span class="mono">DS2YTO</span>',
   'radio.desc': 'コールサイン <strong>DS2YTO</strong> で、電波の上の世界と交信しています。かばんに入るトランシーバー一台とアンテナ一本、5W 以下の小さな出力（QRP）で FT8 を楽しんでいます。宇宙が送ってくる信号を、自分の耳で聞くのが好きです。',

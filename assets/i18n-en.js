@@ -31,6 +31,7 @@
   'hero.btnProjects': 'See the apps I built',
   'hero.tagQrp': 'QRP · 5 W or less',
   'hero.foot': 'Starlight and radio waves, the little everyday',
+  'hero.portraitCap': 'A portrait from 10 years ago',
 
   'radio.h2': 'Amateur radio · <span class="mono">DS2YTO</span>',
   'radio.desc': 'With the call sign <strong>DS2YTO</strong> I talk with the world above the airwaves. One transceiver that fits in a bag, one antenna, and 5 watts or less (QRP) — that is all I need to enjoy FT8. I love hearing with my own ears the signals the universe sends.',
