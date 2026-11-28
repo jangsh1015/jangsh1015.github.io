@@ -2832,3 +2832,111 @@ html[lang="zh"] body { word-break: normal; }
   line-height: 1.5;
   color: var(--ink-dim);
 }
+
+/* ── 기기·연결 안내 (휴대폰·태블릿 / USB·Wi-Fi·블루투스) ─────────────── */
+.project-dev {
+  margin-top: 14px;
+  padding: 13px 14px 14px;
+  border-radius: 13px;
+  border: 1px solid rgba(127, 216, 255, 0.34);
+  background:
+    radial-gradient(130% 160% at 0% 0%, rgba(127, 216, 255, 0.16), rgba(127, 216, 255, 0) 66%),
+    rgba(127, 216, 255, 0.05);
+}
+.project-dev-head { display: flex; align-items: flex-start; gap: 10px; }
+.project-dev-ico {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  border-radius: 9px;
+  border: 1px solid rgba(127, 216, 255, 0.4);
+  background: rgba(127, 216, 255, 0.14);
+}
+.project-dev-title {
+  margin: 0;
+  font-size: 12.8px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  color: #d6f2ff;
+}
+.project-dev-lead {
+  margin: 3px 0 0;
+  font-size: 12.2px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.project-dev-list {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 7px;
+}
+.project-dev-list li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 12.4px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+.project-dev-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7fd8ff, #b9a8ff);
+}
+.project-dev-list b { font-weight: 700; color: #e6f7ff; }
+@media (min-width: 721px) {
+  .project-dev-list { padding-left: 40px; }
+}
+
+/* ── 보조 다운로드: 한국어 번역 단순판 (v0.93-kr1) ───────────────────── */
+.project-alt {
+  margin-top: 14px;
+  padding: 14px 15px 15px;
+  border-radius: 14px;
+  border: 1px solid rgba(127, 216, 255, 0.26);
+  border-left: 3px solid rgba(127, 216, 255, 0.62);
+  background:
+    radial-gradient(120% 150% at 0% 0%, rgba(127, 216, 255, 0.1), rgba(127, 216, 255, 0) 70%),
+    rgba(255, 255, 255, 0.03);
+}
+.project-alt-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.project-alt-badge {
+  flex: none;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #bfefff;
+  border: 1px solid rgba(127, 216, 255, 0.42);
+  background: rgba(127, 216, 255, 0.12);
+}
+.project-alt-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #e8f8ff;
+}
+.project-alt-lead {
+  margin: 7px 0 12px;
+  font-size: 12.4px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.project-alt .btn { margin: 0; }
